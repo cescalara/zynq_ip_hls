@@ -1,0 +1,3 @@
+lappend pragmaStatus0 {pragma "PIPELINE" source "/home/francesca/xil_proj/scurve_adder/cpp_code/scurve_adder.cpp" location "scurve_adder/scurve_adder_label0" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus1 {pragma "PIPELINE" source "/home/francesca/xil_proj/scurve_adder/cpp_code/scurve_adder.cpp" location "scurve_adder/scurve_adder_label1" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}
+lappend pragmaStatus2 {pragma "PIPELINE" source "/home/francesca/xil_proj/scurve_adder/cpp_code/scurve_adder.cpp" location "scurve_adder/scurve_adder_label2" found 1 funcFound 1 applied 1 ambiguous 0 reason "null"}

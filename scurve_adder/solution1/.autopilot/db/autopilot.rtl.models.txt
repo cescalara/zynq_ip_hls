@@ -1,0 +1,7 @@
+scurve_adder_sum_pix1
+scurve_adder_dub_pix_keep_V
+scurve_adder_dub_pix_last_V
+scurve_adder_dub_pix_id_V
+scurve_adder_dub_pix_dest_V
+scurve_adder_CTRL_BUS_s_axi
+scurve_adder

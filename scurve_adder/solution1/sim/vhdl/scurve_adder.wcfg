@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="scurve_adder.wdb" id="1">
+         <top_modules>
+            <top_module name="apatb_scurve_adder_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+   </zoom_setting>
+   <WVObjectSize size="1" />
+   <wvobject type="group" fp_name="group1">
+      <obj_property name="label">Design Top Signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="group" fp_name="group46">
+         <obj_property name="label">Clock</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/ap_clk">
+            <obj_property name="ElementShortName">ap_clk</obj_property>
+            <obj_property name="ObjectShortName">ap_clk</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group44">
+         <obj_property name="label">Reset</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/ap_rst_n">
+            <obj_property name="ElementShortName">ap_rst_n</obj_property>
+            <obj_property name="ObjectShortName">ap_rst_n</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group33">
+         <obj_property name="label">C Inputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="group" fp_name="group34">
+            <obj_property name="label">inStream(axis)</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TDATA">
+               <obj_property name="ElementShortName">inStream_TDATA[15:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TDATA[15:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TVALID">
+               <obj_property name="ElementShortName">inStream_TVALID</obj_property>
+               <obj_property name="ObjectShortName">inStream_TVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TREADY">
+               <obj_property name="ElementShortName">inStream_TREADY</obj_property>
+               <obj_property name="ObjectShortName">inStream_TREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TKEEP">
+               <obj_property name="ElementShortName">inStream_TKEEP[1:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TKEEP[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TSTRB">
+               <obj_property name="ElementShortName">inStream_TSTRB[1:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TSTRB[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TUSER">
+               <obj_property name="ElementShortName">inStream_TUSER[1:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TUSER[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TLAST">
+               <obj_property name="ElementShortName">inStream_TLAST[0:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TLAST[0:0]</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TID">
+               <obj_property name="ElementShortName">inStream_TID[4:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TID[4:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/inStream_TDEST">
+               <obj_property name="ElementShortName">inStream_TDEST[5:0]</obj_property>
+               <obj_property name="ObjectShortName">inStream_TDEST[5:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group22">
+         <obj_property name="label">C Outputs</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="group" fp_name="group23">
+            <obj_property name="label">outStream(axis)</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TDATA">
+               <obj_property name="ElementShortName">outStream_TDATA[31:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TDATA[31:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TVALID">
+               <obj_property name="ElementShortName">outStream_TVALID</obj_property>
+               <obj_property name="ObjectShortName">outStream_TVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TREADY">
+               <obj_property name="ElementShortName">outStream_TREADY</obj_property>
+               <obj_property name="ObjectShortName">outStream_TREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TKEEP">
+               <obj_property name="ElementShortName">outStream_TKEEP[3:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TKEEP[3:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TSTRB">
+               <obj_property name="ElementShortName">outStream_TSTRB[3:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TSTRB[3:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TUSER">
+               <obj_property name="ElementShortName">outStream_TUSER[1:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TUSER[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TLAST">
+               <obj_property name="ElementShortName">outStream_TLAST[0:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TLAST[0:0]</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TID">
+               <obj_property name="ElementShortName">outStream_TID[4:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TID[4:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/outStream_TDEST">
+               <obj_property name="ElementShortName">outStream_TDEST[5:0]</obj_property>
+               <obj_property name="ObjectShortName">outStream_TDEST[5:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group2">
+         <obj_property name="label">C InOuts</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="group" fp_name="group3">
+            <obj_property name="label">param__return(axi_slave)</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_AWADDR">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_AWADDR[4:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_AWADDR[4:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_AWVALID">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_AWVALID</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_AWVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_AWREADY">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_AWREADY</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_AWREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_WVALID">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_WVALID</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_WVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_WREADY">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_WREADY</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_WREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_WDATA">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_WDATA[31:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_WDATA[31:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_WSTRB">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_WSTRB[3:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_WSTRB[3:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_ARADDR">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_ARADDR[4:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_ARADDR[4:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_ARVALID">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_ARVALID</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_ARVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_ARREADY">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_ARREADY</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_ARREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_RVALID">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_RVALID</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_RVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_RREADY">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_RREADY</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_RREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_RDATA">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_RDATA[31:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_RDATA[31:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_RRESP">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_RRESP[1:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_RRESP[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_BVALID">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_BVALID</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_BVALID</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_BREADY">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_BREADY</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_BREADY</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/s_axi_CTRL_BUS_BRESP">
+               <obj_property name="ElementShortName">s_axi_CTRL_BUS_BRESP[1:0]</obj_property>
+               <obj_property name="ObjectShortName">s_axi_CTRL_BUS_BRESP[1:0]</obj_property>
+               <obj_property name="Radix">HEXRADIX</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_scurve_adder_top/AESL_inst_scurve_adder/interrupt">
+               <obj_property name="ElementShortName">interrupt</obj_property>
+               <obj_property name="ObjectShortName">interrupt</obj_property>
+               <obj_property name="CustomSignalColor">#ffff00</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>

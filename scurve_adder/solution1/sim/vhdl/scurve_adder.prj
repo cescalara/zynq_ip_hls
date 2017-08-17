@@ -1,0 +1,13 @@
+vhdl xil_defaultlib "AESL_sim_pkg.vhd"
+vhdl xil_defaultlib "scurve_adder_sum_pix1.vhd"
+vhdl xil_defaultlib "AESL_axi_slave_CTRL_BUS.vhd"
+vhdl xil_defaultlib "AESL_axi_s_inStream.vhd"
+vhdl xil_defaultlib "scurve_adder.autotb.vhd"
+vhdl xil_defaultlib "scurve_adder.vhd"
+vhdl xil_defaultlib "scurve_adder_dub_pix_dest_V.vhd"
+vhdl xil_defaultlib "scurve_adder_CTRL_BUS_s_axi.vhd"
+vhdl xil_defaultlib "scurve_adder_dub_pix_keep_V.vhd"
+vhdl xil_defaultlib "AESL_axi_s_outStream.vhd"
+vhdl xil_defaultlib "scurve_adder_dub_pix_last_V.vhd"
+vhdl xil_defaultlib "scurve_adder_dub_pix_id_V.vhd"
+

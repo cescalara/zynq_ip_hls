@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog/>
+      <simLog>
+        <logs message="WARNING: [VRFC 10-1303] range is empty (null range) [/proj/xhdhdstaff2/tapodyu/XsimWork/data/vhdl/src/ieee/distributable/numeric_std.vhd:3462]&#xA;Completed static elaboration&#xA;Starting simulation data flow analysis&#xA;Completed simulation data flow analysis&#xA;Time Resolution for simulation is 1ps&#xA;Compiling package std.standard&#xA;Compiling package ieee.std_logic_1164&#xA;Compiling package ieee.std_logic_arith&#xA;Compiling package ieee.std_logic_unsigned&#xA;Compiling package ieee.numeric_std&#xA;Compiling package std.textio&#xA;Compiling package ieee.std_logic_textio&#xA;Compiling architecture behave of entity xil_defaultlib.scurve_adder_CTRL_BUS_s_axi [scurve_adder_ctrl_bus_s_axi_defa...]&#xA;Compiling architecture rtl of entity xil_defaultlib.scurve_adder_sum_pix1_ram [\scurve_adder_sum_pix1_ram(1,5)\]&#xA;Compiling architecture arch of entity xil_defaultlib.scurve_adder_sum_pix1 [scurve_adder_sum_pix1_default]&#xA;Compiling architecture rtl of entity xil_defaultlib.scurve_adder_dub_pix_keep_V_ram [\scurve_adder_dub_pix_keep_V_ram...]&#xA;Compiling architecture arch of entity xil_defaultlib.scurve_adder_dub_pix_keep_V [scurve_adder_dub_pix_keep_v_defa...]&#xA;Compiling architecture rtl of entity xil_defaultlib.scurve_adder_dub_pix_last_V_ram [\scurve_adder_dub_pix_last_V_ram...]&#xA;Compiling architecture arch of entity xil_defaultlib.scurve_adder_dub_pix_last_V [scurve_adder_dub_pix_last_v_defa...]&#xA;Compiling architecture rtl of entity xil_defaultlib.scurve_adder_dub_pix_id_V_ram [\scurve_adder_dub_pix_id_V_ram(1...]&#xA;Compiling architecture arch of entity xil_defaultlib.scurve_adder_dub_pix_id_V [scurve_adder_dub_pix_id_v_defaul...]&#xA;Compiling architecture rtl of entity xil_defaultlib.scurve_adder_dub_pix_dest_V_ram [\scurve_adder_dub_pix_dest_V_ram...]&#xA;Compiling architecture arch of entity xil_defaultlib.scurve_adder_dub_pix_dest_V [scurve_adder_dub_pix_dest_v_defa...]&#xA;Compiling architecture behav of entity xil_defaultlib.scurve_adder [scurve_adder_default]&#xA;Compiling architecture behav of entity xil_defaultlib.AESL_axi_s_inStream [aesl_axi_s_instream_default]&#xA;Compiling architecture behav of entity xil_defaultlib.AESL_axi_s_outStream [aesl_axi_s_outstream_default]&#xA;Compiling architecture behav of entity xil_defaultlib.AESL_axi_slave_CTRL_BUS [aesl_axi_slave_ctrl_bus_default]&#xA;Compiling architecture behav of entity xil_defaultlib.apatb_scurve_adder_top&#xA;Built simulation snapshot scurve_adder&#xA;&#xA;&#xA;****** Webtalk v2016.2 (64-bit)&#xA;  **** SW Build 1577090 on Thu Jun  2 16:32:35 MDT 2016&#xA;  **** IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016&#xA;    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.&#xA;&#xA;&#xA;source /home/francesca/xil_proj/scurve_adder/solution1/sim/vhdl/xsim.dir/scurve_adder/webtalk/xsim_webtalk.tcl -notrace" projectName="scurve_adder" solutionName="solution1" date="2016-11-11T12:55:26.619+0100" type="Warning"/>
+        <logs message="WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by Xilinx, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running fuse with the &quot;-mt off -v 1&quot; switches to see more information from the C compiler. The following environment variables have been detected:&#xA;    LIBRARY_PATH" projectName="scurve_adder" solutionName="solution1" date="2016-11-11T12:55:12.316+0100" type="Warning"/>
+      </simLog>
+      <mgLog/>
+      <packageLog/>
+      <csimLog>
+        <logs message="CRITICAL WARNING: [SIM 211-1] 'csim_design' failed: compilation error(s).&#xA;4&#xA;    while executing&#xA;&quot;source /home/francesca/xil_proj/scurve_adder/solution1/csim.tcl&quot;&#xA;    invoked from within&#xA;&quot;hls::main /home/francesca/xil_proj/scurve_adder/solution1/csim.tcl&quot;&#xA;    (&quot;uplevel&quot; body line 1)&#xA;    invoked from within&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xA;    invoked from within&#xA;&quot;hls_proc $argv&quot;&#xA;" projectName="scurve_adder" solutionName="solution1" date="2017-04-21T10:06:50.246+0200" type="Warning"/>
+        <logs message="CRITICAL WARNING: [SIM 211-1] 'csim_design' failed: compilation error(s).&#xA;4&#xA;    while executing&#xA;&quot;source /home/francesca/xil_proj/scurve_adder/solution1/csim.tcl&quot;&#xA;    invoked from within&#xA;&quot;hls::main /home/francesca/xil_proj/scurve_adder/solution1/csim.tcl&quot;&#xA;    (&quot;uplevel&quot; body line 1)&#xA;    invoked from within&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xA;    invoked from within&#xA;&quot;hls_proc $argv&quot;&#xA;" projectName="scurve_adder" solutionName="solution1" date="2017-04-21T10:02:29.214+0200" type="Warning"/>
+      </csimLog>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,253 @@
+
+
+================================================================
+== Vivado HLS Report for 'scurve_adder'
+================================================================
+* Date:           Fri Nov 11 12:50:48 2016
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        scurve_adder
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|      4.05|        0.62|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                         |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |        Loop Name        | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- scurve_adder_label0    |    8|    8|         1|          1|          1|     8|    yes   |
+        |- L_scurve_adder_label1  |    ?|    ?|         5|          1|          1|     ?|    yes   |
+        |- scurve_adder_label2    |   16|   16|         2|          1|          1|    16|    yes   |
+        +-------------------------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|    168|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        0|      -|      74|    104|
+|Memory           |        4|      -|      36|      6|
+|Multiplexer      |        -|      -|       -|     86|
+|Register         |        -|      -|     321|     23|
++-----------------+---------+-------+--------+-------+
+|Total            |        4|      0|     431|    387|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        1|      0|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------+-----------------------------+---------+-------+----+-----+
+    |            Instance           |            Module           | BRAM_18K| DSP48E| FF | LUT |
+    +-------------------------------+-----------------------------+---------+-------+----+-----+
+    |scurve_adder_CTRL_BUS_s_axi_U  |scurve_adder_CTRL_BUS_s_axi  |        0|      0|  74|  104|
+    +-------------------------------+-----------------------------+---------+-------+----+-----+
+    |Total                          |                             |        0|      0|  74|  104|
+    +-------------------------------+-----------------------------+---------+-------+----+-----+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    +------------------+-----------------------------+---------+----+----+------+-----+------+-------------+
+    |      Memory      |            Module           | BRAM_18K| FF | LUT| Words| Bits| Banks| W*Bits*Banks|
+    +------------------+-----------------------------+---------+----+----+------+-----+------+-------------+
+    |dub_pix_dest_V_U  |scurve_adder_dub_pix_dest_V  |        0|  12|   1|     8|    6|     1|           48|
+    |dub_pix_id_V_U    |scurve_adder_dub_pix_id_V    |        0|  10|   1|     8|    5|     1|           40|
+    |dub_pix_keep_V_U  |scurve_adder_dub_pix_keep_V  |        0|   4|   1|     8|    2|     1|           16|
+    |dub_pix_strb_V_U  |scurve_adder_dub_pix_keep_V  |        0|   4|   1|     8|    2|     1|           16|
+    |dub_pix_user_V_U  |scurve_adder_dub_pix_keep_V  |        0|   4|   1|     8|    2|     1|           16|
+    |dub_pix_last_V_U  |scurve_adder_dub_pix_last_V  |        0|   2|   1|     8|    1|     1|            8|
+    |sum_pix1_U        |scurve_adder_sum_pix1        |        2|   0|   0|     8|   32|     1|          256|
+    |sum_pix2_U        |scurve_adder_sum_pix1        |        2|   0|   0|     8|   32|     1|          256|
+    +------------------+-----------------------------+---------+----+----+------+-----+------+-------------+
+    |Total             |                             |        4|  36|   6|    64|   82|     8|          656|
+    +------------------+-----------------------------+---------+----+----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |         Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |i_1_fu_417_p2                  |     +    |      0|  0|   4|           4|           1|
+    |indvar_flatten_next_fu_441_p2  |     +    |      0|  0|  35|          35|           1|
+    |k_1_fu_503_p2                  |     +    |      0|  0|   4|           1|           4|
+    |l_1_fu_550_p2                  |     +    |      0|  0|   5|           5|           1|
+    |tmp_1_fu_531_p2                |     +    |      0|  0|  32|          32|          32|
+    |tmp_9_fu_523_p2                |     +    |      0|  0|  32|          32|          32|
+    |ap_sig_158                     |    and   |      0|  0|   1|           1|           1|
+    |exitcond1_fu_411_p2            |   icmp   |      0|  0|   2|           4|           5|
+    |exitcond2_fu_447_p2            |   icmp   |      0|  0|   2|           4|           5|
+    |exitcond_flatten_fu_436_p2     |   icmp   |      0|  0|  12|          35|          35|
+    |exitcond_fu_544_p2             |   icmp   |      0|  0|   3|           5|           6|
+    |k_mid2_fu_453_p3               |  select  |      0|  0|   4|           1|           1|
+    |outStream_TDATA                |  select  |      0|  0|  32|           1|          32|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |Total                          |          |      0|  0| 168|         160|         156|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------+----+-----------+-----+-----------+
+    |               Name              | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                        |   4|          9|    1|          9|
+    |ap_reg_ppiten_pp1_it4            |   1|          2|    1|          2|
+    |ap_sig_ioackin_outStream_TREADY  |   1|          2|    1|          2|
+    |dub_pix_dest_V_address0          |   3|          3|    3|          9|
+    |dub_pix_id_V_address0            |   3|          3|    3|          9|
+    |dub_pix_keep_V_address0          |   3|          3|    3|          9|
+    |dub_pix_last_V_address0          |   3|          3|    3|          9|
+    |dub_pix_strb_V_address0          |   3|          3|    3|          9|
+    |dub_pix_user_V_address0          |   3|          3|    3|          9|
+    |i_reg_367                        |   4|          2|    4|          8|
+    |inStream_TDATA_blk_n             |   1|          2|    1|          2|
+    |indvar_flatten_reg_378           |  35|          2|   35|         70|
+    |k_reg_389                        |   4|          2|    4|          8|
+    |l_reg_400                        |   5|          2|    5|         10|
+    |outStream_TDATA_blk_n            |   1|          2|    1|          2|
+    |sum_pix1_address0                |   3|          3|    3|          9|
+    |sum_pix1_address1                |   3|          3|    3|          9|
+    |sum_pix2_address0                |   3|          3|    3|          9|
+    |sum_pix2_address1                |   3|          3|    3|          9|
+    +---------------------------------+----+-----------+-----+-----------+
+    |Total                            |  86|         55|   83|        203|
+    +---------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------+----+----+-----+-----------+
+    |               Name              | FF | LUT| Bits| Const Bits|
+    +---------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                        |   8|   0|    8|          0|
+    |ap_reg_ioackin_outStream_TREADY  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp1_it0            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp1_it1            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp1_it2            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp1_it3            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp1_it4            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp2_it0            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp2_it1            |   1|   0|    1|          0|
+    |exitcond_flatten_reg_602         |   1|   0|    1|          0|
+    |exitcond_reg_753                 |   1|   0|    1|          0|
+    |i_reg_367                        |   4|   0|    4|          0|
+    |indvar_flatten_reg_378           |  35|   0|   35|          0|
+    |k_mid2_reg_611                   |   4|   0|    4|          0|
+    |k_reg_389                        |   4|   0|    4|          0|
+    |l_reg_400                        |   5|   0|    5|          0|
+    |param_read_reg_584               |  32|   0|   32|          0|
+    |phitmp_reg_651                   |   8|   0|    8|          0|
+    |sum_pix1_addr_1_reg_661          |   3|   0|    3|          0|
+    |sum_pix1_load_reg_673            |  32|   0|   32|          0|
+    |sum_pix2_addr_1_reg_667          |   3|   0|    3|          0|
+    |sum_pix2_load_reg_678            |  32|   0|   32|          0|
+    |tmp_11_reg_762                   |   1|   0|    1|          0|
+    |tmp_1_reg_688                    |  32|   0|   32|          0|
+    |tmp_2_reg_597                    |  32|   0|   35|          3|
+    |tmp_6_reg_646                    |   8|   0|    8|          0|
+    |tmp_9_reg_683                    |  32|   0|   32|          0|
+    |tmp_dest_V_1_reg_748             |   6|   0|    6|          0|
+    |tmp_dest_V_reg_641               |   6|   0|    6|          0|
+    |tmp_id_V_1_reg_743               |   5|   0|    5|          0|
+    |tmp_id_V_reg_636                 |   5|   0|    5|          0|
+    |tmp_keep_V_1_reg_723             |   2|   0|    4|          2|
+    |tmp_keep_V_reg_616               |   2|   0|    2|          0|
+    |tmp_last_V_1_reg_738             |   1|   0|    1|          0|
+    |tmp_last_V_reg_631               |   1|   0|    1|          0|
+    |tmp_strb_V_1_reg_728             |   2|   0|    4|          2|
+    |tmp_strb_V_reg_621               |   2|   0|    2|          0|
+    |tmp_user_V_1_reg_733             |   2|   0|    2|          0|
+    |tmp_user_V_reg_626               |   2|   0|    2|          0|
+    |exitcond_flatten_reg_602         |   0|   1|    1|          0|
+    |phitmp_reg_651                   |   0|   8|    8|          0|
+    |sum_pix1_addr_1_reg_661          |   0|   3|    3|          0|
+    |sum_pix2_addr_1_reg_667          |   0|   3|    3|          0|
+    |tmp_6_reg_646                    |   0|   8|    8|          0|
+    +---------------------------------+----+----+-----+-----------+
+    |Total                            | 321|  23|  351|          7|
+    +---------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+--------------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |    Source Object   |    C Type    |
++------------------------+-----+-----+------------+--------------------+--------------+
+|s_axi_CTRL_BUS_AWVALID  |  in |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_AWREADY  | out |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_AWADDR   |  in |    5|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_WVALID   |  in |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_WREADY   | out |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_WDATA    |  in |   32|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_WSTRB    |  in |    4|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_ARVALID  |  in |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_ARREADY  | out |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_ARADDR   |  in |    5|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_RVALID   | out |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_RREADY   |  in |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_RDATA    | out |   32|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_RRESP    | out |    2|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_BVALID   | out |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_BREADY   |  in |    1|    s_axi   |      CTRL_BUS      |    scalar    |
+|s_axi_CTRL_BUS_BRESP    | out |    2|    s_axi   |      CTRL_BUS      |    scalar    |
+|ap_clk                  |  in |    1| ap_ctrl_hs |    scurve_adder    | return value |
+|ap_rst_n                |  in |    1| ap_ctrl_hs |    scurve_adder    | return value |
+|interrupt               | out |    1| ap_ctrl_hs |    scurve_adder    | return value |
+|inStream_TDATA          |  in |   16|    axis    |  inStream_V_data_V |    pointer   |
+|inStream_TVALID         |  in |    1|    axis    |  inStream_V_data_V |    pointer   |
+|inStream_TREADY         | out |    1|    axis    |  inStream_V_dest_V |    pointer   |
+|inStream_TDEST          |  in |    6|    axis    |  inStream_V_dest_V |    pointer   |
+|inStream_TKEEP          |  in |    2|    axis    |  inStream_V_keep_V |    pointer   |
+|inStream_TSTRB          |  in |    2|    axis    |  inStream_V_strb_V |    pointer   |
+|inStream_TUSER          |  in |    2|    axis    |  inStream_V_user_V |    pointer   |
+|inStream_TLAST          |  in |    1|    axis    |  inStream_V_last_V |    pointer   |
+|inStream_TID            |  in |    5|    axis    |   inStream_V_id_V  |    pointer   |
+|outStream_TDATA         | out |   32|    axis    | outStream_V_data_V |    pointer   |
+|outStream_TVALID        | out |    1|    axis    | outStream_V_dest_V |    pointer   |
+|outStream_TREADY        |  in |    1|    axis    | outStream_V_dest_V |    pointer   |
+|outStream_TDEST         | out |    6|    axis    | outStream_V_dest_V |    pointer   |
+|outStream_TKEEP         | out |    4|    axis    | outStream_V_keep_V |    pointer   |
+|outStream_TSTRB         | out |    4|    axis    | outStream_V_strb_V |    pointer   |
+|outStream_TUSER         | out |    2|    axis    | outStream_V_user_V |    pointer   |
+|outStream_TLAST         | out |    1|    axis    | outStream_V_last_V |    pointer   |
+|outStream_TID           | out |    5|    axis    |  outStream_V_id_V  |    pointer   |
++------------------------+-----+-----+------------+--------------------+--------------+
+

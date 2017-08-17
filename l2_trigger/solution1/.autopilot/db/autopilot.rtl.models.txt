@@ -1,0 +1,5 @@
+l2_trigger_sum_overP1
+l2_trigger_data_shift1
+l2_trigger_thresh1
+l2_trigger_CTRL_BUS_s_axi
+l2_trigger
