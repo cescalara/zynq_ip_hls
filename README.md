@@ -4,6 +4,7 @@ Custom IP for the Mini-EUSO PDM-DP Zynq system.
 This code is designed to run on the Xilinx Zynq XC7Z030 ARM + FPGA architecture. 
 This IP is used in the FPGA firmware of the front-end data acquisition of Mini-EUSO, 
 see [the pdm_zynq_board project](https://github.com/aabcompass/pdm_zynq_board).
+Developed using the Xilinx Vivado High Level Synthesis tools.
 
 ## l2_trigger
 
