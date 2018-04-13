@@ -2,7 +2,7 @@
 #pragma line 1 "<built-in>"
 #pragma line 1 "<command-line>"
 #pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp"
-#pragma line 11 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp"
+#pragma line 10 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp"
 #pragma line 1 "/usr/include/stdio.h" 1 3 4
 #pragma line 27 "/usr/include/stdio.h" 3 4
 #pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.2/lnx64/tools/gcc/bin/../lib/gcc/x86_64-unknown-linux-gnu/4.6.3/include-fixed/features.h" 1 3 4
@@ -946,7 +946,7 @@ extern int ftrylockfile (FILE *__stream) throw () ;
 extern void funlockfile (FILE *__stream) throw ();
 #pragma line 943 "/usr/include/stdio.h" 3 4
 }
-#pragma line 12 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp" 2
+#pragma line 11 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp" 2
 #pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 1
 #pragma empty_line
 #pragma empty_line
@@ -58098,17 +58098,24 @@ template<int D,int U,int TI,int TD>
     ap_uint<TD> dest;
   };
 #pragma line 8 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
-#pragma line 20 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h"
+#pragma line 18 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h"
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
 typedef ap_axis<64,2,5,6> AXI_DATA_64;
 typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 #pragma empty_line
-void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
-#pragma line 13 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp" 2
+void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
+  uint8_t N_BG, uint32_t LOW_THRESH,
+  volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
+#pragma line 12 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp" 2
 #pragma empty_line
 int main() {
+#pragma empty_line
+#pragma empty_line
+ uint16_t n_pixels_in_bus = 10;
+ uint8_t N_BG = 4;
+ uint32_t LOW_THRESH = 0;
 #pragma empty_line
 #pragma empty_line
    STREAM_32 in_stream_SW, in_stream_HW;
@@ -58128,16 +58135,17 @@ int main() {
  uint32_t sum_pix1[10/2], data_shift1[8][10/2], thresh1[10/2];
  uint32_t sum_pix2[10/2], data_shift2[8][10/2], thresh2[10/2];
 #pragma empty_line
- int trig_data_SW;
+ int trig_data_SW = 0;
+ int trig_pixel_SW = 0;
  int error_count = 0;
 #pragma empty_line
  volatile unsigned int *trig_data_HW;
- volatile unsigned int val;
- trig_data_HW = &val;
- val = 0;
-#pragma empty_line
-#pragma empty_line
- uint16_t n_pixels_in_bus = 10/6*4;
+ volatile unsigned int *trig_pixel_HW;
+ volatile unsigned int val_data, val_pixel;
+ trig_data_HW = &val_data;
+ trig_pixel_HW = &val_pixel;
+ val_data = 0;
+ val_pixel = 0;
 #pragma empty_line
  printf("trig_data_HW: %u\n", *trig_data_HW);
 #pragma empty_line
@@ -58205,9 +58213,17 @@ int main() {
     sum_overP2[i] += data_shift2[0][i];
 #pragma empty_line
 #pragma empty_line
-    if(sum_overP1[i] > thresh1[i] || sum_overP2[i] > thresh2[i] ) {
+    if(sum_overP1[i] > thresh1[i]) {
      trig_data_SW = 1;
      printf("trigger!\n");
+     trig_data_SW = (i * 2);
+     printf("trig_data_HW: %u\n", trig_pixel_SW);
+    }
+    else if (sum_overP2[i] > thresh2[i]) {
+     trig_data_SW = 1;
+     printf("trigger!\n");
+     trig_data_SW = (i * 2) + 1;
+     printf("trig_data_HW: %u\n", trig_pixel_SW);
     }
    }
   }
@@ -58227,11 +58243,11 @@ int main() {
    thresh1[i] = sum_pixP1 + (6*sqrt(sum_pixP1));
    thresh2[i] = sum_pixP2 + (6*sqrt(sum_pixP2));
 #pragma empty_line
-   if (thresh1[i] < 0) {
-    thresh1[i] = 0;
+   if (thresh1[i] < LOW_THRESH) {
+    thresh1[i] = LOW_THRESH;
    }
-   if (thresh2[i] < 0) {
-     thresh2[i] = 0;
+   if (thresh2[i] < LOW_THRESH) {
+     thresh2[i] = LOW_THRESH;
    }
   }
  }
@@ -58239,7 +58255,7 @@ int main() {
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
- l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, trig_data_HW);
+ l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, trig_data_HW, trig_pixel_HW);
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
@@ -58259,6 +58275,9 @@ int main() {
  }
 #pragma empty_line
 #pragma empty_line
+ if (trig_data_SW != *trig_data_HW) {
+  error_count++;
+ }
  if (error_count){
   printf("TEST FAILED\n");
  }

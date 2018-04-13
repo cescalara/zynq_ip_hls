@@ -150,7 +150,37 @@
 <InvalidType>0</InvalidType>
 </RtlPorts>
 <RtlPorts>
+<name>N_BG</name>
+<CType>
+<TypeName>unsigned char</TypeName>
+<TypeWidth>8</TypeWidth>
+<PhysicalWidth>8</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>LOW_THRESH</name>
+<CType>
+<TypeName>unsigned int</TypeName>
+<TypeWidth>32</TypeWidth>
+<PhysicalWidth>32</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
 <name>trig_data</name>
+<CType>
+<TypeName>unsigned int</TypeName>
+<TypeWidth>32</TypeWidth>
+<PhysicalWidth>32</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>trig_pixel</name>
 <CType>
 <TypeName>unsigned int</TypeName>
 <TypeWidth>32</TypeWidth>

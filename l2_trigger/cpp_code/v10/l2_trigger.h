@@ -14,8 +14,6 @@
 //#define N_PIXELS 10
 #define P 8
 #define N_SIGMA 6
-#define N_BG 4
-#define LOW_THRESH 0
 
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
@@ -23,6 +21,8 @@ typedef ap_axis<64,2,5,6> AXI_DATA_64;
 typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
-void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
+void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
+		uint8_t N_BG, uint32_t LOW_THRESH,
+		volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
 
 #endif

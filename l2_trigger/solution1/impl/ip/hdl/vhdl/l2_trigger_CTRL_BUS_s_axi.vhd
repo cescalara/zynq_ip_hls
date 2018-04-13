@@ -11,7 +11,7 @@ use IEEE.NUMERIC_STD.all;
 
 entity l2_trigger_CTRL_BUS_s_axi is
 generic (
-    C_S_AXI_ADDR_WIDTH    : INTEGER := 5;
+    C_S_AXI_ADDR_WIDTH    : INTEGER := 6;
     C_S_AXI_DATA_WIDTH    : INTEGER := 32);
 port (
     -- axi4 lite slave signals
@@ -41,7 +41,9 @@ port (
     ap_done               :in   STD_LOGIC;
     ap_ready              :in   STD_LOGIC;
     ap_idle               :in   STD_LOGIC;
-    n_pixels_in_bus       :out  STD_LOGIC_VECTOR(15 downto 0)
+    n_pixels_in_bus       :out  STD_LOGIC_VECTOR(15 downto 0);
+    N_BG                  :out  STD_LOGIC_VECTOR(7 downto 0);
+    LOW_THRESH            :out  STD_LOGIC_VECTOR(31 downto 0)
 );
 end entity l2_trigger_CTRL_BUS_s_axi;
 
@@ -68,6 +70,13 @@ end entity l2_trigger_CTRL_BUS_s_axi;
 --        bit 15~0 - n_pixels_in_bus[15:0] (Read/Write)
 --        others   - reserved
 -- 0x14 : reserved
+-- 0x18 : Data signal of N_BG
+--        bit 7~0 - N_BG[7:0] (Read/Write)
+--        others  - reserved
+-- 0x1c : reserved
+-- 0x20 : Data signal of LOW_THRESH
+--        bit 31~0 - LOW_THRESH[31:0] (Read/Write)
+-- 0x24 : reserved
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 architecture behave of l2_trigger_CTRL_BUS_s_axi is
@@ -79,7 +88,11 @@ architecture behave of l2_trigger_CTRL_BUS_s_axi is
     constant ADDR_ISR                    : INTEGER := 16#0c#;
     constant ADDR_N_PIXELS_IN_BUS_DATA_0 : INTEGER := 16#10#;
     constant ADDR_N_PIXELS_IN_BUS_CTRL   : INTEGER := 16#14#;
-    constant ADDR_BITS         : INTEGER := 5;
+    constant ADDR_N_BG_DATA_0            : INTEGER := 16#18#;
+    constant ADDR_N_BG_CTRL              : INTEGER := 16#1c#;
+    constant ADDR_LOW_THRESH_DATA_0      : INTEGER := 16#20#;
+    constant ADDR_LOW_THRESH_CTRL        : INTEGER := 16#24#;
+    constant ADDR_BITS         : INTEGER := 6;
 
     signal waddr               : UNSIGNED(ADDR_BITS-1 downto 0);
     signal wmask               : UNSIGNED(31 downto 0);
@@ -102,6 +115,8 @@ architecture behave of l2_trigger_CTRL_BUS_s_axi is
     signal int_ier             : UNSIGNED(1 downto 0);
     signal int_isr             : UNSIGNED(1 downto 0);
     signal int_n_pixels_in_bus : UNSIGNED(15 downto 0);
+    signal int_N_BG            : UNSIGNED(7 downto 0);
+    signal int_LOW_THRESH      : UNSIGNED(31 downto 0);
 
 
 begin
@@ -225,6 +240,10 @@ begin
                         rdata_data <= (1 => int_isr(1), 0 => int_isr(0), others => '0');
                     when ADDR_N_PIXELS_IN_BUS_DATA_0 =>
                         rdata_data <= RESIZE(int_n_pixels_in_bus(15 downto 0), 32);
+                    when ADDR_N_BG_DATA_0 =>
+                        rdata_data <= RESIZE(int_N_BG(7 downto 0), 32);
+                    when ADDR_LOW_THRESH_DATA_0 =>
+                        rdata_data <= RESIZE(int_LOW_THRESH(31 downto 0), 32);
                     when others =>
                         rdata_data <= (others => '0');
                     end case;
@@ -239,6 +258,8 @@ begin
     int_ap_idle          <= ap_idle;
     int_ap_ready         <= ap_ready;
     n_pixels_in_bus      <= STD_LOGIC_VECTOR(int_n_pixels_in_bus);
+    N_BG                 <= STD_LOGIC_VECTOR(int_N_BG);
+    LOW_THRESH           <= STD_LOGIC_VECTOR(int_LOW_THRESH);
 
     process (ACLK)
     begin
@@ -345,6 +366,28 @@ begin
             if (ACLK_EN = '1') then
                 if (w_hs = '1' and waddr = ADDR_N_PIXELS_IN_BUS_DATA_0) then
                     int_n_pixels_in_bus(15 downto 0) <= (UNSIGNED(WDATA(15 downto 0)) and wmask(15 downto 0)) or ((not wmask(15 downto 0)) and int_n_pixels_in_bus(15 downto 0));
+                end if;
+            end if;
+        end if;
+    end process;
+
+    process (ACLK)
+    begin
+        if (ACLK'event and ACLK = '1') then
+            if (ACLK_EN = '1') then
+                if (w_hs = '1' and waddr = ADDR_N_BG_DATA_0) then
+                    int_N_BG(7 downto 0) <= (UNSIGNED(WDATA(7 downto 0)) and wmask(7 downto 0)) or ((not wmask(7 downto 0)) and int_N_BG(7 downto 0));
+                end if;
+            end if;
+        end if;
+    end process;
+
+    process (ACLK)
+    begin
+        if (ACLK'event and ACLK = '1') then
+            if (ACLK_EN = '1') then
+                if (w_hs = '1' and waddr = ADDR_LOW_THRESH_DATA_0) then
+                    int_LOW_THRESH(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_LOW_THRESH(31 downto 0));
                 end if;
             end if;
         end if;

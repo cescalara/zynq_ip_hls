@@ -2,7 +2,7 @@
 #pragma line 1 "<built-in>"
 #pragma line 1 "<command-line>"
 #pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
-#pragma line 14 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
+#pragma line 13 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
 #pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 1
 #pragma empty_line
 #pragma empty_line
@@ -58109,24 +58109,31 @@ template<int D,int U,int TI,int TD>
     ap_uint<TD> dest;
   };
 #pragma line 8 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
-#pragma line 20 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h"
+#pragma line 18 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h"
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
 typedef ap_axis<64,2,5,6> AXI_DATA_64;
 typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 #pragma empty_line
-void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
-#pragma line 15 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
+void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
+  uint8_t N_BG, uint32_t LOW_THRESH,
+  volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
+#pragma line 14 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 #pragma empty_line
 #pragma empty_line
-void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data){
+void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus,
+  uint8_t N_BG, uint32_t LOW_THRESH,
+  volatile unsigned int *trig_data, volatile unsigned int *trig_pixel){
 #pragma empty_line
 #pragma empty_line
 #pragma HLS INTERFACE axis port = in_stream
 #pragma HLS INTERFACE ap_ovld port = trig_data
+#pragma HLS INTERFACE ap_ovld port = trig_pixel
 #pragma HLS INTERFACE axis port = out_stream
 #pragma HLS INTERFACE s_axilite port=n_pixels_in_bus bundle=CTRL_BUS
+#pragma HLS INTERFACE s_axilite port=N_BG bundle=CTRL_BUS
+#pragma HLS INTERFACE s_axilite port=LOW_THRESH bundle=CTRL_BUS
 #pragma HLS INTERFACE s_axilite port = return bundle = CTRL_BUS
 #pragma empty_line
    AXI_DATA_16 l2_data1[10/2], l2_data2[10/2];
@@ -58143,6 +58150,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
 #pragma empty_line
 #pragma empty_line
  *trig_data = 0;
+ *trig_pixel = 0;
  for(i = 0; i < n_pixels_in_bus/2; i++) {
   sum_pix1[i] = 0;
   sum_pix2[i] = 0;
@@ -58164,7 +58172,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
   itrig = 0;
 #pragma empty_line
 #pragma empty_line
-  for(i = 0; i < n_pixels_in_bus; i++) {
+  for(i = 0; i < n_pixels_in_bus/2; i++) {
        sum_pix1[i] = 0;
        sum_pix2[i] = 0;
      }
@@ -58201,17 +58209,35 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
     sum_overP2[i] += data_shift2[0][i];
 #pragma empty_line
 #pragma empty_line
-    if(sum_overP1[i] > thresh1[i] || sum_overP2[i] > thresh2[i] ) {
+    if(sum_overP1[i] > thresh1[i]) {
 #pragma empty_line
      if(itrig == 0) {
 #pragma empty_line
       *trig_data = 0x00000001;
       *trig_data = 0x00000000;
+#pragma empty_line
+#pragma empty_line
+      *trig_data = i*2;
+#pragma empty_line
+#pragma empty_line
       itrig = 1;
      }
-#pragma empty_line
-#pragma empty_line
     }
+    else if (sum_overP2[i] > thresh2[i] ) {
+#pragma empty_line
+     if (itrig == 0) {
+#pragma empty_line
+      *trig_data = 0x00000001;
+      *trig_data = 0x00000000;
+#pragma empty_line
+#pragma empty_line
+      *trig_data = (i*2) + 1;
+#pragma empty_line
+#pragma empty_line
+      itrig = 1;
+     }
+    }
+#pragma empty_line
    }
   }
 #pragma empty_line
@@ -58234,14 +58260,14 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
-    thresh1[i] = 4 * sum_pixP1;
-    thresh2[i] = 4 * sum_pixP2;
+    thresh1[i] = N_BG * sum_pixP1;
+    thresh2[i] = N_BG * sum_pixP2;
 #pragma empty_line
-    if (thresh1[i] < 0) {
-     thresh1[i] = 0;
+    if (thresh1[i] < LOW_THRESH) {
+     thresh1[i] = LOW_THRESH;
     }
-    if (thresh2[i] < 0) {
-     thresh2[i] = 0;
+    if (thresh2[i] < LOW_THRESH) {
+     thresh2[i] = LOW_THRESH;
     }
    }
   }

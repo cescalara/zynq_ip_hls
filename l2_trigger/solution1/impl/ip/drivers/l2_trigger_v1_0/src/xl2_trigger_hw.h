@@ -28,6 +28,13 @@
 //        bit 15~0 - n_pixels_in_bus[15:0] (Read/Write)
 //        others   - reserved
 // 0x14 : reserved
+// 0x18 : Data signal of N_BG
+//        bit 7~0 - N_BG[7:0] (Read/Write)
+//        others  - reserved
+// 0x1c : reserved
+// 0x20 : Data signal of LOW_THRESH
+//        bit 31~0 - LOW_THRESH[31:0] (Read/Write)
+// 0x24 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 #define XL2_TRIGGER_CTRL_BUS_ADDR_AP_CTRL              0x00
@@ -36,4 +43,8 @@
 #define XL2_TRIGGER_CTRL_BUS_ADDR_ISR                  0x0c
 #define XL2_TRIGGER_CTRL_BUS_ADDR_N_PIXELS_IN_BUS_DATA 0x10
 #define XL2_TRIGGER_CTRL_BUS_BITS_N_PIXELS_IN_BUS_DATA 16
+#define XL2_TRIGGER_CTRL_BUS_ADDR_N_BG_DATA            0x18
+#define XL2_TRIGGER_CTRL_BUS_BITS_N_BG_DATA            8
+#define XL2_TRIGGER_CTRL_BUS_ADDR_LOW_THRESH_DATA      0x20
+#define XL2_TRIGGER_CTRL_BUS_BITS_LOW_THRESH_DATA      32
 

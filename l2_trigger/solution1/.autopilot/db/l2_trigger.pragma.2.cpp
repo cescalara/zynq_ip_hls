@@ -411,16 +411,15 @@ extern "C" {
 # 1 "<built-in>" 2
 # 1 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 /*
-L2 trigger IP May 2017
+L2 trigger IP April 2018
 Francesca Capel
 capel.francesca@gmail.com
 
 
 L2 Trigger IP for the Mini-EUSO instrument, implemented as part of the Zynq board firmware
-Test version currently under development 
 Only one trigger per 128 packets
 Key parameters can be changed in the header file "L2trigger.h"
-The mask is not yet implemented
+The pixel mask is not yet implemented
 */
 
 
@@ -52510,25 +52509,30 @@ template<int D,int U,int TI,int TD>
 
 
 
-
-
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
 typedef ap_axis<64,2,5,6> AXI_DATA_64;
 typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
-void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
-# 15 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
+void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
+  uint8_t N_BG, uint32_t LOW_THRESH,
+  volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
+# 14 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 
 
-void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data){
+void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus,
+  uint8_t N_BG, uint32_t LOW_THRESH,
+  volatile unsigned int *trig_data, volatile unsigned int *trig_pixel){
 
  //Define the interfaces
 _ssdm_op_SpecInterface(&in_stream, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(trig_data, "ap_ovld", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
+_ssdm_op_SpecInterface(trig_pixel, "ap_ovld", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(&out_stream, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(n_pixels_in_bus, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
+_ssdm_op_SpecInterface(N_BG, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
+_ssdm_op_SpecInterface(LOW_THRESH, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
 
  AXI_DATA_16 l2_data1[2304/2], l2_data2[2304/2];
@@ -52545,6 +52549,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
 
  //Initialisation
  *trig_data = 0;
+ *trig_pixel = 0;
  for(i = 0; i < n_pixels_in_bus/2; i++) {
   sum_pix1[i] = 0;
   sum_pix2[i] = 0;
@@ -52566,7 +52571,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
   itrig = 0;
 
   //Initialise sum_pix
-  for(i = 0; i < n_pixels_in_bus; i++) {
+  for(i = 0; i < n_pixels_in_bus/2; i++) {
        sum_pix1[i] = 0;
        sum_pix2[i] = 0;
      }
@@ -52603,17 +52608,35 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
     sum_overP2[i] += data_shift2[0][i];
 
     //Trigger decision
-    if(sum_overP1[i] > thresh1[i] || sum_overP2[i] > thresh2[i] ) {
+    if(sum_overP1[i] > thresh1[i]) {
 
      if(itrig == 0) {
       //Pulse trigger wire for 1 clock
       *trig_data = 0x00000001;
       *trig_data = 0x00000000;
+
+      //store the triggered pixel
+      *trig_data = i*2;
+
+      //Block for 128 GTU
       itrig = 1;
      }
-
-
     }
+    else if (sum_overP2[i] > thresh2[i] ) {
+
+     if (itrig == 0) {
+      //Pulse trigger wire for 1 clock
+      *trig_data = 0x00000001;
+      *trig_data = 0x00000000;
+
+      //store the triggered pixel
+      *trig_data = (i*2) + 1;
+
+      //Block for 128 GTU
+      itrig = 1;
+     }
+    } // Trigger decision
+
    }
   }
 
@@ -52636,14 +52659,14 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
     //thresh2[i] = sum_pixP2 + (N_SIGMA*sqrt(sum_pixP2));
 
     //L2 threshold calculation
-    thresh1[i] = 4 * sum_pixP1;
-    thresh2[i] = 4 * sum_pixP2;
+    thresh1[i] = N_BG * sum_pixP1;
+    thresh2[i] = N_BG * sum_pixP2;
 
-    if (thresh1[i] < 0) {
-     thresh1[i] = 0;
+    if (thresh1[i] < LOW_THRESH) {
+     thresh1[i] = LOW_THRESH;
     }
-    if (thresh2[i] < 0) {
-     thresh2[i] = 0;
+    if (thresh2[i] < LOW_THRESH) {
+     thresh2[i] = LOW_THRESH;
     }
    }
   }

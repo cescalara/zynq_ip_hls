@@ -6,7 +6,7 @@
 <Project Version="7" Minor="14" Path="/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/impl/verilog/project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="4a40c5cdf3c149388f722e8de2bd6e83"/>
+    <Option Name="Id" Val="04d37019470f460692c10baeee7b5819"/>
     <Option Name="Part" Val="xc7z030ffg676-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -64,13 +64,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/l2_trigger_sum_overP1.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/l2_trigger_thresh1.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

@@ -62,12 +62,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal reg_in_stream_TVALID :   STD_LOGIC;
   signal TRAN_in_stream_TVALID_temp : STD_LOGIC;
   signal TRAN_in_stream_TVALID_wire: STD_LOGIC;
-  signal  in_stream_TDATA_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TDATA_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TDATA_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TDATA_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TDATA_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TDATA_empty_n  :   STD_LOGIC;
   signal  in_stream_TDATA_full_n   :   STD_LOGIC;
-  type in_stream_TDATA_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(32 - 1 downto 0);
+  type in_stream_TDATA_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(32 - 1 downto 0);
   signal in_stream_TDATA_mem :   in_stream_TDATA_arr2D := (others => (others => '0'));
   signal in_stream_TDATA_ingress_status :  INTEGER;
   signal in_stream_TDATA_ingress_status_bit :  STD_LOGIC;
@@ -78,12 +78,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TDATA_in_size : INTEGER;
   signal in_stream_TDATA_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TDATA_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TKEEP_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TKEEP_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TKEEP_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TKEEP_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TKEEP_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TKEEP_empty_n  :   STD_LOGIC;
   signal  in_stream_TKEEP_full_n   :   STD_LOGIC;
-  type in_stream_TKEEP_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(4 - 1 downto 0);
+  type in_stream_TKEEP_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(4 - 1 downto 0);
   signal in_stream_TKEEP_mem :   in_stream_TKEEP_arr2D := (others => (others => '0'));
   signal in_stream_TKEEP_ingress_status :  INTEGER;
   signal in_stream_TKEEP_ingress_status_bit :  STD_LOGIC;
@@ -94,12 +94,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TKEEP_in_size : INTEGER;
   signal in_stream_TKEEP_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TKEEP_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TSTRB_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TSTRB_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TSTRB_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TSTRB_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TSTRB_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TSTRB_empty_n  :   STD_LOGIC;
   signal  in_stream_TSTRB_full_n   :   STD_LOGIC;
-  type in_stream_TSTRB_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(4 - 1 downto 0);
+  type in_stream_TSTRB_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(4 - 1 downto 0);
   signal in_stream_TSTRB_mem :   in_stream_TSTRB_arr2D := (others => (others => '0'));
   signal in_stream_TSTRB_ingress_status :  INTEGER;
   signal in_stream_TSTRB_ingress_status_bit :  STD_LOGIC;
@@ -110,12 +110,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TSTRB_in_size : INTEGER;
   signal in_stream_TSTRB_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TSTRB_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TUSER_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TUSER_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TUSER_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TUSER_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TUSER_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TUSER_empty_n  :   STD_LOGIC;
   signal  in_stream_TUSER_full_n   :   STD_LOGIC;
-  type in_stream_TUSER_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(2 - 1 downto 0);
+  type in_stream_TUSER_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(2 - 1 downto 0);
   signal in_stream_TUSER_mem :   in_stream_TUSER_arr2D := (others => (others => '0'));
   signal in_stream_TUSER_ingress_status :  INTEGER;
   signal in_stream_TUSER_ingress_status_bit :  STD_LOGIC;
@@ -126,12 +126,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TUSER_in_size : INTEGER;
   signal in_stream_TUSER_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TUSER_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TLAST_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TLAST_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TLAST_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TLAST_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TLAST_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TLAST_empty_n  :   STD_LOGIC;
   signal  in_stream_TLAST_full_n   :   STD_LOGIC;
-  type in_stream_TLAST_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(1 - 1 downto 0);
+  type in_stream_TLAST_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(1 - 1 downto 0);
   signal in_stream_TLAST_mem :   in_stream_TLAST_arr2D := (others => (others => '0'));
   signal in_stream_TLAST_ingress_status :  INTEGER;
   signal in_stream_TLAST_ingress_status_bit :  STD_LOGIC;
@@ -142,12 +142,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TLAST_in_size : INTEGER;
   signal in_stream_TLAST_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TLAST_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TID_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TID_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TID_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TID_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TID_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TID_empty_n  :   STD_LOGIC;
   signal  in_stream_TID_full_n   :   STD_LOGIC;
-  type in_stream_TID_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(5 - 1 downto 0);
+  type in_stream_TID_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(5 - 1 downto 0);
   signal in_stream_TID_mem :   in_stream_TID_arr2D := (others => (others => '0'));
   signal in_stream_TID_ingress_status :  INTEGER;
   signal in_stream_TID_ingress_status_bit :  STD_LOGIC;
@@ -158,12 +158,12 @@ architecture behav of AESL_axi_s_in_stream is
   signal in_stream_TID_in_size : INTEGER;
   signal in_stream_TID_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal in_stream_TID_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  in_stream_TDEST_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-  signal  in_stream_TDEST_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  in_stream_TDEST_mInPtr  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
+  signal  in_stream_TDEST_mOutPtr :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
   signal  in_stream_TDEST_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  in_stream_TDEST_empty_n  :   STD_LOGIC;
   signal  in_stream_TDEST_full_n   :   STD_LOGIC;
-  type in_stream_TDEST_arr2D is array(0 to 6) of STD_LOGIC_VECTOR(6 - 1 downto 0);
+  type in_stream_TDEST_arr2D is array(0 to 15) of STD_LOGIC_VECTOR(6 - 1 downto 0);
   signal in_stream_TDEST_mem :   in_stream_TDEST_arr2D := (others => (others => '0'));
   signal in_stream_TDEST_ingress_status :  INTEGER;
   signal in_stream_TDEST_ingress_status_bit :  STD_LOGIC;
@@ -650,7 +650,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TDATA_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TDATA_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TDATA_mem_var :   in_stream_TDATA_arr2D := (others => (others => '0'));
   begin
       in_stream_TDATA_mFlag_hint  <= '0';
@@ -685,7 +685,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TDATA_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TDATA_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TDATA_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TDATA_mem_var(CONV_INTEGER(in_stream_TDATA_mInPtr_var)) := esl_str2lv_hex(token, 32);
@@ -832,7 +832,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TKEEP_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TKEEP_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TKEEP_mem_var :   in_stream_TKEEP_arr2D := (others => (others => '0'));
   begin
       in_stream_TKEEP_mFlag_hint  <= '0';
@@ -867,7 +867,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TKEEP_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TKEEP_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TKEEP_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TKEEP_mem_var(CONV_INTEGER(in_stream_TKEEP_mInPtr_var)) := esl_str2lv_hex(token, 4);
@@ -1014,7 +1014,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TSTRB_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TSTRB_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TSTRB_mem_var :   in_stream_TSTRB_arr2D := (others => (others => '0'));
   begin
       in_stream_TSTRB_mFlag_hint  <= '0';
@@ -1049,7 +1049,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TSTRB_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TSTRB_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TSTRB_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TSTRB_mem_var(CONV_INTEGER(in_stream_TSTRB_mInPtr_var)) := esl_str2lv_hex(token, 4);
@@ -1196,7 +1196,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TUSER_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TUSER_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TUSER_mem_var :   in_stream_TUSER_arr2D := (others => (others => '0'));
   begin
       in_stream_TUSER_mFlag_hint  <= '0';
@@ -1231,7 +1231,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TUSER_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TUSER_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TUSER_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TUSER_mem_var(CONV_INTEGER(in_stream_TUSER_mInPtr_var)) := esl_str2lv_hex(token, 2);
@@ -1378,7 +1378,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TLAST_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TLAST_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TLAST_mem_var :   in_stream_TLAST_arr2D := (others => (others => '0'));
   begin
       in_stream_TLAST_mFlag_hint  <= '0';
@@ -1413,7 +1413,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TLAST_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TLAST_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TLAST_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TLAST_mem_var(CONV_INTEGER(in_stream_TLAST_mInPtr_var)) := esl_str2lv_hex(token, 1);
@@ -1560,7 +1560,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TID_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TID_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TID_mem_var :   in_stream_TID_arr2D := (others => (others => '0'));
   begin
       in_stream_TID_mFlag_hint  <= '0';
@@ -1595,7 +1595,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TID_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TID_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TID_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TID_mem_var(CONV_INTEGER(in_stream_TID_mInPtr_var)) := esl_str2lv_hex(token, 5);
@@ -1742,7 +1742,7 @@ end process;
       variable    token_ingress_status       :   STRING(1 to 128);
       variable    ingress_status_var         :   INTEGER;
       variable    transaction_idx :   INTEGER;
-      variable    in_stream_TDEST_mInPtr_var  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+      variable    in_stream_TDEST_mInPtr_var  :   STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
       variable    in_stream_TDEST_mem_var :   in_stream_TDEST_arr2D := (others => (others => '0'));
   begin
       in_stream_TDEST_mFlag_hint  <= '0';
@@ -1777,7 +1777,7 @@ end process;
           esl_read_token(fp_ingress_status, token_line_ingress_status, token_ingress_status);
           in_stream_TDEST_mInPtr_var := (others => '0');
           while (token(1 to 16) /= "[[/transaction]]") loop
-              if (CONV_INTEGER(in_stream_TDEST_mInPtr_var) > 6 - 1) then
+              if (CONV_INTEGER(in_stream_TDEST_mInPtr_var) > 15 - 1) then
                   assert false report "Fifo overflow!" severity failure;
               end if;
               in_stream_TDEST_mem_var(CONV_INTEGER(in_stream_TDEST_mInPtr_var)) := esl_str2lv_hex(token, 6);

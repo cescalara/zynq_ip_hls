@@ -6,7 +6,7 @@
 <Project Version="7" Minor="14" Path="/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/impl/vhdl/project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="5532fd1051554177a87b9597a8650112"/>
+    <Option Name="Id" Val="0bfbd10cd2c7455ca052cdea122d324a"/>
     <Option Name="Part" Val="xc7z030ffg676-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -62,12 +62,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/l2_trigger.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/l2_trigger_thresh1.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>

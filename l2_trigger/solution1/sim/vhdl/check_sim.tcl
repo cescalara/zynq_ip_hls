@@ -98,6 +98,8 @@ proc check_tvin_file {} {
          "c.l2_trigger.autotvin_out_stream_V_id_V.dat"
          "c.l2_trigger.autotvin_out_stream_V_dest_V.dat"
          "c.l2_trigger.autotvin_n_pixels_in_bus.dat"
+         "c.l2_trigger.autotvin_N_BG.dat"
+         "c.l2_trigger.autotvin_LOW_THRESH.dat"
          "c.l2_trigger.autotvout_out_stream_V_data_V.dat"
          "c.l2_trigger.autotvout_out_stream_V_keep_V.dat"
          "c.l2_trigger.autotvout_out_stream_V_strb_V.dat"
@@ -106,6 +108,7 @@ proc check_tvin_file {} {
          "c.l2_trigger.autotvout_out_stream_V_id_V.dat"
          "c.l2_trigger.autotvout_out_stream_V_dest_V.dat"
          "c.l2_trigger.autotvout_trig_data.dat"
+         "c.l2_trigger.autotvout_trig_pixel.dat"
     }
     foreach rtlfile $rtlfilelist {
         if {[file isfile $rtlfile]} {
@@ -138,6 +141,7 @@ proc check_tvout_file {} {
          "rtl.l2_trigger.autotvout_out_stream_V_id_V.dat"
          "rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat"
          "rtl.l2_trigger.autotvout_trig_data.dat"
+         "rtl.l2_trigger.autotvout_trig_pixel.dat"
     }
     foreach rtlfile $rtlfilelist {
         if {[file isfile $rtlfile]} {

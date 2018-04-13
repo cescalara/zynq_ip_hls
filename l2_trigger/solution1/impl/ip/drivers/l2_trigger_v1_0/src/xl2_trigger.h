@@ -89,6 +89,10 @@ void XL2_trigger_DisableAutoRestart(XL2_trigger *InstancePtr);
 
 void XL2_trigger_Set_n_pixels_in_bus(XL2_trigger *InstancePtr, u32 Data);
 u32 XL2_trigger_Get_n_pixels_in_bus(XL2_trigger *InstancePtr);
+void XL2_trigger_Set_N_BG(XL2_trigger *InstancePtr, u32 Data);
+u32 XL2_trigger_Get_N_BG(XL2_trigger *InstancePtr);
+void XL2_trigger_Set_LOW_THRESH(XL2_trigger *InstancePtr, u32 Data);
+u32 XL2_trigger_Get_LOW_THRESH(XL2_trigger *InstancePtr);
 
 void XL2_trigger_InterruptGlobalEnable(XL2_trigger *InstancePtr);
 void XL2_trigger_InterruptGlobalDisable(XL2_trigger *InstancePtr);

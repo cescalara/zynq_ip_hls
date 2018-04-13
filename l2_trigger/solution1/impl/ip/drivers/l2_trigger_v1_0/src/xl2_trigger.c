@@ -93,6 +93,40 @@ u32 XL2_trigger_Get_n_pixels_in_bus(XL2_trigger *InstancePtr) {
     return Data;
 }
 
+void XL2_trigger_Set_N_BG(XL2_trigger *InstancePtr, u32 Data) {
+    Xil_AssertVoid(InstancePtr != NULL);
+    Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    XL2_trigger_WriteReg(InstancePtr->Ctrl_bus_BaseAddress, XL2_TRIGGER_CTRL_BUS_ADDR_N_BG_DATA, Data);
+}
+
+u32 XL2_trigger_Get_N_BG(XL2_trigger *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XL2_trigger_ReadReg(InstancePtr->Ctrl_bus_BaseAddress, XL2_TRIGGER_CTRL_BUS_ADDR_N_BG_DATA);
+    return Data;
+}
+
+void XL2_trigger_Set_LOW_THRESH(XL2_trigger *InstancePtr, u32 Data) {
+    Xil_AssertVoid(InstancePtr != NULL);
+    Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    XL2_trigger_WriteReg(InstancePtr->Ctrl_bus_BaseAddress, XL2_TRIGGER_CTRL_BUS_ADDR_LOW_THRESH_DATA, Data);
+}
+
+u32 XL2_trigger_Get_LOW_THRESH(XL2_trigger *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XL2_trigger_ReadReg(InstancePtr->Ctrl_bus_BaseAddress, XL2_TRIGGER_CTRL_BUS_ADDR_LOW_THRESH_DATA);
+    return Data;
+}
+
 void XL2_trigger_InterruptGlobalEnable(XL2_trigger *InstancePtr) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);

@@ -32,6 +32,8 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVIN_out_stream_V_id_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvin_out_stream_V_id_V.dat";
        AUTOTB_TVIN_out_stream_V_dest_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvin_out_stream_V_dest_V.dat";
        AUTOTB_TVIN_n_pixels_in_bus : STRING := "../tv/cdatafile/c.l2_trigger.autotvin_n_pixels_in_bus.dat";
+       AUTOTB_TVIN_N_BG : STRING := "../tv/cdatafile/c.l2_trigger.autotvin_N_BG.dat";
+       AUTOTB_TVIN_LOW_THRESH : STRING := "../tv/cdatafile/c.l2_trigger.autotvin_LOW_THRESH.dat";
        AUTOTB_TVIN_in_stream_V_data_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_in_stream_V_data_V.dat";
        AUTOTB_TVIN_in_stream_V_keep_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_in_stream_V_keep_V.dat";
        AUTOTB_TVIN_in_stream_V_strb_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_in_stream_V_strb_V.dat";
@@ -47,6 +49,8 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVIN_out_stream_V_id_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_out_stream_V_id_V.dat";
        AUTOTB_TVIN_out_stream_V_dest_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_out_stream_V_dest_V.dat";
        AUTOTB_TVIN_n_pixels_in_bus_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_n_pixels_in_bus.dat";
+       AUTOTB_TVIN_N_BG_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_N_BG.dat";
+       AUTOTB_TVIN_LOW_THRESH_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvin_LOW_THRESH.dat";
        AUTOTB_TVOUT_out_stream_V_data_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_data_V.dat";
        AUTOTB_TVOUT_out_stream_V_keep_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_keep_V.dat";
        AUTOTB_TVOUT_out_stream_V_strb_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_strb_V.dat";
@@ -55,6 +59,7 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVOUT_out_stream_V_id_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_id_V.dat";
        AUTOTB_TVOUT_out_stream_V_dest_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_dest_V.dat";
        AUTOTB_TVOUT_trig_data : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_trig_data.dat";
+       AUTOTB_TVOUT_trig_pixel : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_trig_pixel.dat";
        AUTOTB_TVOUT_out_stream_V_data_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_data_V.dat";
        AUTOTB_TVOUT_out_stream_V_keep_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_keep_V.dat";
        AUTOTB_TVOUT_out_stream_V_strb_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_strb_V.dat";
@@ -63,24 +68,28 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVOUT_out_stream_V_id_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_id_V.dat";
        AUTOTB_TVOUT_out_stream_V_dest_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat";
        AUTOTB_TVOUT_trig_data_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_trig_data.dat";
+       AUTOTB_TVOUT_trig_pixel_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_trig_pixel.dat";
       AUTOTB_LAT_RESULT_FILE    : STRING  := "l2_trigger.result.lat.rb";
       AUTOTB_PER_RESULT_TRANS_FILE    : STRING  := "l2_trigger.performance.result.transaction.xml";
-      LENGTH_in_stream_V_data_V     : INTEGER := 6;
-      LENGTH_in_stream_V_keep_V     : INTEGER := 6;
-      LENGTH_in_stream_V_strb_V     : INTEGER := 6;
-      LENGTH_in_stream_V_user_V     : INTEGER := 6;
-      LENGTH_in_stream_V_last_V     : INTEGER := 6;
-      LENGTH_in_stream_V_id_V     : INTEGER := 6;
-      LENGTH_in_stream_V_dest_V     : INTEGER := 6;
-      LENGTH_out_stream_V_data_V     : INTEGER := 2;
-      LENGTH_out_stream_V_keep_V     : INTEGER := 2;
-      LENGTH_out_stream_V_strb_V     : INTEGER := 2;
-      LENGTH_out_stream_V_user_V     : INTEGER := 2;
-      LENGTH_out_stream_V_last_V     : INTEGER := 2;
-      LENGTH_out_stream_V_id_V     : INTEGER := 2;
-      LENGTH_out_stream_V_dest_V     : INTEGER := 2;
+      LENGTH_in_stream_V_data_V     : INTEGER := 15;
+      LENGTH_in_stream_V_keep_V     : INTEGER := 15;
+      LENGTH_in_stream_V_strb_V     : INTEGER := 15;
+      LENGTH_in_stream_V_user_V     : INTEGER := 15;
+      LENGTH_in_stream_V_last_V     : INTEGER := 15;
+      LENGTH_in_stream_V_id_V     : INTEGER := 15;
+      LENGTH_in_stream_V_dest_V     : INTEGER := 15;
+      LENGTH_out_stream_V_data_V     : INTEGER := 5;
+      LENGTH_out_stream_V_keep_V     : INTEGER := 5;
+      LENGTH_out_stream_V_strb_V     : INTEGER := 5;
+      LENGTH_out_stream_V_user_V     : INTEGER := 5;
+      LENGTH_out_stream_V_last_V     : INTEGER := 5;
+      LENGTH_out_stream_V_id_V     : INTEGER := 5;
+      LENGTH_out_stream_V_dest_V     : INTEGER := 5;
       LENGTH_n_pixels_in_bus     : INTEGER := 1;
+      LENGTH_N_BG     : INTEGER := 1;
+      LENGTH_LOW_THRESH     : INTEGER := 1;
       LENGTH_trig_data     : INTEGER := 1;
+      LENGTH_trig_pixel     : INTEGER := 1;
 	    AUTOTB_TRANSACTION_NUM    : INTEGER := 1
 );
 
@@ -105,14 +114,14 @@ architecture behav of apatb_l2_trigger_top is
   signal ready :   STD_LOGIC := '0';
   signal ready_wire :   STD_LOGIC := '0';
 
-  signal CTRL_BUS_AWADDR:  STD_LOGIC_VECTOR (4 DOWNTO 0);
+  signal CTRL_BUS_AWADDR:  STD_LOGIC_VECTOR (5 DOWNTO 0);
   signal CTRL_BUS_AWVALID:  STD_LOGIC;
   signal CTRL_BUS_AWREADY:  STD_LOGIC;
   signal CTRL_BUS_WVALID:  STD_LOGIC;
   signal CTRL_BUS_WREADY:  STD_LOGIC;
   signal CTRL_BUS_WDATA:  STD_LOGIC_VECTOR (31 DOWNTO 0);
   signal CTRL_BUS_WSTRB:  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal CTRL_BUS_ARADDR:  STD_LOGIC_VECTOR (4 DOWNTO 0);
+  signal CTRL_BUS_ARADDR:  STD_LOGIC_VECTOR (5 DOWNTO 0);
   signal CTRL_BUS_ARVALID:  STD_LOGIC;
   signal CTRL_BUS_ARREADY:  STD_LOGIC;
   signal CTRL_BUS_RVALID:  STD_LOGIC;
@@ -145,6 +154,8 @@ architecture behav of apatb_l2_trigger_top is
   signal out_stream_TDEST:  STD_LOGIC_VECTOR (5 DOWNTO 0);
   signal trig_data :  STD_LOGIC_VECTOR (31 DOWNTO 0);
   signal trig_data_ap_vld :  STD_LOGIC;
+  signal trig_pixel :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal trig_pixel_ap_vld :  STD_LOGIC;
 
   signal ready_cnt : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal done_cnt	: STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -190,16 +201,18 @@ port (
     out_stream_TDEST :  OUT STD_LOGIC_VECTOR (5 DOWNTO 0);
     trig_data :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
     trig_data_ap_vld :  OUT STD_LOGIC;
+    trig_pixel :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+    trig_pixel_ap_vld :  OUT STD_LOGIC;
     s_axi_CTRL_BUS_AWVALID :  IN STD_LOGIC;
     s_axi_CTRL_BUS_AWREADY :  OUT STD_LOGIC;
-    s_axi_CTRL_BUS_AWADDR :  IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+    s_axi_CTRL_BUS_AWADDR :  IN STD_LOGIC_VECTOR (5 DOWNTO 0);
     s_axi_CTRL_BUS_WVALID :  IN STD_LOGIC;
     s_axi_CTRL_BUS_WREADY :  OUT STD_LOGIC;
     s_axi_CTRL_BUS_WDATA :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
     s_axi_CTRL_BUS_WSTRB :  IN STD_LOGIC_VECTOR (3 DOWNTO 0);
     s_axi_CTRL_BUS_ARVALID :  IN STD_LOGIC;
     s_axi_CTRL_BUS_ARREADY :  OUT STD_LOGIC;
-    s_axi_CTRL_BUS_ARADDR :  IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+    s_axi_CTRL_BUS_ARADDR :  IN STD_LOGIC_VECTOR (5 DOWNTO 0);
     s_axi_CTRL_BUS_RVALID :  OUT STD_LOGIC;
     s_axi_CTRL_BUS_RREADY :  IN STD_LOGIC;
     s_axi_CTRL_BUS_RDATA :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -212,9 +225,16 @@ end component;
 
 -- The signal of port n_pixels_in_bus
 shared variable AESL_REG_n_pixels_in_bus : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+-- The signal of port N_BG
+shared variable AESL_REG_N_BG : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+-- The signal of port LOW_THRESH
+shared variable AESL_REG_LOW_THRESH : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 shared variable AESL_REG_trig_data_ap_vld : STD_LOGIC := '0';
 -- The signal of port trig_data
 shared variable AESL_REG_trig_data : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+shared variable AESL_REG_trig_pixel_ap_vld : STD_LOGIC := '0';
+-- The signal of port trig_pixel
+shared variable AESL_REG_trig_pixel : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 signal in_stream_ready :   STD_LOGIC := '0';
 signal in_stream_done  :   STD_LOGIC := '0';
 signal axi_s_in_stream_TVALID :   STD_LOGIC := '0';
@@ -692,7 +712,9 @@ AESL_inst_l2_trigger    :   l2_trigger port map (
    out_stream_TID  =>  out_stream_TID,
    out_stream_TDEST  =>  out_stream_TDEST,
    trig_data  =>  trig_data,
-   trig_data_ap_vld  =>  trig_data_ap_vld
+   trig_data_ap_vld  =>  trig_data_ap_vld,
+   trig_pixel  =>  trig_pixel,
+   trig_pixel_ap_vld  =>  trig_pixel_ap_vld
 );
 
 -- Assignment for control signal
@@ -804,6 +826,64 @@ begin
             write(token_line, "0x" & esl_conv_string_hex(AESL_REG_trig_data));
             writeline(fp, token_line);
             AESL_REG_trig_data_ap_vld := '0';
+        end if;
+        transaction_idx := transaction_idx + 1;
+        write(token_line, string'("[[/transaction]]"));
+        writeline(fp, token_line);
+    end loop;
+    write(token_line, string'("[[[/runtime]]]"));
+    writeline(fp, token_line);
+    file_close(fp);
+    wait;
+end process;
+
+gen_out_trig_pixel_proc : process(AESL_clock)
+begin
+  if (AESL_clock'event and AESL_clock = '1') then
+    if(AESL_reset = '0') then
+        AESL_REG_trig_pixel := (others => '0'); 
+    elsif(trig_pixel_ap_vld = '1') then
+        AESL_REG_trig_pixel := trig_pixel;
+        AESL_REG_trig_pixel_ap_vld := '1';
+    end if;
+  end if;
+end process;
+
+write_file_process_trig_pixel : process
+    file      fp              :   TEXT;
+    file      fp_size         :   TEXT;
+    variable  fstatus         :   FILE_OPEN_STATUS;
+    variable  token_line      :   LINE;
+    variable  token           :   STRING(1 to 200);
+    variable  str             :   STRING(1 to 40);
+    variable  transaction_idx :   INTEGER;
+    variable  trig_pixel_count   :   INTEGER;
+    variable  hls_stream_size :   INTEGER;
+    variable  i               :   INTEGER;
+    variable  rand            :   T_RANDINT     := init_rand(0);
+    variable  rint            :   INTEGER;
+begin
+    wait until AESL_reset = '1';
+    file_open(fstatus, fp, AUTOTB_TVOUT_trig_pixel_out_wrapc, WRITE_MODE);
+    if(fstatus /= OPEN_OK) then
+        assert false report "Open file " & AUTOTB_TVOUT_trig_pixel_out_wrapc & " failed!!!" severity note;
+        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
+    end if;
+    write(token_line, string'("[[[runtime]]]"));
+    writeline(fp, token_line);
+    transaction_idx := 0;
+    while (transaction_idx /= AUTOTB_TRANSACTION_NUM) loop
+        wait until AESL_clock'event and AESL_clock = '1';
+	      while(AESL_done /= '1') loop
+            wait until AESL_clock'event and AESL_clock = '1';
+	      end loop;
+        wait for 0.4 ns;
+        write(token_line, string'("[[transaction]]    ") & integer'image(transaction_idx));
+        writeline(fp, token_line);
+        if(AESL_REG_trig_pixel_ap_vld = '1')  then
+            write(token_line, "0x" & esl_conv_string_hex(AESL_REG_trig_pixel));
+            writeline(fp, token_line);
+            AESL_REG_trig_pixel_ap_vld := '0';
         end if;
         transaction_idx := transaction_idx + 1;
         write(token_line, string'("[[/transaction]]"));

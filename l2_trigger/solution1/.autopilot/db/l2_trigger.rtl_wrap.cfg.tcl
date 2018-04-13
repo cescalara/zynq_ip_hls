@@ -226,18 +226,54 @@ set Interface2 "wire"
 set DataType2 "unsigned short"
 set Port2 [list $PortName2 $Interface2 $DataType2 $Pointer2 $Dims2 $Const2 $Volatile2 $ArrayOpt2]
 lappend PortList $Port2
-set PortName3 "trig_data"
-set BitWidth3 "64"
+set PortName3 "N_BG"
+set BitWidth3 "8"
 set ArrayOpt3 ""
 set Const3 "0"
-set Volatile3 "1"
-set Pointer3 "1"
+set Volatile3 "0"
+set Pointer3 "0"
 set Reference3 "0"
 set Dims3 [list 0]
 set Interface3 "wire"
-set DataType3 "unsigned int"
+set DataType3 "unsigned char"
 set Port3 [list $PortName3 $Interface3 $DataType3 $Pointer3 $Dims3 $Const3 $Volatile3 $ArrayOpt3]
 lappend PortList $Port3
+set PortName4 "LOW_THRESH"
+set BitWidth4 "32"
+set ArrayOpt4 ""
+set Const4 "0"
+set Volatile4 "0"
+set Pointer4 "0"
+set Reference4 "0"
+set Dims4 [list 0]
+set Interface4 "wire"
+set DataType4 "unsigned int"
+set Port4 [list $PortName4 $Interface4 $DataType4 $Pointer4 $Dims4 $Const4 $Volatile4 $ArrayOpt4]
+lappend PortList $Port4
+set PortName5 "trig_data"
+set BitWidth5 "64"
+set ArrayOpt5 ""
+set Const5 "0"
+set Volatile5 "1"
+set Pointer5 "1"
+set Reference5 "0"
+set Dims5 [list 0]
+set Interface5 "wire"
+set DataType5 "unsigned int"
+set Port5 [list $PortName5 $Interface5 $DataType5 $Pointer5 $Dims5 $Const5 $Volatile5 $ArrayOpt5]
+lappend PortList $Port5
+set PortName6 "trig_pixel"
+set BitWidth6 "64"
+set ArrayOpt6 ""
+set Const6 "0"
+set Volatile6 "1"
+set Pointer6 "1"
+set Reference6 "0"
+set Dims6 [list 0]
+set Interface6 "wire"
+set DataType6 "unsigned int"
+set Port6 [list $PortName6 $Interface6 $DataType6 $Pointer6 $Dims6 $Const6 $Volatile6 $ArrayOpt6]
+lappend PortList $Port6
 set globalAPint "" 
 set returnAPInt "" 
 set hasCPPAPInt 1 

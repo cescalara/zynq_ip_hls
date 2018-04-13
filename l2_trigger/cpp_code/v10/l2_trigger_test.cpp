@@ -1,10 +1,9 @@
 /*
 L2 TRIGGER TESTBENCH
-February 2017
+April 2018
 Francesca Capel (capel.francesca@gmail.com)
 
-HLS testbench for the Mini-EUSO L2 trigger IP, implemented on the Zedboard Zynq chip
-Test version currently under development
+HLS testbench for the Mini-EUSO L2 trigger IP, implemented on the Zynq XC7Z030 chip
 Key parameters can be changed in the header file "L2trigger.h"
 */
 
@@ -13,7 +12,12 @@ Key parameters can be changed in the header file "L2trigger.h"
 
 int main() {
   	
-  	/* DEFINTIIONS */
+	/* INPUTS */
+	uint16_t n_pixels_in_bus = N_PIXELS;
+	uint8_t N_BG = 4;
+	uint32_t LOW_THRESH = 0;
+
+	/* DEFINTIIONS */
   	STREAM_32 in_stream_SW, in_stream_HW;
 	STREAM_64 out_stream_SW, out_stream_HW;
 	AXI_DATA_16 l2_data1[N_PIXELS/2], l2_data2[N_PIXELS/2];
@@ -31,16 +35,17 @@ int main() {
 	uint32_t sum_pix1[N_PIXELS/2], data_shift1[P][N_PIXELS/2], thresh1[N_PIXELS/2];
 	uint32_t sum_pix2[N_PIXELS/2], data_shift2[P][N_PIXELS/2], thresh2[N_PIXELS/2];
 
-	int trig_data_SW;
+	int trig_data_SW = 0;
+	int trig_pixel_SW = 0;
 	int error_count = 0;
 
 	volatile unsigned int *trig_data_HW;
-	volatile unsigned int val;
-	trig_data_HW = &val;
-	val = 0;
-
-
-	uint16_t n_pixels_in_bus = N_PIXELS/6*4;
+	volatile unsigned int *trig_pixel_HW;
+	volatile unsigned int val_data, val_pixel;
+	trig_data_HW = &val_data;
+	trig_pixel_HW = &val_pixel;
+	val_data = 0;
+	val_pixel = 0;
 
 	printf("trig_data_HW: %u\n", *trig_data_HW);
 
@@ -108,9 +113,17 @@ int main() {
 				sum_overP2[i] += data_shift2[0][i];
 
 				//Trigger decision
-				if(sum_overP1[i] > thresh1[i] || sum_overP2[i] > thresh2[i] ) {
+				if(sum_overP1[i] > thresh1[i]) {
 					trig_data_SW = 1;
 					printf("trigger!\n");
+					trig_data_SW = (i * 2);
+					printf("trig_data_HW: %u\n", trig_pixel_SW);
+				}
+				else if (sum_overP2[i] > thresh2[i]) {
+					trig_data_SW = 1;
+					printf("trigger!\n");
+					trig_data_SW = (i * 2) + 1;
+					printf("trig_data_HW: %u\n", trig_pixel_SW);
 				}
 			}
 		}
@@ -142,7 +155,7 @@ int main() {
 	/* HARDWARE IMPLEMENTATION */
 #ifdef HW_COSIM
 	//Run the Vivado HLS trigger
-	l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, trig_data_HW);
+	l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, trig_data_HW, trig_pixel_HW);
 #endif
 
 
@@ -162,6 +175,9 @@ int main() {
 	}
 
 #ifdef HW_COSIM
+	if (trig_data_SW != *trig_data_HW) {
+		error_count++;
+	}
 	if (error_count){
 		printf("TEST FAILED\n");
 	}

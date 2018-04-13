@@ -17,19 +17,19 @@ use std.textio.all;
 entity AESL_axi_s_out_stream is
   generic (
       constant    TV_OUT_out_stream_TDATA : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_data_V.dat";
-      constant    LENGTH_out_stream_V_data_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_data_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TKEEP : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_keep_V.dat";
-      constant    LENGTH_out_stream_V_keep_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_keep_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TSTRB : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_strb_V.dat";
-      constant    LENGTH_out_stream_V_strb_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_strb_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TUSER : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_user_V.dat";
-      constant    LENGTH_out_stream_V_user_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_user_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TLAST : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_last_V.dat";
-      constant    LENGTH_out_stream_V_last_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_last_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TID : STRING (1 to 64) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_id_V.dat";
-      constant    LENGTH_out_stream_V_id_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_id_V : INTEGER := 5;
       constant    TV_OUT_out_stream_TDEST : STRING (1 to 66) := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat";
-      constant    LENGTH_out_stream_V_dest_V : INTEGER := 2;
+      constant    LENGTH_out_stream_V_dest_V : INTEGER := 5;
       constant    INTERFACE_TYPE : STRING (1 to 5) := "axi_s";
       constant    AUTOTB_TRANSACTION_NUM : INTEGER := 1
   );
@@ -60,12 +60,12 @@ end AESL_axi_s_out_stream;
 architecture behav of AESL_axi_s_out_stream is
 ------------------------Local signal-------------------
   signal reg_out_stream_TREADY :   STD_LOGIC;
-  signal  out_stream_TDATA_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TDATA_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TDATA_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TDATA_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TDATA_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TDATA_empty_n  :   STD_LOGIC;
   signal  out_stream_TDATA_full_n   :   STD_LOGIC;
-  type out_stream_TDATA_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(64 - 1 downto 0);
+  type out_stream_TDATA_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(64 - 1 downto 0);
   signal out_stream_TDATA_mem :   out_stream_TDATA_arr2D := (others => (others => '0'));
   signal out_stream_TDATA_ingress_status :  INTEGER;
   signal out_stream_TDATA_ingress_status_bit :  STD_LOGIC;
@@ -78,12 +78,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TDATA_out_step : INTEGER;
   signal out_stream_TDATA_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TDATA_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TKEEP_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TKEEP_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TKEEP_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TKEEP_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TKEEP_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TKEEP_empty_n  :   STD_LOGIC;
   signal  out_stream_TKEEP_full_n   :   STD_LOGIC;
-  type out_stream_TKEEP_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(8 - 1 downto 0);
+  type out_stream_TKEEP_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(8 - 1 downto 0);
   signal out_stream_TKEEP_mem :   out_stream_TKEEP_arr2D := (others => (others => '0'));
   signal out_stream_TKEEP_ingress_status :  INTEGER;
   signal out_stream_TKEEP_ingress_status_bit :  STD_LOGIC;
@@ -96,12 +96,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TKEEP_out_step : INTEGER;
   signal out_stream_TKEEP_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TKEEP_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TSTRB_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TSTRB_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TSTRB_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TSTRB_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TSTRB_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TSTRB_empty_n  :   STD_LOGIC;
   signal  out_stream_TSTRB_full_n   :   STD_LOGIC;
-  type out_stream_TSTRB_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(8 - 1 downto 0);
+  type out_stream_TSTRB_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(8 - 1 downto 0);
   signal out_stream_TSTRB_mem :   out_stream_TSTRB_arr2D := (others => (others => '0'));
   signal out_stream_TSTRB_ingress_status :  INTEGER;
   signal out_stream_TSTRB_ingress_status_bit :  STD_LOGIC;
@@ -114,12 +114,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TSTRB_out_step : INTEGER;
   signal out_stream_TSTRB_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TSTRB_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TUSER_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TUSER_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TUSER_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TUSER_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TUSER_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TUSER_empty_n  :   STD_LOGIC;
   signal  out_stream_TUSER_full_n   :   STD_LOGIC;
-  type out_stream_TUSER_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(2 - 1 downto 0);
+  type out_stream_TUSER_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(2 - 1 downto 0);
   signal out_stream_TUSER_mem :   out_stream_TUSER_arr2D := (others => (others => '0'));
   signal out_stream_TUSER_ingress_status :  INTEGER;
   signal out_stream_TUSER_ingress_status_bit :  STD_LOGIC;
@@ -132,12 +132,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TUSER_out_step : INTEGER;
   signal out_stream_TUSER_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TUSER_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TLAST_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TLAST_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TLAST_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TLAST_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TLAST_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TLAST_empty_n  :   STD_LOGIC;
   signal  out_stream_TLAST_full_n   :   STD_LOGIC;
-  type out_stream_TLAST_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(1 - 1 downto 0);
+  type out_stream_TLAST_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(1 - 1 downto 0);
   signal out_stream_TLAST_mem :   out_stream_TLAST_arr2D := (others => (others => '0'));
   signal out_stream_TLAST_ingress_status :  INTEGER;
   signal out_stream_TLAST_ingress_status_bit :  STD_LOGIC;
@@ -150,12 +150,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TLAST_out_step : INTEGER;
   signal out_stream_TLAST_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TLAST_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TID_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TID_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TID_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TID_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TID_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TID_empty_n  :   STD_LOGIC;
   signal  out_stream_TID_full_n   :   STD_LOGIC;
-  type out_stream_TID_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(5 - 1 downto 0);
+  type out_stream_TID_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(5 - 1 downto 0);
   signal out_stream_TID_mem :   out_stream_TID_arr2D := (others => (others => '0'));
   signal out_stream_TID_ingress_status :  INTEGER;
   signal out_stream_TID_ingress_status_bit :  STD_LOGIC;
@@ -168,12 +168,12 @@ architecture behav of AESL_axi_s_out_stream is
   signal out_stream_TID_out_step : INTEGER;
   signal out_stream_TID_trans_num_sig : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal out_stream_TID_trans_num_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
-  signal  out_stream_TDEST_mInPtr  :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
-  signal  out_stream_TDEST_mOutPtr :   STD_LOGIC_VECTOR (2 downto 0) := (others => '0');
+  signal  out_stream_TDEST_mInPtr  :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+  signal  out_stream_TDEST_mOutPtr :   STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
   signal  out_stream_TDEST_mFlag_hint      :   STD_LOGIC := '0';   -- 0:empty hint, 1: full hint
   signal  out_stream_TDEST_empty_n  :   STD_LOGIC;
   signal  out_stream_TDEST_full_n   :   STD_LOGIC;
-  type out_stream_TDEST_arr2D is array(0 to 2) of STD_LOGIC_VECTOR(6 - 1 downto 0);
+  type out_stream_TDEST_arr2D is array(0 to 5) of STD_LOGIC_VECTOR(6 - 1 downto 0);
   signal out_stream_TDEST_mem :   out_stream_TDEST_arr2D := (others => (others => '0'));
   signal out_stream_TDEST_ingress_status :  INTEGER;
   signal out_stream_TDEST_ingress_status_bit :  STD_LOGIC;
@@ -653,7 +653,7 @@ end process;
           out_stream_TDATA_mem(0) <= TRAN_out_stream_TDATA ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TDATA_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TDATA_mInPtr) < 5) then
                   out_stream_TDATA_mem(CONV_INTEGER(out_stream_TDATA_mInPtr)) <= TRAN_out_stream_TDATA ;
               end if;
           end if;
@@ -668,7 +668,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TDATA_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TDATA_mInPtr) < 5) then
                   out_stream_TDATA_mInPtr <=  esl_add(out_stream_TDATA_mInPtr, "1");
               end if;
           end if;
@@ -693,7 +693,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TDATA_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TDATA_mOutPtr'length));
+      out_stream_TDATA_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TDATA_mOutPtr'length));
       out_stream_TDATA_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -845,7 +845,7 @@ end process;
           out_stream_TKEEP_mem(0) <= TRAN_out_stream_TKEEP ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TKEEP_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TKEEP_mInPtr) < 5) then
                   out_stream_TKEEP_mem(CONV_INTEGER(out_stream_TKEEP_mInPtr)) <= TRAN_out_stream_TKEEP ;
               end if;
           end if;
@@ -860,7 +860,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TKEEP_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TKEEP_mInPtr) < 5) then
                   out_stream_TKEEP_mInPtr <=  esl_add(out_stream_TKEEP_mInPtr, "1");
               end if;
           end if;
@@ -885,7 +885,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TKEEP_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TKEEP_mOutPtr'length));
+      out_stream_TKEEP_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TKEEP_mOutPtr'length));
       out_stream_TKEEP_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -1037,7 +1037,7 @@ end process;
           out_stream_TSTRB_mem(0) <= TRAN_out_stream_TSTRB ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TSTRB_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TSTRB_mInPtr) < 5) then
                   out_stream_TSTRB_mem(CONV_INTEGER(out_stream_TSTRB_mInPtr)) <= TRAN_out_stream_TSTRB ;
               end if;
           end if;
@@ -1052,7 +1052,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TSTRB_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TSTRB_mInPtr) < 5) then
                   out_stream_TSTRB_mInPtr <=  esl_add(out_stream_TSTRB_mInPtr, "1");
               end if;
           end if;
@@ -1077,7 +1077,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TSTRB_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TSTRB_mOutPtr'length));
+      out_stream_TSTRB_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TSTRB_mOutPtr'length));
       out_stream_TSTRB_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -1229,7 +1229,7 @@ end process;
           out_stream_TUSER_mem(0) <= TRAN_out_stream_TUSER ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TUSER_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TUSER_mInPtr) < 5) then
                   out_stream_TUSER_mem(CONV_INTEGER(out_stream_TUSER_mInPtr)) <= TRAN_out_stream_TUSER ;
               end if;
           end if;
@@ -1244,7 +1244,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TUSER_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TUSER_mInPtr) < 5) then
                   out_stream_TUSER_mInPtr <=  esl_add(out_stream_TUSER_mInPtr, "1");
               end if;
           end if;
@@ -1269,7 +1269,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TUSER_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TUSER_mOutPtr'length));
+      out_stream_TUSER_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TUSER_mOutPtr'length));
       out_stream_TUSER_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -1421,7 +1421,7 @@ end process;
           out_stream_TLAST_mem(0) <= TRAN_out_stream_TLAST ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TLAST_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TLAST_mInPtr) < 5) then
                   out_stream_TLAST_mem(CONV_INTEGER(out_stream_TLAST_mInPtr)) <= TRAN_out_stream_TLAST ;
               end if;
           end if;
@@ -1436,7 +1436,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TLAST_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TLAST_mInPtr) < 5) then
                   out_stream_TLAST_mInPtr <=  esl_add(out_stream_TLAST_mInPtr, "1");
               end if;
           end if;
@@ -1461,7 +1461,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TLAST_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TLAST_mOutPtr'length));
+      out_stream_TLAST_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TLAST_mOutPtr'length));
       out_stream_TLAST_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -1613,7 +1613,7 @@ end process;
           out_stream_TID_mem(0) <= TRAN_out_stream_TID ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TID_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TID_mInPtr) < 5) then
                   out_stream_TID_mem(CONV_INTEGER(out_stream_TID_mInPtr)) <= TRAN_out_stream_TID ;
               end if;
           end if;
@@ -1628,7 +1628,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TID_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TID_mInPtr) < 5) then
                   out_stream_TID_mInPtr <=  esl_add(out_stream_TID_mInPtr, "1");
               end if;
           end if;
@@ -1653,7 +1653,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TID_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TID_mOutPtr'length));
+      out_stream_TID_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TID_mOutPtr'length));
       out_stream_TID_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop
@@ -1805,7 +1805,7 @@ end process;
           out_stream_TDEST_mem(0) <= TRAN_out_stream_TDEST ;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TDEST_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TDEST_mInPtr) < 5) then
                   out_stream_TDEST_mem(CONV_INTEGER(out_stream_TDEST_mInPtr)) <= TRAN_out_stream_TDEST ;
               end if;
           end if;
@@ -1820,7 +1820,7 @@ end process;
           end if;
       elsif (clk'event and clk = '1') then
           if (TRAN_out_stream_TVALID = '1' and reg_out_stream_TREADY = '1' ) then
-              if (CONV_INTEGER(out_stream_TDEST_mInPtr) < 2) then
+              if (CONV_INTEGER(out_stream_TDEST_mInPtr) < 5) then
                   out_stream_TDEST_mInPtr <=  esl_add(out_stream_TDEST_mInPtr, "1");
               end if;
           end if;
@@ -1845,7 +1845,7 @@ end process;
       variable    i               :   INTEGER;
   begin
       transaction_idx :=  0;
-      out_stream_TDEST_mOutPtr <=  std_logic_vector(to_unsigned(3, out_stream_TDEST_mOutPtr'length));
+      out_stream_TDEST_mOutPtr <=  std_logic_vector(to_unsigned(6, out_stream_TDEST_mOutPtr'length));
       out_stream_TDEST_mFlag_hint  <= '1';
       wait until reset = '1';
       while (true) loop

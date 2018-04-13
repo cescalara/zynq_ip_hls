@@ -8,4 +8,7 @@ extern void l2_trigger (
 hls::stream<struct ap_axis<32, 2, 5, 6 > >& in_stream,
 hls::stream<struct ap_axis<64, 2, 5, 6 > >& out_stream,
 unsigned short n_pixels_in_bus,
-volatile unsigned int* trig_data);
+unsigned char N_BG,
+unsigned int LOW_THRESH,
+volatile unsigned int* trig_data,
+volatile unsigned int* trig_pixel);

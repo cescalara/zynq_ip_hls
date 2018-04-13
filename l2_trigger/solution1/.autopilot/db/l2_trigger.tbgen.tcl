@@ -1,21 +1,23 @@
 set C_TypeInfoList {{ 
-"l2_trigger" : [[], { "return": [[], "void"]} , [{"ExternC" : 0}], [ {"in_stream": [[], {"reference": "0"}] }, {"out_stream": [[], {"reference": "1"}] }, {"n_pixels_in_bus": [[],"2"] }, {"trig_data": [[],{ "pointer":  {"scalar": "unsigned int"}}] }],[],""], 
-"1": [ "STREAM_64", {"typedef": [[[],"3"],""]}], 
-"3": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"4"]],"5"]}}], 
-"4": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "6"]},{ "keep": [[], "7"]},{ "strb": [[], "7"]},{ "user": [[], "8"]},{ "last": [[], "9"]},{ "id": [[], "10"]},{ "dest": [[], "11"]}],""]}], 
-"8": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}], 
-"6": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}], 
-"7": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}], 
+"l2_trigger" : [[], { "return": [[], "void"]} , [{"ExternC" : 0}], [ {"in_stream": [[], {"reference": "0"}] }, {"out_stream": [[], {"reference": "1"}] }, {"n_pixels_in_bus": [[],"2"] }, {"N_BG": [[],"3"] }, {"LOW_THRESH": [[],"4"] }, {"trig_data": [[],{ "pointer":  {"scalar": "unsigned int"}}] }, {"trig_pixel": [[],{ "pointer":  {"scalar": "unsigned int"}}] }],[],""], 
+"1": [ "STREAM_64", {"typedef": [[[],"5"],""]}], 
+"5": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"6"]],"7"]}}], 
+"6": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "8"]},{ "keep": [[], "9"]},{ "strb": [[], "9"]},{ "user": [[], "10"]},{ "last": [[], "11"]},{ "id": [[], "12"]},{ "dest": [[], "13"]}],""]}], 
+"9": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}], 
+"10": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}], 
+"11": [ "ap_uint<1>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 1}}]],""]}}], 
 "2": [ "uint16_t", {"typedef": [[[], {"scalar": "unsigned short"}],""]}], 
-"0": [ "STREAM_32", {"typedef": [[[],"12"],""]}], 
-"11": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}], 
-"12": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"13"]],"5"]}}], 
-"13": [ "ap_axis<32, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 32}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "14"]},{ "keep": [[], "15"]},{ "strb": [[], "15"]},{ "user": [[], "8"]},{ "last": [[], "9"]},{ "id": [[], "10"]},{ "dest": [[], "11"]}],""]}], 
-"15": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
-"14": [ "ap_int<32>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 32}}]],""]}}], 
-"9": [ "ap_uint<1>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 1}}]],""]}}], 
-"10": [ "ap_uint<5>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 5}}]],""]}}],
-"5": ["hls", ""]
+"3": [ "uint8_t", {"typedef": [[[], {"scalar": "unsigned char"}],""]}], 
+"4": [ "uint32_t", {"typedef": [[[], {"scalar": "unsigned int"}],""]}], 
+"0": [ "STREAM_32", {"typedef": [[[],"14"],""]}], 
+"14": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"15"]],"7"]}}], 
+"15": [ "ap_axis<32, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 32}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "16"]},{ "keep": [[], "17"]},{ "strb": [[], "17"]},{ "user": [[], "10"]},{ "last": [[], "11"]},{ "id": [[], "12"]},{ "dest": [[], "13"]}],""]}], 
+"12": [ "ap_uint<5>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 5}}]],""]}}], 
+"8": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}], 
+"17": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
+"13": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}], 
+"16": [ "ap_int<32>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 32}}]],""]}}],
+"7": ["hls", ""]
 }}
 set moduleName l2_trigger
 set isCombinational 0
@@ -42,7 +44,10 @@ set C_modelArgList {
 	{ out_stream_V_id_V int 5 regular {axi_s 1 volatile  { out_stream id } }  }
 	{ out_stream_V_dest_V int 6 regular {axi_s 1 volatile  { out_stream dest } }  }
 	{ n_pixels_in_bus uint 16 regular {axi_slave 0}  }
+	{ N_BG uint 8 regular {axi_slave 0}  }
+	{ LOW_THRESH int 32 regular {axi_slave 0}  }
 	{ trig_data int 32 regular {pointer 1 volatile }  }
+	{ trig_pixel int 32 regular {pointer 1 volatile }  }
 }
 set C_modelArgMapList {[ 
 	{ "Name" : "in_stream_V_data_V", "interface" : "axis", "bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "in_stream.V.data.V","cData": "int32","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
@@ -60,9 +65,12 @@ set C_modelArgMapList {[
  	{ "Name" : "out_stream_V_id_V", "interface" : "axis", "bitwidth" : 5, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":4,"cElement": [{"cName": "out_stream.V.id.V","cData": "uint5","bit_use": { "low": 0,"up": 4},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "out_stream_V_dest_V", "interface" : "axis", "bitwidth" : 6, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":5,"cElement": [{"cName": "out_stream.V.dest.V","cData": "uint6","bit_use": { "low": 0,"up": 5},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "n_pixels_in_bus", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 16, "direction" : "READONLY", "bitSlice":[{"low":0,"up":15,"cElement": [{"cName": "n_pixels_in_bus","cData": "unsigned short","bit_use": { "low": 0,"up": 15},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":16}, "offset_end" : {"in":23}} , 
- 	{ "Name" : "trig_data", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "trig_data","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
+ 	{ "Name" : "N_BG", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 8, "direction" : "READONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "N_BG","cData": "unsigned char","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":24}, "offset_end" : {"in":31}} , 
+ 	{ "Name" : "LOW_THRESH", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "LOW_THRESH","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":32}, "offset_end" : {"in":39}} , 
+ 	{ "Name" : "trig_data", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "trig_data","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
+ 	{ "Name" : "trig_pixel", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "trig_pixel","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
-set portNum 40
+set portNum 42
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst_n sc_in sc_logic 1 reset -1 active_low_sync } 
@@ -84,18 +92,20 @@ set portList {
 	{ out_stream_TLAST sc_out sc_lv 1 signal 11 } 
 	{ out_stream_TID sc_out sc_lv 5 signal 12 } 
 	{ out_stream_TDEST sc_out sc_lv 6 signal 13 } 
-	{ trig_data sc_out sc_lv 32 signal 15 } 
-	{ trig_data_ap_vld sc_out sc_logic 1 outvld 15 } 
+	{ trig_data sc_out sc_lv 32 signal 17 } 
+	{ trig_data_ap_vld sc_out sc_logic 1 outvld 17 } 
+	{ trig_pixel sc_out sc_lv 32 signal 18 } 
+	{ trig_pixel_ap_vld sc_out sc_logic 1 outvld 18 } 
 	{ s_axi_CTRL_BUS_AWVALID sc_in sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_AWREADY sc_out sc_logic 1 signal -1 } 
-	{ s_axi_CTRL_BUS_AWADDR sc_in sc_lv 5 signal -1 } 
+	{ s_axi_CTRL_BUS_AWADDR sc_in sc_lv 6 signal -1 } 
 	{ s_axi_CTRL_BUS_WVALID sc_in sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_WREADY sc_out sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_WDATA sc_in sc_lv 32 signal -1 } 
 	{ s_axi_CTRL_BUS_WSTRB sc_in sc_lv 4 signal -1 } 
 	{ s_axi_CTRL_BUS_ARVALID sc_in sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_ARREADY sc_out sc_logic 1 signal -1 } 
-	{ s_axi_CTRL_BUS_ARADDR sc_in sc_lv 5 signal -1 } 
+	{ s_axi_CTRL_BUS_ARADDR sc_in sc_lv 6 signal -1 } 
 	{ s_axi_CTRL_BUS_RVALID sc_out sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_RREADY sc_in sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_RDATA sc_out sc_lv 32 signal -1 } 
@@ -106,14 +116,14 @@ set portList {
 	{ interrupt sc_out sc_logic 1 signal -1 } 
 }
 set NewPortList {[ 
-	{ "name": "s_axi_CTRL_BUS_AWADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":5, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "AWADDR" },"address":[{"name":"l2_trigger","role":"start","value":"0","valid_bit":"0"},{"name":"l2_trigger","role":"continue","value":"0","valid_bit":"4"},{"name":"l2_trigger","role":"auto_start","value":"0","valid_bit":"7"},{"name":"n_pixels_in_bus","role":"data","value":"16"}] },
+	{ "name": "s_axi_CTRL_BUS_AWADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "AWADDR" },"address":[{"name":"l2_trigger","role":"start","value":"0","valid_bit":"0"},{"name":"l2_trigger","role":"continue","value":"0","valid_bit":"4"},{"name":"l2_trigger","role":"auto_start","value":"0","valid_bit":"7"},{"name":"n_pixels_in_bus","role":"data","value":"16"},{"name":"N_BG","role":"data","value":"24"},{"name":"LOW_THRESH","role":"data","value":"32"}] },
 	{ "name": "s_axi_CTRL_BUS_AWVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "AWVALID" } },
 	{ "name": "s_axi_CTRL_BUS_AWREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "AWREADY" } },
 	{ "name": "s_axi_CTRL_BUS_WVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "WVALID" } },
 	{ "name": "s_axi_CTRL_BUS_WREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "WREADY" } },
 	{ "name": "s_axi_CTRL_BUS_WDATA", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "WDATA" } },
 	{ "name": "s_axi_CTRL_BUS_WSTRB", "direction": "in", "datatype": "sc_lv", "bitwidth":4, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "WSTRB" } },
-	{ "name": "s_axi_CTRL_BUS_ARADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":5, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "ARADDR" },"address":[{"name":"l2_trigger","role":"start","value":"0","valid_bit":"0"},{"name":"l2_trigger","role":"done","value":"0","valid_bit":"1"},{"name":"l2_trigger","role":"idle","value":"0","valid_bit":"2"},{"name":"l2_trigger","role":"ready","value":"0","valid_bit":"3"},{"name":"l2_trigger","role":"auto_start","value":"0","valid_bit":"7"}] },
+	{ "name": "s_axi_CTRL_BUS_ARADDR", "direction": "in", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "ARADDR" },"address":[{"name":"l2_trigger","role":"start","value":"0","valid_bit":"0"},{"name":"l2_trigger","role":"done","value":"0","valid_bit":"1"},{"name":"l2_trigger","role":"idle","value":"0","valid_bit":"2"},{"name":"l2_trigger","role":"ready","value":"0","valid_bit":"3"},{"name":"l2_trigger","role":"auto_start","value":"0","valid_bit":"7"}] },
 	{ "name": "s_axi_CTRL_BUS_ARVALID", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "ARVALID" } },
 	{ "name": "s_axi_CTRL_BUS_ARREADY", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "ARREADY" } },
 	{ "name": "s_axi_CTRL_BUS_RVALID", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "CTRL_BUS", "role": "RVALID" } },
@@ -145,7 +155,9 @@ set NewPortList {[
  	{ "name": "out_stream_TID", "direction": "out", "datatype": "sc_lv", "bitwidth":5, "type": "signal", "bundle":{"name": "out_stream_V_id_V", "role": "default" }} , 
  	{ "name": "out_stream_TDEST", "direction": "out", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "out_stream_V_dest_V", "role": "default" }} , 
  	{ "name": "trig_data", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "trig_data", "role": "default" }} , 
- 	{ "name": "trig_data_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "trig_data", "role": "ap_vld" }}  ]}
+ 	{ "name": "trig_data_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "trig_data", "role": "ap_vld" }} , 
+ 	{ "name": "trig_pixel", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "trig_pixel", "role": "default" }} , 
+ 	{ "name": "trig_pixel_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "trig_pixel", "role": "ap_vld" }}  ]}
 
 set RtlHierarchyInfo {[
 	{"Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "CDFG" : "l2_trigger", "VariableLatency" : "1", "AlignedPipeline" : "0", "UnalignedPipeline" : "0", "ProcessNetwork" : "0", "Combinational" : "0", "ControlExist" : "1",
@@ -167,7 +179,10 @@ set RtlHierarchyInfo {[
 		{"Name" : "out_stream_V_id_V", "Type" : "Axis", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "out_stream_V_dest_V", "Type" : "Axis", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "n_pixels_in_bus", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
-		{"Name" : "trig_data", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}],
+		{"Name" : "N_BG", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
+		{"Name" : "LOW_THRESH", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
+		{"Name" : "trig_data", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
+		{"Name" : "trig_pixel", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}],
 		"WaitState" : [],
 		"SubBlockPort" : []},
 	{"Level" : "1", "Path" : "`AUTOTB_DUT_INST.l2_trigger_CTRL_BUS_s_axi_U", "Parent" : "0", "Child" : []},
@@ -201,6 +216,7 @@ set Spec2ImplPortList {
 	out_stream_V_id_V { axis {  { out_stream_TID out_data 1 5 } } }
 	out_stream_V_dest_V { axis {  { out_stream_TVALID out_vld 1 1 }  { out_stream_TREADY out_acc 0 1 }  { out_stream_TDEST out_data 1 6 } } }
 	trig_data { ap_ovld {  { trig_data out_data 1 32 }  { trig_data_ap_vld out_vld 1 1 } } }
+	trig_pixel { ap_ovld {  { trig_pixel out_data 1 32 }  { trig_pixel_ap_vld out_vld 1 1 } } }
 }
 
 set busDeadlockParameterList { 
