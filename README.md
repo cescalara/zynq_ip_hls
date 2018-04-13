@@ -38,4 +38,4 @@ Data is input as a 16bit AXI4 stream with each 16bit entry containing 2 8bit uns
 The output behaves similarly but instead using a 32bit AXI4 stream to handle the larger summed ints. Loops are pipelined to 
 avoid throttling of the data and to optimise the throughput. 
 
-the code was designed to be used to perform in-FPGA calculation of the S-curves (basically PMT threshold scans). This allows   for fast S-curve calculations (useful when testing and characterising PMTs in the lab) and also minimises the filesize of a single S-curve on disk without the need for any post-processing during the mission.
+The code was designed to be used to perform in-FPGA calculation of the S-curves (basically PMT threshold scans). This allows   for fast S-curve calculations (useful when testing and characterising PMTs in the lab) and also minimises the filesize of a single S-curve on disk without the need for any post-processing during the mission.
