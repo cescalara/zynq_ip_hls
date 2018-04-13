@@ -25,6 +25,12 @@ which allows to simulate the data flow of the full firmware and check the trigge
 Additionally, the L2 trigger has also been tested successfully using a variety of light sources at the TurLab facility in 
 the University of Turin. The results will be published in the future. 
 
+The Mini-EUSO trigger algorithm is summarised below:
+
+![The Mini-EUSO trigger](https://github.com/cescalara/zynq_ip_hls/blob/master/images/trigger.png)
+
+
+
 ## scurve_adder
 
 This is a simple IP block used to sum data in batches of 128 GTU in various parts of the full firmware project. 
