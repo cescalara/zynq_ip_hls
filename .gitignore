@@ -85,3 +85,6 @@
 !*.bmm
 !*.xmp
 !*.cpp
+
+# Do not ingnore images folder
+!images
