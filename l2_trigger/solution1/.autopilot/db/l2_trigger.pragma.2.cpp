@@ -1,5 +1,5 @@
-# 1 "/home/francesca/xil_proj/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp"
-# 1 "/home/francesca/xil_proj/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp" 1
+# 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp"
+# 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp" 1
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 155 "<built-in>" 3
@@ -203,9 +203,9 @@ extern "C" {
 // XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
 # 6 "<command line>" 2
 # 1 "<built-in>" 2
-# 1 "/home/francesca/xil_proj/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp" 2
-# 1 "l2_trigger/cpp_code/v9/l2_trigger.cpp"
-# 1 "l2_trigger/cpp_code/v9/l2_trigger.cpp" 1
+# 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/.autopilot/db/l2_trigger.pragma.1.cpp" 2
+# 1 "l2_trigger/cpp_code/v10/l2_trigger.cpp"
+# 1 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 1
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 155 "<built-in>" 3
@@ -409,7 +409,7 @@ extern "C" {
 // XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
 # 6 "<command line>" 2
 # 1 "<built-in>" 2
-# 1 "l2_trigger/cpp_code/v9/l2_trigger.cpp" 2
+# 1 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 /*
 L2 trigger IP May 2017
 Francesca Capel
@@ -425,7 +425,7 @@ The mask is not yet implemented
 
 
 
-# 1 "l2_trigger/cpp_code/v9/l2_trigger.h" 1
+# 1 "l2_trigger/cpp_code/v10/l2_trigger.h" 1
 
 
 
@@ -3184,7 +3184,7 @@ extern int getloadavg (double __loadavg[], int __nelem)
 /* Define some macros helping to catch buffer overflows.  */
 # 968 "/usr/include/stdlib.h" 3 4
 }
-# 5 "l2_trigger/cpp_code/v9/l2_trigger.h" 2
+# 5 "l2_trigger/cpp_code/v10/l2_trigger.h" 2
 # 1 "/opt/Xilinx/Vivado_HLS/2016.2/common/technology/autopilot/hls_math.h" 1
 /*****************************************************************************
  *
@@ -52071,7 +52071,7 @@ static void fir_blocksrl_Q15(short *in, short *taps, short *out, short *state, i
 
 
 // XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-# 6 "l2_trigger/cpp_code/v9/l2_trigger.h" 2
+# 6 "l2_trigger/cpp_code/v10/l2_trigger.h" 2
 # 1 "/opt/Xilinx/Vivado_HLS/2016.2/common/technology/autopilot/hls_stream.h" 1
 /* -*- c++ -*-*/
 /*
@@ -52381,7 +52381,7 @@ class stream
 
 
 // XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-# 7 "l2_trigger/cpp_code/v9/l2_trigger.h" 2
+# 7 "l2_trigger/cpp_code/v10/l2_trigger.h" 2
 # 1 "/opt/Xilinx/Vivado_HLS/2016.2/common/technology/autopilot/ap_axi_sdata.h" 1
 /*****************************************************************************
  *
@@ -52499,8 +52499,19 @@ template<int D,int U,int TI,int TD>
 
 
 // XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-# 8 "l2_trigger/cpp_code/v9/l2_trigger.h" 2
-# 18 "l2_trigger/cpp_code/v9/l2_trigger.h"
+# 8 "l2_trigger/cpp_code/v10/l2_trigger.h" 2
+
+
+
+
+//#define N_ADDS 3
+
+//#define N_PIXELS 10
+
+
+
+
+
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
 typedef ap_axis<64,2,5,6> AXI_DATA_64;
@@ -52508,7 +52519,7 @@ typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
 void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
-# 15 "l2_trigger/cpp_code/v9/l2_trigger.cpp" 2
+# 15 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 
 
 void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data){
@@ -52614,7 +52625,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
     l3_data.data = ((uint64_t) sum_pix2[i]<< 32) | sum_pix1[i];
     l3_data.keep = 255;
     l3_data.strb = 255;
-    l3_data.last = (i == n_pixels_in_bus/2 - 1)? 1:0;
+    //l3_data.last = (i == n_pixels_in_bus/2 - 1)? 1:0;
     out_stream << l3_data;
 
     sum_pixP1 = 8*(sum_pix1[i]/128);

@@ -15,7 +15,9 @@
       <simLog/>
       <mgLog/>
       <packageLog/>
-      <csimLog/>
+      <csimLog>
+        <logs message="CRITICAL WARNING: [SIM 211-1] CSim file generation failed with errors.&#xA;5&#xA;    while executing&#xA;&quot;source /home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/csim.tcl&quot;&#xA;    invoked from within&#xA;&quot;hls::main /home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/csim.tcl&quot;&#xA;    (&quot;uplevel&quot; body line 1)&#xA;    invoked from within&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xA;    invoked from within&#xA;&quot;hls_proc $argv&quot;&#xA;" projectName="l2_trigger" solutionName="l2_trigger_solution" date="2018-04-13T14:22:24.554+0200" type="Warning"/>
+      </csimLog>
     </logs>
   </warningLogs>
 </vivadoHLSLog:LogRoot>

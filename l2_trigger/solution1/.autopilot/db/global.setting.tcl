@@ -41,10 +41,10 @@ set SCTraceFileName "mytrace"
 set SCTraceFileFormat "vcd"
 set SCTraceOption "all"
 set TargetInfo "xc7z030:ffg676:-2"
-set SourceFiles {sc {} c ../cpp_code/v9/l2_trigger.cpp}
+set SourceFiles {sc {} c ../cpp_code/v10/l2_trigger.cpp}
 set SourceFlags {sc {} c {{}}}
-set DirectiveFile {/home/francesca/xil_proj/l2_trigger/solution1/solution1.directive}
-set TBFiles {verilog ../cpp_code/v9/l2_trigger_test.cpp bc ../cpp_code/v9/l2_trigger_test.cpp vhdl ../cpp_code/v9/l2_trigger_test.cpp sc ../cpp_code/v9/l2_trigger_test.cpp cas ../cpp_code/v9/l2_trigger_test.cpp c {}}
+set DirectiveFile {/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/solution1.directive}
+set TBFiles {verilog ../cpp_code/v10/l2_trigger_test.cpp bc ../cpp_code/v10/l2_trigger_test.cpp vhdl ../cpp_code/v10/l2_trigger_test.cpp sc ../cpp_code/v10/l2_trigger_test.cpp cas ../cpp_code/v10/l2_trigger_test.cpp c {}}
 set SpecLanguage "C"
 set TVInFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
 set TVOutFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}

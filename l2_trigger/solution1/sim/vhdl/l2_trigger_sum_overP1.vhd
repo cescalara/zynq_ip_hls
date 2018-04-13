@@ -10,12 +10,12 @@ library ieee;
 use ieee.std_logic_1164.all; 
 use ieee.std_logic_unsigned.all;
 
-entity l2_trigger_data_shift1_ram is 
+entity l2_trigger_sum_overP1_ram is 
     generic(
             mem_type    : string := "distributed"; 
-            dwidth     : integer := 17; 
-            awidth     : integer := 6; 
-            mem_size    : integer := 40
+            dwidth     : integer := 32; 
+            awidth     : integer := 3; 
+            mem_size    : integer := 5
     ); 
     port (
           addr0     : in std_logic_vector(awidth-1 downto 0); 
@@ -28,7 +28,7 @@ entity l2_trigger_data_shift1_ram is
 end entity; 
 
 
-architecture rtl of l2_trigger_data_shift1_ram is 
+architecture rtl of l2_trigger_sum_overP1_ram is 
 
 signal addr0_tmp : std_logic_vector(awidth-1 downto 0); 
 type mem_array is array (0 to mem_size-1) of std_logic_vector (dwidth-1 downto 0); 
@@ -74,11 +74,11 @@ end rtl;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity l2_trigger_data_shift1 is
+entity l2_trigger_sum_overP1 is
     generic (
-        DataWidth : INTEGER := 17;
-        AddressRange : INTEGER := 40;
-        AddressWidth : INTEGER := 6);
+        DataWidth : INTEGER := 32;
+        AddressRange : INTEGER := 5;
+        AddressWidth : INTEGER := 3);
     port (
         reset : IN STD_LOGIC;
         clk : IN STD_LOGIC;
@@ -89,8 +89,8 @@ entity l2_trigger_data_shift1 is
         q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
 end entity;
 
-architecture arch of l2_trigger_data_shift1 is
-    component l2_trigger_data_shift1_ram is
+architecture arch of l2_trigger_sum_overP1 is
+    component l2_trigger_sum_overP1_ram is
         port (
             clk : IN STD_LOGIC;
             addr0 : IN STD_LOGIC_VECTOR;
@@ -103,7 +103,7 @@ architecture arch of l2_trigger_data_shift1 is
 
 
 begin
-    l2_trigger_data_shift1_ram_U :  component l2_trigger_data_shift1_ram
+    l2_trigger_sum_overP1_ram_U :  component l2_trigger_sum_overP1_ram
     port map (
         clk => clk,
         addr0 => address0,

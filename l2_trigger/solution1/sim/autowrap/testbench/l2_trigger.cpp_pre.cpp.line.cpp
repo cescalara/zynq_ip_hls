@@ -1,9 +1,9 @@
-#pragma line 1 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.cpp"
+#pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
 #pragma line 1 "<built-in>"
 #pragma line 1 "<command-line>"
-#pragma line 1 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.cpp"
-#pragma line 14 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.cpp"
-#pragma line 1 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h" 1
+#pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
+#pragma line 14 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp"
+#pragma line 1 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 1
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
@@ -1350,7 +1350,7 @@ extern int getloadavg (double __loadavg[], int __nelem)
 #pragma line 956 "/usr/include/stdlib.h" 2 3 4
 #pragma line 968 "/usr/include/stdlib.h" 3 4
 }
-#pragma line 5 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h" 2
+#pragma line 5 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
 #pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.2/include/hls_math.h" 1
 #pragma line 44 "/opt/Xilinx/Vivado_HLS/2016.2/include/hls_math.h"
 #pragma line 1 "/usr/include/assert.h" 1 3 4
@@ -52581,7 +52581,7 @@ static void fir_blocksrl_Q15(short *in, short *taps, short *out, short *state, i
 }
 #pragma empty_line
 }
-#pragma line 6 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h" 2
+#pragma line 6 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
 #pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.2/include/hls_stream.h" 1
 #pragma line 79 "/opt/Xilinx/Vivado_HLS/2016.2/include/hls_stream.h"
 #pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.2/lnx64/tools/gcc/bin/../lib/gcc/x86_64-unknown-linux-gnu/4.6.3/../../../../include/c++/4.6.3/queue" 1 3
@@ -58084,7 +58084,7 @@ class stream
 };
 #pragma empty_line
 }
-#pragma line 7 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h" 2
+#pragma line 7 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
 #pragma line 1 "/opt/Xilinx/Vivado_HLS/2016.2/include/ap_axi_sdata.h" 1
 #pragma line 89 "/opt/Xilinx/Vivado_HLS/2016.2/include/ap_axi_sdata.h"
 template<int D,int U,int TI,int TD>
@@ -58108,8 +58108,8 @@ template<int D,int U,int TI,int TD>
     ap_uint<TI> id;
     ap_uint<TD> dest;
   };
-#pragma line 8 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h" 2
-#pragma line 18 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.h"
+#pragma line 8 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h" 2
+#pragma line 20 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.h"
 typedef ap_axis<16,2,5,6> AXI_DATA_16;
 typedef ap_axis<32,2,5,6> AXI_DATA_32;
 typedef ap_axis<64,2,5,6> AXI_DATA_64;
@@ -58117,7 +58117,7 @@ typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 #pragma empty_line
 void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data);
-#pragma line 15 "/home/francesca/xil_proj/l2_trigger/cpp_code/v9/l2_trigger.cpp" 2
+#pragma line 15 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 #pragma empty_line
 #pragma empty_line
 void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus, volatile unsigned int *trig_data){
@@ -58138,8 +58138,8 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
  uint32_t sum_pixP1, sum_pixP2;
  uint32_t sum_overP1[10/2];
  uint32_t sum_overP2[10/2];
- uint32_t sum_pix1[10/2], data_shift1[2][10/2], thresh1[10/2];
- uint32_t sum_pix2[10/2], data_shift2[2][10/2], thresh2[10/2];
+ uint32_t sum_pix1[10/2], data_shift1[8][10/2], thresh1[10/2];
+ uint32_t sum_pix2[10/2], data_shift2[8][10/2], thresh2[10/2];
 #pragma empty_line
 #pragma empty_line
  *trig_data = 0;
@@ -58150,7 +58150,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
   thresh2[i] = 25500;
  }
 #pragma empty_line
- for(kk = 0; kk < 2; kk++) {
+ for(kk = 0; kk < 8; kk++) {
   for(i = 0; i < n_pixels_in_bus/2; i++) {
    data_shift1[kk][i] = 0;
    data_shift2[kk][i] = 0;
@@ -58188,7 +58188,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
 #pragma empty_line
     sum_overP1[i] = 0;
     sum_overP2[i] = 0;
-    for (kk = 2 -2; kk >= 0; kk--) {
+    for (kk = 8 -2; kk >= 0; kk--) {
      data_shift1[kk + 1][i] = data_shift1[kk][i];
      data_shift2[kk + 1][i] = data_shift2[kk][i];
      sum_overP1[i] += data_shift1[kk+1][i];
@@ -58223,11 +58223,11 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
     l3_data.data = ((uint64_t) sum_pix2[i]<< 32) | sum_pix1[i];
     l3_data.keep = 255;
     l3_data.strb = 255;
-    l3_data.last = (i == n_pixels_in_bus/2 - 1)? 1:0;
+#pragma empty_line
     out_stream << l3_data;
 #pragma empty_line
-    sum_pixP1 = 2*(sum_pix1[i]/3);
-    sum_pixP2 = 2*(sum_pix2[i]/3);
+    sum_pixP1 = 8*(sum_pix1[i]/3);
+    sum_pixP2 = 8*(sum_pix2[i]/3);
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line

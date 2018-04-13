@@ -1,21 +1,21 @@
 set C_TypeInfoList {{ 
 "l2_trigger" : [[], { "return": [[], "void"]} , [{"ExternC" : 0}], [ {"in_stream": [[], {"reference": "0"}] }, {"out_stream": [[], {"reference": "1"}] }, {"n_pixels_in_bus": [[],"2"] }, {"trig_data": [[],{ "pointer":  {"scalar": "unsigned int"}}] }],[],""], 
-"2": [ "uint16_t", {"typedef": [[[], {"scalar": "unsigned short"}],""]}], 
-"0": [ "STREAM_32", {"typedef": [[[],"3"],""]}], 
-"1": [ "STREAM_64", {"typedef": [[[],"4"],""]}], 
-"4": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"5"]],"6"]}}], 
-"3": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"7"]],"6"]}}], 
+"1": [ "STREAM_64", {"typedef": [[[],"3"],""]}], 
+"3": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"4"]],"5"]}}], 
+"0": [ "STREAM_32", {"typedef": [[[],"6"],""]}], 
+"6": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"7"]],"5"]}}], 
 "7": [ "ap_axis<32, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 32}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "8"]},{ "keep": [[], "9"]},{ "strb": [[], "9"]},{ "user": [[], "10"]},{ "last": [[], "11"]},{ "id": [[], "12"]},{ "dest": [[], "13"]}],""]}], 
 "8": [ "ap_int<32>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 32}}]],""]}}], 
-"5": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "14"]},{ "keep": [[], "15"]},{ "strb": [[], "15"]},{ "user": [[], "10"]},{ "last": [[], "11"]},{ "id": [[], "12"]},{ "dest": [[], "13"]}],""]}], 
-"14": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}], 
+"2": [ "uint16_t", {"typedef": [[[], {"scalar": "unsigned short"}],""]}], 
 "12": [ "ap_uint<5>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 5}}]],""]}}], 
-"10": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}], 
-"15": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}], 
-"9": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
+"4": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "14"]},{ "keep": [[], "15"]},{ "strb": [[], "15"]},{ "user": [[], "10"]},{ "last": [[], "11"]},{ "id": [[], "12"]},{ "dest": [[], "13"]}],""]}], 
 "11": [ "ap_uint<1>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 1}}]],""]}}], 
-"13": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}],
-"6": ["hls", ""]
+"9": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
+"13": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}], 
+"10": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}], 
+"14": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}], 
+"15": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}],
+"5": ["hls", ""]
 }}
 set moduleName l2_trigger
 set isCombinational 0
