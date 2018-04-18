@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="l2_trigger,hls_ip_2016_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z030ffg676-2,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=58,HLS_SYN_DSP=4,HLS_SYN_FF=746,HLS_SYN_LUT=1141}" *)
+(* CORE_GENERATION_INFO="l2_trigger,hls_ip_2016_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z030ffg676-2,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=58,HLS_SYN_DSP=4,HLS_SYN_FF=744,HLS_SYN_LUT=1173}" *)
 
 module l2_trigger (
         ap_clk,
@@ -54,31 +54,29 @@ module l2_trigger (
         interrupt
 );
 
-parameter    ap_ST_st1_fsm_0 = 22'b1;
-parameter    ap_ST_st2_fsm_1 = 22'b10;
-parameter    ap_ST_st3_fsm_2 = 22'b100;
-parameter    ap_ST_st4_fsm_3 = 22'b1000;
-parameter    ap_ST_st5_fsm_4 = 22'b10000;
-parameter    ap_ST_st6_fsm_5 = 22'b100000;
-parameter    ap_ST_st7_fsm_6 = 22'b1000000;
-parameter    ap_ST_st8_fsm_7 = 22'b10000000;
-parameter    ap_ST_st9_fsm_8 = 22'b100000000;
-parameter    ap_ST_st10_fsm_9 = 22'b1000000000;
-parameter    ap_ST_st11_fsm_10 = 22'b10000000000;
-parameter    ap_ST_st12_fsm_11 = 22'b100000000000;
-parameter    ap_ST_st13_fsm_12 = 22'b1000000000000;
-parameter    ap_ST_st14_fsm_13 = 22'b10000000000000;
-parameter    ap_ST_st15_fsm_14 = 22'b100000000000000;
-parameter    ap_ST_st16_fsm_15 = 22'b1000000000000000;
-parameter    ap_ST_st17_fsm_16 = 22'b10000000000000000;
-parameter    ap_ST_st18_fsm_17 = 22'b100000000000000000;
-parameter    ap_ST_st19_fsm_18 = 22'b1000000000000000000;
-parameter    ap_ST_st20_fsm_19 = 22'b10000000000000000000;
-parameter    ap_ST_st21_fsm_20 = 22'b100000000000000000000;
-parameter    ap_ST_st22_fsm_21 = 22'b1000000000000000000000;
+parameter    ap_ST_st1_fsm_0 = 20'b1;
+parameter    ap_ST_st2_fsm_1 = 20'b10;
+parameter    ap_ST_st3_fsm_2 = 20'b100;
+parameter    ap_ST_st4_fsm_3 = 20'b1000;
+parameter    ap_ST_st5_fsm_4 = 20'b10000;
+parameter    ap_ST_st6_fsm_5 = 20'b100000;
+parameter    ap_ST_st7_fsm_6 = 20'b1000000;
+parameter    ap_ST_st8_fsm_7 = 20'b10000000;
+parameter    ap_ST_st9_fsm_8 = 20'b100000000;
+parameter    ap_ST_st10_fsm_9 = 20'b1000000000;
+parameter    ap_ST_st11_fsm_10 = 20'b10000000000;
+parameter    ap_ST_st12_fsm_11 = 20'b100000000000;
+parameter    ap_ST_st13_fsm_12 = 20'b1000000000000;
+parameter    ap_ST_st14_fsm_13 = 20'b10000000000000;
+parameter    ap_ST_st15_fsm_14 = 20'b100000000000000;
+parameter    ap_ST_st16_fsm_15 = 20'b1000000000000000;
+parameter    ap_ST_st17_fsm_16 = 20'b10000000000000000;
+parameter    ap_ST_st18_fsm_17 = 20'b100000000000000000;
+parameter    ap_ST_st19_fsm_18 = 20'b1000000000000000000;
+parameter    ap_ST_st20_fsm_19 = 20'b10000000000000000000;
 parameter    ap_const_lv32_0 = 32'b00000000000000000000000000000000;
 parameter    ap_const_lv32_8 = 32'b1000;
-parameter    ap_const_lv32_12 = 32'b10010;
+parameter    ap_const_lv32_10 = 32'b10000;
 parameter    C_S_AXI_CTRL_BUS_DATA_WIDTH = 32;
 parameter    ap_const_int64_8 = 8;
 parameter    C_S_AXI_CTRL_BUS_ADDR_WIDTH = 6;
@@ -92,20 +90,18 @@ parameter    ap_const_lv32_7 = 32'b111;
 parameter    ap_const_lv32_9 = 32'b1001;
 parameter    ap_const_lv32_A = 32'b1010;
 parameter    ap_const_lv32_B = 32'b1011;
+parameter    ap_const_lv32_F = 32'b1111;
 parameter    ap_const_lv32_11 = 32'b10001;
-parameter    ap_const_lv32_13 = 32'b10011;
-parameter    ap_const_lv32_14 = 32'b10100;
+parameter    ap_const_lv32_12 = 32'b10010;
 parameter    ap_const_lv15_0 = 15'b000000000000000;
 parameter    ap_const_lv4_0 = 4'b0000;
 parameter    ap_const_lv32_4 = 32'b100;
 parameter    ap_const_lv8_0 = 8'b00000000;
-parameter    ap_const_lv32_E = 32'b1110;
-parameter    ap_const_lv32_C = 32'b1100;
-parameter    ap_const_lv32_10 = 32'b10000;
-parameter    ap_const_lv4_6 = 4'b110;
-parameter    ap_const_lv32_15 = 32'b10101;
 parameter    ap_const_lv32_D = 32'b1101;
-parameter    ap_const_lv32_F = 32'b1111;
+parameter    ap_const_lv32_C = 32'b1100;
+parameter    ap_const_lv32_E = 32'b1110;
+parameter    ap_const_lv4_6 = 4'b110;
+parameter    ap_const_lv32_13 = 32'b10011;
 parameter    ap_const_lv8_FF = 8'b11111111;
 parameter    ap_const_lv2_0 = 2'b00;
 parameter    ap_const_lv5_0 = 5'b00000;
@@ -174,53 +170,54 @@ reg in_stream_TREADY;
 reg out_stream_TVALID;
 reg[31:0] trig_data;
 reg trig_data_ap_vld;
+reg[31:0] trig_pixel;
 reg trig_pixel_ap_vld;
 
 reg    ap_rst_n_inv;
 wire    ap_start;
 reg    ap_done;
 reg    ap_idle;
-(* fsm_encoding = "none" *) reg   [21:0] ap_CS_fsm;
+(* fsm_encoding = "none" *) reg   [19:0] ap_CS_fsm;
 reg    ap_sig_cseq_ST_st1_fsm_0;
-reg    ap_sig_39;
+reg    ap_sig_37;
 reg    ap_ready;
 wire   [15:0] n_pixels_in_bus;
 wire   [7:0] N_BG;
 wire   [31:0] LOW_THRESH;
 reg    in_stream_TDATA_blk_n;
 reg    ap_sig_cseq_ST_st9_fsm_8;
-reg    ap_sig_77;
+reg    ap_sig_75;
 reg    out_stream_TDATA_blk_n;
-reg    ap_sig_cseq_ST_st19_fsm_18;
-reg    ap_sig_85;
+reg    ap_sig_cseq_ST_st17_fsm_16;
+reg    ap_sig_83;
 reg   [31:0] LOW_THRESH_read_reg_1104;
 wire   [31:0] tmp_1_fu_639_p1;
 reg   [31:0] tmp_1_reg_1112;
 reg   [14:0] tmp_2_reg_1118;
 wire   [14:0] i_5_fu_658_p2;
 reg    ap_sig_cseq_ST_st2_fsm_1;
-reg    ap_sig_139;
+reg    ap_sig_137;
 wire   [3:0] kk_2_fu_678_p2;
 reg   [3:0] kk_2_reg_1138;
 reg    ap_sig_cseq_ST_st3_fsm_2;
-reg    ap_sig_148;
+reg    ap_sig_146;
 wire   [14:0] tmp_3_fu_708_p2;
 reg   [14:0] tmp_3_reg_1143;
 wire   [0:0] exitcond1_fu_672_p2;
 wire   [14:0] i_6_fu_719_p2;
 reg    ap_sig_cseq_ST_st4_fsm_3;
-reg    ap_sig_163;
+reg    ap_sig_161;
 wire   [14:0] i_7_fu_741_p2;
 reg    ap_sig_cseq_ST_st6_fsm_5;
-reg    ap_sig_172;
+reg    ap_sig_170;
 wire   [7:0] tmp_5_fu_759_p2;
 reg   [7:0] tmp_5_reg_1170;
 reg    ap_sig_cseq_ST_st7_fsm_6;
-reg    ap_sig_181;
+reg    ap_sig_179;
 wire   [14:0] i_9_fu_770_p2;
 reg   [14:0] i_9_reg_1178;
 reg    ap_sig_cseq_ST_st8_fsm_7;
-reg    ap_sig_190;
+reg    ap_sig_188;
 wire   [63:0] tmp_15_fu_776_p1;
 reg   [63:0] tmp_15_reg_1186;
 wire   [0:0] exitcond7_fu_765_p2;
@@ -239,22 +236,22 @@ reg  signed [31:0] tmp_19_reg_1231;
 reg   [10:0] sum_overP1_addr_reg_1236;
 reg   [10:0] sum_overP2_addr_reg_1241;
 reg    ap_sig_cseq_ST_st10_fsm_9;
-reg    ap_sig_227;
+reg    ap_sig_225;
 wire   [0:0] tmp_22_fu_822_p3;
 wire   [3:0] kk_3_fu_950_p2;
 reg    ap_sig_cseq_ST_st11_fsm_10;
-reg    ap_sig_245;
+reg    ap_sig_243;
 wire   [31:0] tmp_24_fu_962_p2;
 reg   [31:0] tmp_24_reg_1269;
 reg    ap_sig_cseq_ST_st12_fsm_11;
-reg    ap_sig_254;
+reg    ap_sig_252;
 wire   [0:0] tmp_25_fu_968_p2;
 wire   [0:0] grp_fu_633_p2;
 reg   [0:0] tmp_36_reg_1282;
 wire   [14:0] i_8_fu_1021_p2;
 reg   [14:0] i_8_reg_1296;
-reg    ap_sig_cseq_ST_st18_fsm_17;
-reg    ap_sig_270;
+reg    ap_sig_cseq_ST_st16_fsm_15;
+reg    ap_sig_268;
 wire   [0:0] exitcond6_fu_1016_p2;
 reg   [10:0] thresh1_addr_1_reg_1311;
 reg   [10:0] thresh2_addr_1_reg_1316;
@@ -263,14 +260,14 @@ reg    ap_sig_ioackin_out_stream_TREADY;
 reg   [24:0] tmp_11_reg_1326;
 wire   [31:0] tmp_12_fu_1086_p2;
 reg   [31:0] tmp_12_reg_1331;
-reg    ap_sig_cseq_ST_st20_fsm_19;
-reg    ap_sig_298;
+reg    ap_sig_cseq_ST_st18_fsm_17;
+reg    ap_sig_296;
 wire   [31:0] tmp_13_fu_1091_p2;
 reg   [31:0] tmp_13_reg_1337;
 wire   [0:0] tmp_14_fu_1096_p2;
 reg   [0:0] tmp_14_reg_1343;
-reg    ap_sig_cseq_ST_st21_fsm_20;
-reg    ap_sig_309;
+reg    ap_sig_cseq_ST_st19_fsm_18;
+reg    ap_sig_307;
 reg   [10:0] sum_overP1_address0;
 reg    sum_overP1_ce0;
 reg    sum_overP1_we0;
@@ -319,35 +316,31 @@ reg   [14:0] i_1_reg_524;
 reg   [14:0] i_2_reg_535;
 wire   [0:0] exitcond8_fu_736_p2;
 reg    ap_sig_cseq_ST_st5_fsm_4;
-reg    ap_sig_413;
+reg    ap_sig_411;
 wire   [0:0] tmp_nbreadreq_fu_226_p9;
 reg   [7:0] k_reg_546;
 reg   [31:0] itrig_reg_557;
 reg   [14:0] i_3_reg_569;
 wire   [0:0] exitcond_fu_753_p2;
-reg    ap_sig_cseq_ST_st15_fsm_14;
-reg    ap_sig_439;
+reg    ap_sig_cseq_ST_st14_fsm_13;
+reg    ap_sig_437;
 reg    ap_sig_cseq_ST_st13_fsm_12;
-reg    ap_sig_446;
+reg    ap_sig_444;
 wire   [0:0] or_cond_fu_979_p2;
-reg    ap_sig_cseq_ST_st17_fsm_16;
-reg    ap_sig_457;
+reg    ap_sig_cseq_ST_st15_fsm_14;
+reg    ap_sig_455;
 reg   [31:0] itrig_1_reg_587;
 reg   [3:0] kk_1_reg_610;
 reg   [14:0] i_4_reg_622;
-reg    ap_sig_cseq_ST_st22_fsm_21;
-reg    ap_sig_478;
+reg    ap_sig_cseq_ST_st20_fsm_19;
+reg    ap_sig_476;
 wire   [63:0] tmp_4_fu_664_p1;
 wire   [63:0] tmp_18_cast_fu_730_p1;
 wire   [63:0] tmp_7_fu_747_p1;
 wire   [63:0] tmp_45_cast_fu_866_p1;
 wire   [63:0] tmp_49_cast_fu_926_p1;
 wire   [63:0] tmp_9_fu_1027_p1;
-reg    ap_sig_cseq_ST_st14_fsm_13;
-reg    ap_sig_511;
 wire   [31:0] tmp_40_cast_fu_998_p1;
-reg    ap_sig_cseq_ST_st16_fsm_15;
-reg    ap_sig_520;
 wire   [31:0] tmp_38_cast_fu_1011_p1;
 reg    ap_reg_ioackin_out_stream_TREADY;
 wire   [31:0] tmp_18_fu_804_p2;
@@ -388,13 +381,13 @@ wire   [27:0] tmp_12_fu_1086_p0;
 wire   [7:0] tmp_12_fu_1086_p1;
 wire   [27:0] tmp_13_fu_1091_p0;
 wire   [7:0] tmp_13_fu_1091_p1;
-reg   [21:0] ap_NS_fsm;
+reg   [19:0] ap_NS_fsm;
 wire   [31:0] tmp_12_fu_1086_p00;
 wire   [31:0] tmp_13_fu_1091_p00;
 
 // power-on initialization
 initial begin
-#0 ap_CS_fsm = 22'b1;
+#0 ap_CS_fsm = 20'b1;
 #0 ap_reg_ioackin_out_stream_TREADY = 1'b0;
 end
 
@@ -556,9 +549,9 @@ always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
         ap_reg_ioackin_out_stream_TREADY <= 1'b0;
     end else begin
-        if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) & ~(1'b0 == ap_sig_ioackin_out_stream_TREADY))) begin
+        if (((1'b1 == ap_sig_cseq_ST_st17_fsm_16) & ~(1'b0 == ap_sig_ioackin_out_stream_TREADY))) begin
             ap_reg_ioackin_out_stream_TREADY <= 1'b0;
-        end else if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) & (1'b1 == out_stream_TREADY))) begin
+        end else if (((1'b1 == ap_sig_cseq_ST_st17_fsm_16) & (1'b1 == out_stream_TREADY))) begin
             ap_reg_ioackin_out_stream_TREADY <= 1'b1;
         end
     end
@@ -581,7 +574,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_sig_cseq_ST_st15_fsm_14) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & (1'b0 == or_cond_fu_979_p2)) | (1'b1 == ap_sig_cseq_ST_st17_fsm_16) | ((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & (1'b0 == grp_fu_633_p2) & ~(1'b0 == tmp_25_fu_968_p2)))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st14_fsm_13) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & (1'b0 == or_cond_fu_979_p2)) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14) | ((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & (1'b0 == grp_fu_633_p2) & ~(1'b0 == tmp_25_fu_968_p2)))) begin
         i_3_reg_569 <= i_9_reg_1178;
     end else if (((1'b1 == ap_sig_cseq_ST_st7_fsm_6) & (1'b0 == exitcond_fu_753_p2))) begin
         i_3_reg_569 <= ap_const_lv15_0;
@@ -591,7 +584,7 @@ end
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_sig_cseq_ST_st7_fsm_6) & ~(1'b0 == exitcond_fu_753_p2))) begin
         i_4_reg_622 <= ap_const_lv15_0;
-    end else if ((1'b1 == ap_sig_cseq_ST_st22_fsm_21)) begin
+    end else if ((1'b1 == ap_sig_cseq_ST_st20_fsm_19)) begin
         i_4_reg_622 <= i_8_reg_1296;
     end
 end
@@ -607,7 +600,7 @@ end
 always @ (posedge ap_clk) begin
     if ((((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & (1'b0 == or_cond_fu_979_p2)) | ((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & (1'b0 == grp_fu_633_p2) & ~(1'b0 == tmp_25_fu_968_p2)))) begin
         itrig_1_reg_587 <= itrig_1_reg_587;
-    end else if (((1'b1 == ap_sig_cseq_ST_st15_fsm_14) | (1'b1 == ap_sig_cseq_ST_st17_fsm_16))) begin
+    end else if (((1'b1 == ap_sig_cseq_ST_st14_fsm_13) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14))) begin
         itrig_1_reg_587 <= ap_const_lv32_1;
     end else if (((1'b1 == ap_sig_cseq_ST_st7_fsm_6) & (1'b0 == exitcond_fu_753_p2))) begin
         itrig_1_reg_587 <= itrig_reg_557;
@@ -668,7 +661,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_sig_cseq_ST_st18_fsm_17)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st16_fsm_15)) begin
         i_8_reg_1296 <= i_8_fu_1021_p2;
     end
 end
@@ -694,28 +687,28 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_sig_cseq_ST_st18_fsm_17) & (1'b0 == exitcond6_fu_1016_p2))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st16_fsm_15) & (1'b0 == exitcond6_fu_1016_p2))) begin
         thresh1_addr_1_reg_1311 <= tmp_9_fu_1027_p1;
         thresh2_addr_1_reg_1316 <= tmp_9_fu_1027_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) & ~(1'b0 == ap_sig_ioackin_out_stream_TREADY))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st17_fsm_16) & ~(1'b0 == ap_sig_ioackin_out_stream_TREADY))) begin
         tmp_10_reg_1321 <= {{sum_pix1_q0[ap_const_lv32_1F : ap_const_lv32_7]}};
         tmp_11_reg_1326 <= {{sum_pix2_q0[ap_const_lv32_1F : ap_const_lv32_7]}};
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_sig_cseq_ST_st20_fsm_19)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st18_fsm_17)) begin
         tmp_12_reg_1331 <= tmp_12_fu_1086_p2;
         tmp_13_reg_1337 <= tmp_13_fu_1091_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_sig_cseq_ST_st21_fsm_20)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st19_fsm_18)) begin
         tmp_14_reg_1343 <= tmp_14_fu_1096_p2;
     end
 end
@@ -769,7 +762,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_227) begin
+    if (ap_sig_225) begin
         ap_sig_cseq_ST_st10_fsm_9 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st10_fsm_9 = 1'b0;
@@ -777,7 +770,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_245) begin
+    if (ap_sig_243) begin
         ap_sig_cseq_ST_st11_fsm_10 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st11_fsm_10 = 1'b0;
@@ -785,7 +778,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_254) begin
+    if (ap_sig_252) begin
         ap_sig_cseq_ST_st12_fsm_11 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st12_fsm_11 = 1'b0;
@@ -793,7 +786,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_446) begin
+    if (ap_sig_444) begin
         ap_sig_cseq_ST_st13_fsm_12 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st13_fsm_12 = 1'b0;
@@ -801,7 +794,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_511) begin
+    if (ap_sig_437) begin
         ap_sig_cseq_ST_st14_fsm_13 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st14_fsm_13 = 1'b0;
@@ -809,7 +802,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_439) begin
+    if (ap_sig_455) begin
         ap_sig_cseq_ST_st15_fsm_14 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st15_fsm_14 = 1'b0;
@@ -817,7 +810,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_520) begin
+    if (ap_sig_268) begin
         ap_sig_cseq_ST_st16_fsm_15 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st16_fsm_15 = 1'b0;
@@ -825,7 +818,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_457) begin
+    if (ap_sig_83) begin
         ap_sig_cseq_ST_st17_fsm_16 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st17_fsm_16 = 1'b0;
@@ -833,7 +826,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_270) begin
+    if (ap_sig_296) begin
         ap_sig_cseq_ST_st18_fsm_17 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st18_fsm_17 = 1'b0;
@@ -841,7 +834,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_85) begin
+    if (ap_sig_307) begin
         ap_sig_cseq_ST_st19_fsm_18 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st19_fsm_18 = 1'b0;
@@ -849,7 +842,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_39) begin
+    if (ap_sig_37) begin
         ap_sig_cseq_ST_st1_fsm_0 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st1_fsm_0 = 1'b0;
@@ -857,7 +850,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_298) begin
+    if (ap_sig_476) begin
         ap_sig_cseq_ST_st20_fsm_19 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st20_fsm_19 = 1'b0;
@@ -865,23 +858,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_309) begin
-        ap_sig_cseq_ST_st21_fsm_20 = 1'b1;
-    end else begin
-        ap_sig_cseq_ST_st21_fsm_20 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if (ap_sig_478) begin
-        ap_sig_cseq_ST_st22_fsm_21 = 1'b1;
-    end else begin
-        ap_sig_cseq_ST_st22_fsm_21 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if (ap_sig_139) begin
+    if (ap_sig_137) begin
         ap_sig_cseq_ST_st2_fsm_1 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st2_fsm_1 = 1'b0;
@@ -889,7 +866,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_148) begin
+    if (ap_sig_146) begin
         ap_sig_cseq_ST_st3_fsm_2 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st3_fsm_2 = 1'b0;
@@ -897,7 +874,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_163) begin
+    if (ap_sig_161) begin
         ap_sig_cseq_ST_st4_fsm_3 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st4_fsm_3 = 1'b0;
@@ -905,7 +882,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_413) begin
+    if (ap_sig_411) begin
         ap_sig_cseq_ST_st5_fsm_4 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st5_fsm_4 = 1'b0;
@@ -913,7 +890,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_172) begin
+    if (ap_sig_170) begin
         ap_sig_cseq_ST_st6_fsm_5 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st6_fsm_5 = 1'b0;
@@ -921,7 +898,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_181) begin
+    if (ap_sig_179) begin
         ap_sig_cseq_ST_st7_fsm_6 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st7_fsm_6 = 1'b0;
@@ -929,7 +906,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_190) begin
+    if (ap_sig_188) begin
         ap_sig_cseq_ST_st8_fsm_7 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st8_fsm_7 = 1'b0;
@@ -937,7 +914,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (ap_sig_77) begin
+    if (ap_sig_75) begin
         ap_sig_cseq_ST_st9_fsm_8 = 1'b1;
     end else begin
         ap_sig_cseq_ST_st9_fsm_8 = 1'b0;
@@ -1053,7 +1030,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_sig_cseq_ST_st19_fsm_18)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st17_fsm_16)) begin
         out_stream_TDATA_blk_n = out_stream_TREADY;
     end else begin
         out_stream_TDATA_blk_n = 1'b1;
@@ -1061,7 +1038,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) & (1'b0 == ap_reg_ioackin_out_stream_TREADY))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st17_fsm_16) & (1'b0 == ap_reg_ioackin_out_stream_TREADY))) begin
         out_stream_TVALID = 1'b1;
     end else begin
         out_stream_TVALID = 1'b0;
@@ -1151,7 +1128,7 @@ always @ (*) begin
         sum_pix1_address0 = tmp_7_fu_747_p1;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         sum_pix1_address0 = tmp_4_fu_664_p1;
-    end else if ((1'b1 == ap_sig_cseq_ST_st18_fsm_17)) begin
+    end else if ((1'b1 == ap_sig_cseq_ST_st16_fsm_15)) begin
         sum_pix1_address0 = tmp_9_fu_1027_p1;
     end else if ((1'b1 == ap_sig_cseq_ST_st8_fsm_7)) begin
         sum_pix1_address0 = tmp_15_fu_776_p1;
@@ -1161,7 +1138,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st6_fsm_5) | (1'b1 == ap_sig_cseq_ST_st8_fsm_7) | ((1'b1 == ap_sig_cseq_ST_st9_fsm_8) & ~(in_stream_TVALID == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st18_fsm_17))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st6_fsm_5) | (1'b1 == ap_sig_cseq_ST_st8_fsm_7) | ((1'b1 == ap_sig_cseq_ST_st9_fsm_8) & ~(in_stream_TVALID == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st16_fsm_15))) begin
         sum_pix1_ce0 = 1'b1;
     end else begin
         sum_pix1_ce0 = 1'b0;
@@ -1193,7 +1170,7 @@ always @ (*) begin
         sum_pix2_address0 = tmp_7_fu_747_p1;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         sum_pix2_address0 = tmp_4_fu_664_p1;
-    end else if ((1'b1 == ap_sig_cseq_ST_st18_fsm_17)) begin
+    end else if ((1'b1 == ap_sig_cseq_ST_st16_fsm_15)) begin
         sum_pix2_address0 = tmp_9_fu_1027_p1;
     end else if ((1'b1 == ap_sig_cseq_ST_st8_fsm_7)) begin
         sum_pix2_address0 = tmp_15_fu_776_p1;
@@ -1203,7 +1180,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st6_fsm_5) | (1'b1 == ap_sig_cseq_ST_st8_fsm_7) | ((1'b1 == ap_sig_cseq_ST_st9_fsm_8) & ~(in_stream_TVALID == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st18_fsm_17))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st6_fsm_5) | (1'b1 == ap_sig_cseq_ST_st8_fsm_7) | ((1'b1 == ap_sig_cseq_ST_st9_fsm_8) & ~(in_stream_TVALID == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st16_fsm_15))) begin
         sum_pix2_ce0 = 1'b1;
     end else begin
         sum_pix2_ce0 = 1'b0;
@@ -1229,7 +1206,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st21_fsm_20) | (1'b1 == ap_sig_cseq_ST_st22_fsm_21))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) | (1'b1 == ap_sig_cseq_ST_st20_fsm_19))) begin
         thresh1_address0 = thresh1_addr_1_reg_1311;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         thresh1_address0 = tmp_4_fu_664_p1;
@@ -1241,7 +1218,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st10_fsm_9) | (1'b1 == ap_sig_cseq_ST_st21_fsm_20) | (1'b1 == ap_sig_cseq_ST_st22_fsm_21))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st10_fsm_9) | (1'b1 == ap_sig_cseq_ST_st19_fsm_18) | (1'b1 == ap_sig_cseq_ST_st20_fsm_19))) begin
         thresh1_ce0 = 1'b1;
     end else begin
         thresh1_ce0 = 1'b0;
@@ -1249,9 +1226,9 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_sig_cseq_ST_st22_fsm_21)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st20_fsm_19)) begin
         thresh1_d0 = LOW_THRESH_read_reg_1104;
-    end else if ((1'b1 == ap_sig_cseq_ST_st21_fsm_20)) begin
+    end else if ((1'b1 == ap_sig_cseq_ST_st19_fsm_18)) begin
         thresh1_d0 = tmp_12_reg_1331;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         thresh1_d0 = ap_const_lv32_639C;
@@ -1261,7 +1238,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st21_fsm_20) | ((1'b1 == ap_sig_cseq_ST_st2_fsm_1) & (1'b0 == exitcond2_fu_653_p2)) | ((1'b1 == ap_sig_cseq_ST_st22_fsm_21) & ~(1'b0 == tmp_14_reg_1343)))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) | ((1'b1 == ap_sig_cseq_ST_st2_fsm_1) & (1'b0 == exitcond2_fu_653_p2)) | ((1'b1 == ap_sig_cseq_ST_st20_fsm_19) & ~(1'b0 == tmp_14_reg_1343)))) begin
         thresh1_we0 = 1'b1;
     end else begin
         thresh1_we0 = 1'b0;
@@ -1269,7 +1246,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st21_fsm_20) | (1'b1 == ap_sig_cseq_ST_st22_fsm_21))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) | (1'b1 == ap_sig_cseq_ST_st20_fsm_19))) begin
         thresh2_address0 = thresh2_addr_1_reg_1316;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         thresh2_address0 = tmp_4_fu_664_p1;
@@ -1281,7 +1258,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st12_fsm_11) | (1'b1 == ap_sig_cseq_ST_st21_fsm_20) | (1'b1 == ap_sig_cseq_ST_st22_fsm_21))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st2_fsm_1) | (1'b1 == ap_sig_cseq_ST_st12_fsm_11) | (1'b1 == ap_sig_cseq_ST_st19_fsm_18) | (1'b1 == ap_sig_cseq_ST_st20_fsm_19))) begin
         thresh2_ce0 = 1'b1;
     end else begin
         thresh2_ce0 = 1'b0;
@@ -1289,9 +1266,9 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_sig_cseq_ST_st22_fsm_21)) begin
+    if ((1'b1 == ap_sig_cseq_ST_st20_fsm_19)) begin
         thresh2_d0 = LOW_THRESH_read_reg_1104;
-    end else if ((1'b1 == ap_sig_cseq_ST_st21_fsm_20)) begin
+    end else if ((1'b1 == ap_sig_cseq_ST_st19_fsm_18)) begin
         thresh2_d0 = tmp_13_reg_1337;
     end else if ((1'b1 == ap_sig_cseq_ST_st2_fsm_1)) begin
         thresh2_d0 = ap_const_lv32_639C;
@@ -1301,7 +1278,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st21_fsm_20) | ((1'b1 == ap_sig_cseq_ST_st2_fsm_1) & (1'b0 == exitcond2_fu_653_p2)) | ((1'b1 == ap_sig_cseq_ST_st22_fsm_21) & ~(1'b0 == tmp_21_fu_1100_p2)))) begin
+    if (((1'b1 == ap_sig_cseq_ST_st19_fsm_18) | ((1'b1 == ap_sig_cseq_ST_st2_fsm_1) & (1'b0 == exitcond2_fu_653_p2)) | ((1'b1 == ap_sig_cseq_ST_st20_fsm_19) & ~(1'b0 == tmp_21_fu_1100_p2)))) begin
         thresh2_we0 = 1'b1;
     end else begin
         thresh2_we0 = 1'b0;
@@ -1309,13 +1286,9 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_sig_cseq_ST_st17_fsm_16)) begin
-        trig_data = tmp_38_cast_fu_1011_p1;
-    end else if ((1'b1 == ap_sig_cseq_ST_st15_fsm_14)) begin
-        trig_data = tmp_40_cast_fu_998_p1;
-    end else if ((((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & ~(1'b0 == tmp_25_fu_968_p2) & ~(1'b0 == grp_fu_633_p2)) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2)))) begin
+    if ((((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & ~(1'b0 == tmp_25_fu_968_p2) & ~(1'b0 == grp_fu_633_p2)) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2)))) begin
         trig_data = ap_const_lv32_1;
-    end else if ((((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st14_fsm_13) | (1'b1 == ap_sig_cseq_ST_st16_fsm_15))) begin
+    end else if ((((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st14_fsm_13) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14))) begin
         trig_data = ap_const_lv32_0;
     end else begin
         trig_data = 'bx;
@@ -1323,7 +1296,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14) | (1'b1 == ap_sig_cseq_ST_st17_fsm_16) | ((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & ~(1'b0 == tmp_25_fu_968_p2) & ~(1'b0 == grp_fu_633_p2)) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2)) | (1'b1 == ap_sig_cseq_ST_st14_fsm_13) | (1'b1 == ap_sig_cseq_ST_st16_fsm_15))) begin
+    if ((((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st14_fsm_13) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14) | ((1'b1 == ap_sig_cseq_ST_st12_fsm_11) & ~(1'b0 == tmp_25_fu_968_p2) & ~(1'b0 == grp_fu_633_p2)) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2)))) begin
         trig_data_ap_vld = 1'b1;
     end else begin
         trig_data_ap_vld = 1'b0;
@@ -1331,7 +1304,19 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0))) begin
+    if ((1'b1 == ap_sig_cseq_ST_st15_fsm_14)) begin
+        trig_pixel = tmp_38_cast_fu_1011_p1;
+    end else if (((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2))) begin
+        trig_pixel = tmp_40_cast_fu_998_p1;
+    end else if (((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0))) begin
+        trig_pixel = ap_const_lv32_0;
+    end else begin
+        trig_pixel = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((((1'b1 == ap_sig_cseq_ST_st1_fsm_0) & ~(ap_start == 1'b0)) | (1'b1 == ap_sig_cseq_ST_st15_fsm_14) | ((1'b1 == ap_sig_cseq_ST_st13_fsm_12) & ~(1'b0 == or_cond_fu_979_p2)))) begin
         trig_pixel_ap_vld = 1'b1;
     end else begin
         trig_pixel_ap_vld = 1'b0;
@@ -1384,7 +1369,7 @@ always @ (*) begin
         end
         ap_ST_st7_fsm_6 : begin
             if (~(1'b0 == exitcond_fu_753_p2)) begin
-                ap_NS_fsm = ap_ST_st18_fsm_17;
+                ap_NS_fsm = ap_ST_st16_fsm_15;
             end else begin
                 ap_NS_fsm = ap_ST_st8_fsm_7;
             end
@@ -1415,7 +1400,7 @@ always @ (*) begin
         end
         ap_ST_st12_fsm_11 : begin
             if ((~(1'b0 == tmp_25_fu_968_p2) & ~(1'b0 == grp_fu_633_p2))) begin
-                ap_NS_fsm = ap_ST_st16_fsm_15;
+                ap_NS_fsm = ap_ST_st15_fsm_14;
             end else if (((1'b0 == grp_fu_633_p2) & ~(1'b0 == tmp_25_fu_968_p2))) begin
                 ap_NS_fsm = ap_ST_st8_fsm_7;
             end else begin
@@ -1430,39 +1415,33 @@ always @ (*) begin
             end
         end
         ap_ST_st14_fsm_13 : begin
-            ap_NS_fsm = ap_ST_st15_fsm_14;
+            ap_NS_fsm = ap_ST_st8_fsm_7;
         end
         ap_ST_st15_fsm_14 : begin
             ap_NS_fsm = ap_ST_st8_fsm_7;
         end
         ap_ST_st16_fsm_15 : begin
-            ap_NS_fsm = ap_ST_st17_fsm_16;
-        end
-        ap_ST_st17_fsm_16 : begin
-            ap_NS_fsm = ap_ST_st8_fsm_7;
-        end
-        ap_ST_st18_fsm_17 : begin
             if ((1'b0 == exitcond6_fu_1016_p2)) begin
-                ap_NS_fsm = ap_ST_st19_fsm_18;
+                ap_NS_fsm = ap_ST_st17_fsm_16;
             end else begin
                 ap_NS_fsm = ap_ST_st5_fsm_4;
             end
         end
-        ap_ST_st19_fsm_18 : begin
+        ap_ST_st17_fsm_16 : begin
             if (~(1'b0 == ap_sig_ioackin_out_stream_TREADY)) begin
-                ap_NS_fsm = ap_ST_st20_fsm_19;
+                ap_NS_fsm = ap_ST_st18_fsm_17;
             end else begin
-                ap_NS_fsm = ap_ST_st19_fsm_18;
+                ap_NS_fsm = ap_ST_st17_fsm_16;
             end
         end
+        ap_ST_st18_fsm_17 : begin
+            ap_NS_fsm = ap_ST_st19_fsm_18;
+        end
+        ap_ST_st19_fsm_18 : begin
+            ap_NS_fsm = ap_ST_st20_fsm_19;
+        end
         ap_ST_st20_fsm_19 : begin
-            ap_NS_fsm = ap_ST_st21_fsm_20;
-        end
-        ap_ST_st21_fsm_20 : begin
-            ap_NS_fsm = ap_ST_st22_fsm_21;
-        end
-        ap_ST_st22_fsm_21 : begin
-            ap_NS_fsm = ap_ST_st18_fsm_17;
+            ap_NS_fsm = ap_ST_st16_fsm_15;
         end
         default : begin
             ap_NS_fsm = 'bx;
@@ -1475,91 +1454,83 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_sig_139 = (1'b1 == ap_CS_fsm[ap_const_lv32_1]);
+    ap_sig_137 = (1'b1 == ap_CS_fsm[ap_const_lv32_1]);
 end
 
 always @ (*) begin
-    ap_sig_148 = (1'b1 == ap_CS_fsm[ap_const_lv32_2]);
+    ap_sig_146 = (1'b1 == ap_CS_fsm[ap_const_lv32_2]);
 end
 
 always @ (*) begin
-    ap_sig_163 = (1'b1 == ap_CS_fsm[ap_const_lv32_3]);
+    ap_sig_161 = (1'b1 == ap_CS_fsm[ap_const_lv32_3]);
 end
 
 always @ (*) begin
-    ap_sig_172 = (1'b1 == ap_CS_fsm[ap_const_lv32_5]);
+    ap_sig_170 = (1'b1 == ap_CS_fsm[ap_const_lv32_5]);
 end
 
 always @ (*) begin
-    ap_sig_181 = (1'b1 == ap_CS_fsm[ap_const_lv32_6]);
+    ap_sig_179 = (1'b1 == ap_CS_fsm[ap_const_lv32_6]);
 end
 
 always @ (*) begin
-    ap_sig_190 = (1'b1 == ap_CS_fsm[ap_const_lv32_7]);
+    ap_sig_188 = (1'b1 == ap_CS_fsm[ap_const_lv32_7]);
 end
 
 always @ (*) begin
-    ap_sig_227 = (1'b1 == ap_CS_fsm[ap_const_lv32_9]);
+    ap_sig_225 = (1'b1 == ap_CS_fsm[ap_const_lv32_9]);
 end
 
 always @ (*) begin
-    ap_sig_245 = (1'b1 == ap_CS_fsm[ap_const_lv32_A]);
+    ap_sig_243 = (1'b1 == ap_CS_fsm[ap_const_lv32_A]);
 end
 
 always @ (*) begin
-    ap_sig_254 = (1'b1 == ap_CS_fsm[ap_const_lv32_B]);
+    ap_sig_252 = (1'b1 == ap_CS_fsm[ap_const_lv32_B]);
 end
 
 always @ (*) begin
-    ap_sig_270 = (1'b1 == ap_CS_fsm[ap_const_lv32_11]);
+    ap_sig_268 = (1'b1 == ap_CS_fsm[ap_const_lv32_F]);
 end
 
 always @ (*) begin
-    ap_sig_298 = (1'b1 == ap_CS_fsm[ap_const_lv32_13]);
+    ap_sig_296 = (1'b1 == ap_CS_fsm[ap_const_lv32_11]);
 end
 
 always @ (*) begin
-    ap_sig_309 = (1'b1 == ap_CS_fsm[ap_const_lv32_14]);
+    ap_sig_307 = (1'b1 == ap_CS_fsm[ap_const_lv32_12]);
 end
 
 always @ (*) begin
-    ap_sig_39 = (ap_CS_fsm[ap_const_lv32_0] == 1'b1);
+    ap_sig_37 = (ap_CS_fsm[ap_const_lv32_0] == 1'b1);
 end
 
 always @ (*) begin
-    ap_sig_413 = (1'b1 == ap_CS_fsm[ap_const_lv32_4]);
+    ap_sig_411 = (1'b1 == ap_CS_fsm[ap_const_lv32_4]);
 end
 
 always @ (*) begin
-    ap_sig_439 = (1'b1 == ap_CS_fsm[ap_const_lv32_E]);
+    ap_sig_437 = (1'b1 == ap_CS_fsm[ap_const_lv32_D]);
 end
 
 always @ (*) begin
-    ap_sig_446 = (1'b1 == ap_CS_fsm[ap_const_lv32_C]);
+    ap_sig_444 = (1'b1 == ap_CS_fsm[ap_const_lv32_C]);
 end
 
 always @ (*) begin
-    ap_sig_457 = (1'b1 == ap_CS_fsm[ap_const_lv32_10]);
+    ap_sig_455 = (1'b1 == ap_CS_fsm[ap_const_lv32_E]);
 end
 
 always @ (*) begin
-    ap_sig_478 = (1'b1 == ap_CS_fsm[ap_const_lv32_15]);
+    ap_sig_476 = (1'b1 == ap_CS_fsm[ap_const_lv32_13]);
 end
 
 always @ (*) begin
-    ap_sig_511 = (1'b1 == ap_CS_fsm[ap_const_lv32_D]);
+    ap_sig_75 = (1'b1 == ap_CS_fsm[ap_const_lv32_8]);
 end
 
 always @ (*) begin
-    ap_sig_520 = (1'b1 == ap_CS_fsm[ap_const_lv32_F]);
-end
-
-always @ (*) begin
-    ap_sig_77 = (1'b1 == ap_CS_fsm[ap_const_lv32_8]);
-end
-
-always @ (*) begin
-    ap_sig_85 = (1'b1 == ap_CS_fsm[ap_const_lv32_12]);
+    ap_sig_83 = (1'b1 == ap_CS_fsm[ap_const_lv32_10]);
 end
 
 assign exitcond1_fu_672_p2 = ((kk_reg_513 == ap_const_lv4_8) ? 1'b1 : 1'b0);
@@ -1733,8 +1704,6 @@ assign tmp_9_fu_1027_p1 = i_4_reg_622;
 assign tmp_nbreadreq_fu_226_p9 = in_stream_TVALID;
 
 assign tmp_s_fu_696_p3 = {{kk_reg_513}, {ap_const_lv7_0}};
-
-assign trig_pixel = ap_const_lv32_0;
 
 always @ (posedge ap_clk) begin
     tmp_1_reg_1112[31:8] <= 24'b000000000000000000000000;

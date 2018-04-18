@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'l2_trigger'" level="0">
-<item name = "Date">Fri Apr 13 19:40:42 2018
+<item name = "Date">Wed Apr 18 11:09:40 2018
 </item>
 <item name = "Version">2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)</item>
 <item name = "Project">l2_trigger</item>
@@ -36,10 +36,10 @@
 <column name="- Loop 1">0, 32767, 1, -, -, 0 ~ 32767, no</column>
 <column name="- Loop 2">16, 262152, 2 ~ 32769, -, -, 8, no</column>
 <column name=" + Loop 2.1">0, 32767, 1, -, -, 0 ~ 32767, no</column>
-<column name="- Loop 3">?, ?, 260 ~ 88274558, -, -, ?, no</column>
+<column name="- Loop 3">?, ?, 260 ~ 84080382, -, -, ?, no</column>
 <column name=" + Loop 3.1">0, 32767, 1, -, -, 0 ~ 32767, no</column>
-<column name=" + Loop 3.2">256, 88077952, 2 ~ 688109, -, -, 128, no</column>
-<column name="  ++ Loop 3.2.1">0, 688107, 18 ~ 21, -, -, 0 ~ 32767, no</column>
+<column name=" + Loop 3.2">256, 83883776, 2 ~ 655342, -, -, 128, no</column>
+<column name="  ++ Loop 3.2.1">0, 655340, 18 ~ 20, -, -, 0 ~ 32767, no</column>
 <column name="   +++ Loop 3.2.1.1">14, 14, 2, -, -, 7, no</column>
 <column name=" + Loop 3.3">0, 163835, 5, -, -, 0 ~ 32767, no</column>
 </table>
@@ -58,8 +58,8 @@
 <column name="FIFO">-, -, -, -</column>
 <column name="Instance">0, -, 110, 152</column>
 <column name="Memory">58, -, 0, 0</column>
-<column name="Multiplexer">-, -, -, 528</column>
-<column name="Register">-, -, 636, -</column>
+<column name="Multiplexer">-, -, -, 560</column>
+<column name="Register">-, -, 634, -</column>
 <specialColumn name="Available">530, 400, 157200, 78600</specialColumn>
 <specialColumn name="Utilization (%)">10, 1, ~0, 1</specialColumn>
 </table>
@@ -135,7 +135,7 @@
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="ap_NS_fsm">18, 23, 1, 23</column>
+<column name="ap_NS_fsm">18, 21, 1, 21</column>
 <column name="ap_sig_ioackin_out_stream_TREADY">1, 2, 1, 2</column>
 <column name="data_shift1_address0">14, 5, 14, 70</column>
 <column name="data_shift1_d0">17, 4, 17, 68</column>
@@ -165,13 +165,14 @@
 <column name="thresh1_d0">32, 4, 32, 128</column>
 <column name="thresh2_address0">11, 4, 11, 44</column>
 <column name="thresh2_d0">32, 4, 32, 128</column>
-<column name="trig_data">32, 5, 32, 160</column>
+<column name="trig_data">32, 3, 32, 96</column>
+<column name="trig_pixel">32, 4, 32, 128</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
 <column name="LOW_THRESH_read_reg_1104">32, 0, 32, 0</column>
-<column name="ap_CS_fsm">22, 0, 22, 0</column>
+<column name="ap_CS_fsm">20, 0, 20, 0</column>
 <column name="ap_reg_ioackin_out_stream_TREADY">1, 0, 1, 0</column>
 <column name="data_shift1_addr_1_reg_1206">14, 0, 14, 0</column>
 <column name="data_shift2_addr_1_reg_1211">14, 0, 14, 0</column>

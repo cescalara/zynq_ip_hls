@@ -52569,7 +52569,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
       *trig_data = 0x00000000;
 
       //store the triggered pixel
-      *trig_data = i*2;
+      *trig_pixel = i*2;
 
       //Block for 128 GTU
       itrig = 1;
@@ -52583,7 +52583,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
       *trig_data = 0x00000000;
 
       //store the triggered pixel
-      *trig_data = (i*2) + 1;
+      *trig_pixel = (i*2) + 1;
 
       //Block for 128 GTU
       itrig = 1;

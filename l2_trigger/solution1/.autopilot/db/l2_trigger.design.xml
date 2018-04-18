@@ -66,10 +66,10 @@
 <IterationLatency>
 <range>
 <min>260</min>
-<max>88274558</max>
+<max>84080382</max>
 </range>
 </IterationLatency>
-<PipelineDepth>260 ~ 88274558</PipelineDepth>
+<PipelineDepth>260 ~ 84080382</PipelineDepth>
 <Loop3.1>
 <Name>Loop 3.1</Name>
 <TripCount>
@@ -85,14 +85,14 @@
 <Loop3.2>
 <Name>Loop 3.2</Name>
 <TripCount>128</TripCount>
-<Latency>256 ~ 88077952</Latency>
+<Latency>256 ~ 83883776</Latency>
 <IterationLatency>
 <range>
 <min>2</min>
-<max>688109</max>
+<max>655342</max>
 </range>
 </IterationLatency>
-<PipelineDepth>2 ~ 688109</PipelineDepth>
+<PipelineDepth>2 ~ 655342</PipelineDepth>
 <Loop3.2.1>
 <Name>Loop 3.2.1</Name>
 <TripCount>
@@ -101,14 +101,14 @@
 <max>32767</max>
 </range>
 </TripCount>
-<Latency>0 ~ 688107</Latency>
+<Latency>0 ~ 655340</Latency>
 <IterationLatency>
 <range>
 <min>18</min>
-<max>21</max>
+<max>20</max>
 </range>
 </IterationLatency>
-<PipelineDepth>18 ~ 21</PipelineDepth>
+<PipelineDepth>18 ~ 20</PipelineDepth>
 <Loop3.2.1.1>
 <Name>Loop 3.2.1.1</Name>
 <TripCount>7</TripCount>
@@ -137,8 +137,8 @@
 <Resources>
 <BRAM_18K>58</BRAM_18K>
 <DSP48E>4</DSP48E>
-<FF>746</FF>
-<LUT>1141</LUT>
+<FF>744</FF>
+<LUT>1173</LUT>
 </Resources>
 </AreaEstimates>
 <InterfaceSummary>

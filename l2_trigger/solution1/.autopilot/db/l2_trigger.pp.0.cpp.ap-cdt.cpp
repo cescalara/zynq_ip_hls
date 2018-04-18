@@ -52569,7 +52569,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
       *trig_data = 0x00000000;
 #pragma empty_line
       //store the triggered pixel
-      *trig_data = i*2;
+      *trig_pixel = i*2;
 #pragma empty_line
       //Block for 128 GTU
       itrig = 1;
@@ -52583,7 +52583,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
       *trig_data = 0x00000000;
 #pragma empty_line
       //store the triggered pixel
-      *trig_data = (i*2) + 1;
+      *trig_pixel = (i*2) + 1;
 #pragma empty_line
       //Block for 128 GTU
       itrig = 1;
