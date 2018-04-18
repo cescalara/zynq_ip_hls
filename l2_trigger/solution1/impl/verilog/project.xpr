@@ -3,10 +3,10 @@
 <!--                                                         -->
 <!-- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="14" Path="/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/impl/vhdl/project.xpr">
+<Project Version="7" Minor="14" Path="/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/impl/verilog/project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="7f1686dcee8040ba8759c1c5df6a989a"/>
+    <Option Name="Id" Val="97a98067dc4a4769b094e79c26759521"/>
     <Option Name="Part" Val="xc7z030ffg676-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -16,7 +16,6 @@
     <Option Name="CompiledLibDirVCS" Val="$PCACHEDIR/compile_simlib/vcs"/>
     <Option Name="CompiledLibDirRiviera" Val="$PCACHEDIR/compile_simlib/riviera"/>
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
-    <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
@@ -43,27 +42,31 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/l2_trigger_CTRL_BUS_s_axi.vhd">
+      <File Path="$PPRDIR/l2_trigger.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/l2_trigger_sum_overP1.vhd">
+      <File Path="$PPRDIR/l2_trigger_CTRL_BUS_s_axi.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/l2_trigger_data_shift1.vhd">
+      <File Path="$PPRDIR/l2_trigger_data_shift1.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/l2_trigger.vhd">
+      <File Path="$PPRDIR/l2_trigger_sum_overP1.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>

@@ -16,6 +16,7 @@ set depth_list {
 {n_pixels_in_bus 1}
 {N_BG 1}
 {LOW_THRESH 1}
+{double_trig 1}
 {trig_data 1}
 {trig_pixel 1}
 }

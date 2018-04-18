@@ -58,6 +58,7 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVOUT_out_stream_V_last_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_last_V.dat";
        AUTOTB_TVOUT_out_stream_V_id_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_id_V.dat";
        AUTOTB_TVOUT_out_stream_V_dest_V : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_out_stream_V_dest_V.dat";
+       AUTOTB_TVOUT_double_trig : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_double_trig.dat";
        AUTOTB_TVOUT_trig_data : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_trig_data.dat";
        AUTOTB_TVOUT_trig_pixel : STRING := "../tv/cdatafile/c.l2_trigger.autotvout_trig_pixel.dat";
        AUTOTB_TVOUT_out_stream_V_data_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_data_V.dat";
@@ -67,6 +68,7 @@ entity apatb_l2_trigger_top is
        AUTOTB_TVOUT_out_stream_V_last_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_last_V.dat";
        AUTOTB_TVOUT_out_stream_V_id_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_id_V.dat";
        AUTOTB_TVOUT_out_stream_V_dest_V_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat";
+       AUTOTB_TVOUT_double_trig_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_double_trig.dat";
        AUTOTB_TVOUT_trig_data_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_trig_data.dat";
        AUTOTB_TVOUT_trig_pixel_out_wrapc : STRING := "../tv/rtldatafile/rtl.l2_trigger.autotvout_trig_pixel.dat";
       AUTOTB_LAT_RESULT_FILE    : STRING  := "l2_trigger.result.lat.rb";
@@ -88,6 +90,7 @@ entity apatb_l2_trigger_top is
       LENGTH_n_pixels_in_bus     : INTEGER := 1;
       LENGTH_N_BG     : INTEGER := 1;
       LENGTH_LOW_THRESH     : INTEGER := 1;
+      LENGTH_double_trig     : INTEGER := 1;
       LENGTH_trig_data     : INTEGER := 1;
       LENGTH_trig_pixel     : INTEGER := 1;
 	    AUTOTB_TRANSACTION_NUM    : INTEGER := 1
@@ -152,6 +155,8 @@ architecture behav of apatb_l2_trigger_top is
   signal out_stream_TLAST:  STD_LOGIC_VECTOR (0 DOWNTO 0);
   signal out_stream_TID:  STD_LOGIC_VECTOR (4 DOWNTO 0);
   signal out_stream_TDEST:  STD_LOGIC_VECTOR (5 DOWNTO 0);
+  signal double_trig :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal double_trig_ap_vld :  STD_LOGIC;
   signal trig_data :  STD_LOGIC_VECTOR (31 DOWNTO 0);
   signal trig_data_ap_vld :  STD_LOGIC;
   signal trig_pixel :  STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -199,6 +204,8 @@ port (
     out_stream_TLAST :  OUT STD_LOGIC_VECTOR (0 DOWNTO 0);
     out_stream_TID :  OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
     out_stream_TDEST :  OUT STD_LOGIC_VECTOR (5 DOWNTO 0);
+    double_trig :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+    double_trig_ap_vld :  OUT STD_LOGIC;
     trig_data :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
     trig_data_ap_vld :  OUT STD_LOGIC;
     trig_pixel :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -229,6 +236,9 @@ shared variable AESL_REG_n_pixels_in_bus : STD_LOGIC_VECTOR(15 downto 0) := (oth
 shared variable AESL_REG_N_BG : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 -- The signal of port LOW_THRESH
 shared variable AESL_REG_LOW_THRESH : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+shared variable AESL_REG_double_trig_ap_vld : STD_LOGIC := '0';
+-- The signal of port double_trig
+shared variable AESL_REG_double_trig : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 shared variable AESL_REG_trig_data_ap_vld : STD_LOGIC := '0';
 -- The signal of port trig_data
 shared variable AESL_REG_trig_data : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
@@ -711,6 +721,8 @@ AESL_inst_l2_trigger    :   l2_trigger port map (
    out_stream_TLAST  =>  out_stream_TLAST,
    out_stream_TID  =>  out_stream_TID,
    out_stream_TDEST  =>  out_stream_TDEST,
+   double_trig  =>  double_trig,
+   double_trig_ap_vld  =>  double_trig_ap_vld,
    trig_data  =>  trig_data,
    trig_data_ap_vld  =>  trig_data_ap_vld,
    trig_pixel  =>  trig_pixel,
@@ -779,6 +791,64 @@ begin
     end if;
   end if;
 end process;
+gen_out_double_trig_proc : process(AESL_clock)
+begin
+  if (AESL_clock'event and AESL_clock = '1') then
+    if(AESL_reset = '0') then
+        AESL_REG_double_trig := (others => '0'); 
+    elsif(double_trig_ap_vld = '1') then
+        AESL_REG_double_trig := double_trig;
+        AESL_REG_double_trig_ap_vld := '1';
+    end if;
+  end if;
+end process;
+
+write_file_process_double_trig : process
+    file      fp              :   TEXT;
+    file      fp_size         :   TEXT;
+    variable  fstatus         :   FILE_OPEN_STATUS;
+    variable  token_line      :   LINE;
+    variable  token           :   STRING(1 to 200);
+    variable  str             :   STRING(1 to 40);
+    variable  transaction_idx :   INTEGER;
+    variable  double_trig_count   :   INTEGER;
+    variable  hls_stream_size :   INTEGER;
+    variable  i               :   INTEGER;
+    variable  rand            :   T_RANDINT     := init_rand(0);
+    variable  rint            :   INTEGER;
+begin
+    wait until AESL_reset = '1';
+    file_open(fstatus, fp, AUTOTB_TVOUT_double_trig_out_wrapc, WRITE_MODE);
+    if(fstatus /= OPEN_OK) then
+        assert false report "Open file " & AUTOTB_TVOUT_double_trig_out_wrapc & " failed!!!" severity note;
+        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
+    end if;
+    write(token_line, string'("[[[runtime]]]"));
+    writeline(fp, token_line);
+    transaction_idx := 0;
+    while (transaction_idx /= AUTOTB_TRANSACTION_NUM) loop
+        wait until AESL_clock'event and AESL_clock = '1';
+	      while(AESL_done /= '1') loop
+            wait until AESL_clock'event and AESL_clock = '1';
+	      end loop;
+        wait for 0.4 ns;
+        write(token_line, string'("[[transaction]]    ") & integer'image(transaction_idx));
+        writeline(fp, token_line);
+        if(AESL_REG_double_trig_ap_vld = '1')  then
+            write(token_line, "0x" & esl_conv_string_hex(AESL_REG_double_trig));
+            writeline(fp, token_line);
+            AESL_REG_double_trig_ap_vld := '0';
+        end if;
+        transaction_idx := transaction_idx + 1;
+        write(token_line, string'("[[/transaction]]"));
+        writeline(fp, token_line);
+    end loop;
+    write(token_line, string'("[[[/runtime]]]"));
+    writeline(fp, token_line);
+    file_close(fp);
+    wait;
+end process;
+
 gen_out_trig_data_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then

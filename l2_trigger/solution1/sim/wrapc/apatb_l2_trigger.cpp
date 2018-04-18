@@ -124,6 +124,8 @@ using namespace sc_dt;
 #define AUTOTB_TVIN_N_BG  "../tv/cdatafile/c.l2_trigger.autotvin_N_BG.dat"
 // wrapc file define: "LOW_THRESH"
 #define AUTOTB_TVIN_LOW_THRESH  "../tv/cdatafile/c.l2_trigger.autotvin_LOW_THRESH.dat"
+// wrapc file define: "double_trig"
+#define AUTOTB_TVOUT_double_trig  "../tv/cdatafile/c.l2_trigger.autotvout_double_trig.dat"
 // wrapc file define: "trig_data"
 #define AUTOTB_TVOUT_trig_data  "../tv/cdatafile/c.l2_trigger.autotvout_trig_data.dat"
 // wrapc file define: "trig_pixel"
@@ -145,6 +147,8 @@ using namespace sc_dt;
 #define AUTOTB_TVOUT_PC_out_stream_V_id_V  "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_id_V.dat"
 // tvout file define: "out_stream_V_dest_V"
 #define AUTOTB_TVOUT_PC_out_stream_V_dest_V  "../tv/rtldatafile/rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat"
+// tvout file define: "double_trig"
+#define AUTOTB_TVOUT_PC_double_trig  "../tv/rtldatafile/rtl.l2_trigger.autotvout_double_trig.dat"
 // tvout file define: "trig_data"
 #define AUTOTB_TVOUT_PC_trig_data  "../tv/rtldatafile/rtl.l2_trigger.autotvout_trig_data.dat"
 // tvout file define: "trig_pixel"
@@ -171,6 +175,7 @@ class INTER_TCL_FILE {
 			n_pixels_in_bus_depth = 0;
 			N_BG_depth = 0;
 			LOW_THRESH_depth = 0;
+			double_trig_depth = 0;
 			trig_data_depth = 0;
 			trig_pixel_depth = 0;
 			trans_num =0;
@@ -209,6 +214,7 @@ class INTER_TCL_FILE {
 			total_list << "{n_pixels_in_bus " << n_pixels_in_bus_depth << "}\n";
 			total_list << "{N_BG " << N_BG_depth << "}\n";
 			total_list << "{LOW_THRESH " << LOW_THRESH_depth << "}\n";
+			total_list << "{double_trig " << double_trig_depth << "}\n";
 			total_list << "{trig_data " << trig_data_depth << "}\n";
 			total_list << "{trig_pixel " << trig_pixel_depth << "}\n";
 			return total_list.str();
@@ -235,6 +241,7 @@ class INTER_TCL_FILE {
 		int n_pixels_in_bus_depth;
 		int N_BG_depth;
 		int LOW_THRESH_depth;
+		int double_trig_depth;
 		int trig_data_depth;
 		int trig_pixel_depth;
 		int trans_num;
@@ -252,6 +259,7 @@ hls::stream<ap_axis<64, 2, 5, 6 > >& out_stream,
 unsigned short n_pixels_in_bus,
 unsigned char N_BG,
 unsigned int LOW_THRESH,
+volatile unsigned int* double_trig,
 volatile unsigned int* trig_data,
 volatile unsigned int* trig_pixel);
 #undef l2_trigger
@@ -262,6 +270,7 @@ hls::stream<ap_axis<64, 2, 5, 6 > >& out_stream,
 unsigned short n_pixels_in_bus,
 unsigned char N_BG,
 unsigned int LOW_THRESH,
+volatile unsigned int* double_trig,
 volatile unsigned int* trig_data,
 volatile unsigned int* trig_pixel)
 {
@@ -1393,6 +1402,139 @@ volatile unsigned int* trig_pixel)
 			}
 		}
 
+		// output port post check: "double_trig"
+		aesl_fh.read(AUTOTB_TVOUT_PC_double_trig, AESL_token); // [[transaction]]
+		if (AESL_token != "[[transaction]]")
+		{
+			exit(1);
+		}
+		aesl_fh.read(AUTOTB_TVOUT_PC_double_trig, AESL_num); // transaction number
+
+		if (atoi(AESL_num.c_str()) == AESL_transaction_pc)
+		{
+			aesl_fh.read(AUTOTB_TVOUT_PC_double_trig, AESL_token); // data
+
+			sc_bv<32> *double_trig_pc_buffer = new sc_bv<32>[1];
+			int i = 0;
+
+			while (AESL_token != "[[/transaction]]")
+			{
+				bool no_x = false;
+				bool err = false;
+
+				// search and replace 'X' with "0" from the 1st char of token
+				while (!no_x)
+				{
+					size_t x_found = AESL_token.find('X');
+					if (x_found != string::npos)
+					{
+						if (!err)
+						{
+							cerr << "WARNING: [SIM 212-201] RTL produces unknown value 'X' on port 'double_trig', possible cause: There are uninitialized variables in the C design." << endl;
+							err = true;
+						}
+						AESL_token.replace(x_found, 1, "0");
+					}
+					else
+					{
+						no_x = true;
+					}
+				}
+
+				no_x = false;
+
+				// search and replace 'x' with "0" from the 3rd char of token
+				while (!no_x)
+				{
+					size_t x_found = AESL_token.find('x', 2);
+
+					if (x_found != string::npos)
+					{
+						if (!err)
+						{
+							cerr << "WARNING: [SIM 212-201] RTL produces unknown value 'X' on port 'double_trig', possible cause: There are uninitialized variables in the C design." << endl;
+							err = true;
+						}
+						AESL_token.replace(x_found, 1, "0");
+					}
+					else
+					{
+						no_x = true;
+					}
+				}
+
+				// push token into output port buffer
+				if (AESL_token != "")
+				{
+					double_trig_pc_buffer[i] = AESL_token.c_str();
+					i++;
+				}
+
+				aesl_fh.read(AUTOTB_TVOUT_PC_double_trig, AESL_token); // data or [[/transaction]]
+
+				if (AESL_token == "[[[/runtime]]]" || aesl_fh.eof(AUTOTB_TVOUT_PC_double_trig))
+				{
+					exit(1);
+				}
+			}
+
+			// ***********************************
+			if (i > 0)
+			{
+				// RTL Name: double_trig
+				{
+					// bitslice(31, 0)
+					// {
+						// celement: double_trig(31, 0)
+						// {
+							sc_lv<32>* double_trig_lv0_0_0_1 = new sc_lv<32>[1];
+						// }
+					// }
+
+					// bitslice(31, 0)
+					{
+						int hls_map_index = 0;
+						// celement: double_trig(31, 0)
+						{
+							// carray: (0) => (0) @ (1)
+							for (int i_0 = 0; i_0 <= 0; i_0 += 1)
+							{
+								if (&(double_trig[0]) != NULL) // check the null address if the c port is array or others
+								{
+									double_trig_lv0_0_0_1[hls_map_index++].range(31, 0) = sc_bv<32>(double_trig_pc_buffer[hls_map_index].range(31, 0));
+								}
+							}
+						}
+					}
+
+					// bitslice(31, 0)
+					{
+						int hls_map_index = 0;
+						// celement: double_trig(31, 0)
+						{
+							// carray: (0) => (0) @ (1)
+							for (int i_0 = 0; i_0 <= 0; i_0 += 1)
+							{
+								// sub                    : i_0
+								// ori_name               : double_trig[i_0]
+								// sub_1st_elem           : 0
+								// ori_name_1st_elem      : double_trig[0]
+								// output_left_conversion : double_trig[i_0]
+								// output_type_conversion : (double_trig_lv0_0_0_1[hls_map_index++]).to_uint64()
+								if (&(double_trig[0]) != NULL) // check the null address if the c port is array or others
+								{
+									double_trig[i_0] = (double_trig_lv0_0_0_1[hls_map_index++]).to_uint64();
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// release memory allocation
+			delete [] double_trig_pc_buffer;
+		}
+
 		// output port post check: "trig_data"
 		aesl_fh.read(AUTOTB_TVOUT_PC_trig_data, AESL_token); // [[transaction]]
 		if (AESL_token != "[[transaction]]")
@@ -1812,6 +1954,10 @@ volatile unsigned int* trig_pixel)
 		char* tvin_LOW_THRESH = new char[50];
 		aesl_fh.touch(AUTOTB_TVIN_LOW_THRESH);
 
+		// "double_trig"
+		char* tvout_double_trig = new char[50];
+		aesl_fh.touch(AUTOTB_TVOUT_double_trig);
+
 		// "trig_data"
 		char* tvout_trig_data = new char[50];
 		aesl_fh.touch(AUTOTB_TVOUT_trig_data);
@@ -1983,7 +2129,7 @@ volatile unsigned int* trig_pixel)
 // [call_c_dut] ---------->
 
 		CodeState = CALL_C_DUT;
-		AESL_ORIG_DUT_l2_trigger(in_stream, out_stream, n_pixels_in_bus, N_BG, LOW_THRESH, trig_data, trig_pixel);
+		AESL_ORIG_DUT_l2_trigger(in_stream, out_stream, n_pixels_in_bus, N_BG, LOW_THRESH, double_trig, trig_data, trig_pixel);
 
 		CodeState = DUMP_OUTPUTS;
 		// record input size to tv3: "in_stream"
@@ -2924,6 +3070,53 @@ volatile unsigned int* trig_pixel)
 		aesl_fh.write(WRAPC_STREAM_SIZE_OUT_out_stream_V_dest_V, wrapc_stream_size_out_out_stream_V_dest_V);
 
 		// [[transaction]]
+		sprintf(tvout_double_trig, "[[transaction]] %d\n", AESL_transaction);
+		aesl_fh.write(AUTOTB_TVOUT_double_trig, tvout_double_trig);
+
+		sc_bv<32>* double_trig_tvout_wrapc_buffer = new sc_bv<32>[1];
+
+		// RTL Name: double_trig
+		{
+			// bitslice(31, 0)
+			{
+				int hls_map_index = 0;
+				// celement: double_trig(31, 0)
+				{
+					// carray: (0) => (0) @ (1)
+					for (int i_0 = 0; i_0 <= 0; i_0 += 1)
+					{
+						// sub                   : i_0
+						// ori_name              : double_trig[i_0]
+						// sub_1st_elem          : 0
+						// ori_name_1st_elem     : double_trig[0]
+						// regulate_c_name       : double_trig
+						// input_type_conversion : double_trig[i_0]
+						if (&(double_trig[0]) != NULL) // check the null address if the c port is array or others
+						{
+							sc_lv<32> double_trig_tmp_mem;
+							double_trig_tmp_mem = double_trig[i_0];
+							double_trig_tvout_wrapc_buffer[hls_map_index++].range(31, 0) = double_trig_tmp_mem.range(31, 0);
+						}
+					}
+				}
+			}
+		}
+
+		// dump tv to file
+		for (int i = 0; i < 1; i++)
+		{
+			sprintf(tvout_double_trig, "%s\n", (double_trig_tvout_wrapc_buffer[i]).to_string(SC_HEX).c_str());
+			aesl_fh.write(AUTOTB_TVOUT_double_trig, tvout_double_trig);
+		}
+
+		tcl_file.set_num(1, &tcl_file.double_trig_depth);
+		sprintf(tvout_double_trig, "[[/transaction]] \n");
+		aesl_fh.write(AUTOTB_TVOUT_double_trig, tvout_double_trig);
+
+		// release memory allocation
+		delete [] double_trig_tvout_wrapc_buffer;
+
+		// [[transaction]]
 		sprintf(tvout_trig_data, "[[transaction]] %d\n", AESL_transaction);
 		aesl_fh.write(AUTOTB_TVOUT_trig_data, tvout_trig_data);
 
@@ -3079,6 +3272,8 @@ volatile unsigned int* trig_pixel)
 		delete [] tvin_N_BG;
 		// release memory allocation: "LOW_THRESH"
 		delete [] tvin_LOW_THRESH;
+		// release memory allocation: "double_trig"
+		delete [] tvout_double_trig;
 		// release memory allocation: "trig_data"
 		delete [] tvout_trig_data;
 		// release memory allocation: "trig_pixel"

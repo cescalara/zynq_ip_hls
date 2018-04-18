@@ -2,8 +2,8 @@
 # xsim v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:35 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Fri Apr 13 19:38:44 2018
-# Process ID: 9507
+# Start of session at: Wed Apr 18 12:03:08 2018
+# Process ID: 8277
 # Current directory: /home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/sim/vhdl
 # Command line: xsim -mode tcl -source {xsim.dir/l2_trigger/xsim_script.tcl}
 # Log file: /home/francesca/xil_proj/zynq_ip_hls/l2_trigger/solution1/sim/vhdl/xsim.log

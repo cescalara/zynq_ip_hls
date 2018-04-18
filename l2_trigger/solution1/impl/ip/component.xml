@@ -468,6 +468,28 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
+      <spirit:name>double_trig</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>DATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>double_trig</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>LAYERED_METADATA</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.DOUBLE_TRIG.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
       <spirit:name>trig_data</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data_rtl" spirit:version="1.0"/>
@@ -963,6 +985,19 @@
       </spirit:view>
     </spirit:views>
     <spirit:ports>
+      <spirit:port>
+        <spirit:name>double_trig_ap_vld</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
       <spirit:port>
         <spirit:name>trig_data_ap_vld</spirit:name>
         <spirit:wire>
@@ -1586,6 +1621,23 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>double_trig</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>trig_data</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -1701,7 +1753,7 @@
       <spirit:file>
         <spirit:name>hdl/vhdl/l2_trigger.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_dd38c380</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_80ee68b4</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1838,8 +1890,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>L2_trigger</xilinx:displayName>
       <xilinx:definitionSource>HLS</xilinx:definitionSource>
-      <xilinx:coreRevision>1804131941</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2018-04-13T17:41:48Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>1804181242</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2018-04-18T10:42:19Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2016.2</xilinx:xilinxVersion>

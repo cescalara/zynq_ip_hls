@@ -52516,19 +52516,20 @@ typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
 void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
-  uint8_t N_BG, uint32_t LOW_THRESH,
+  uint8_t N_BG, uint32_t LOW_THRESH, volatile unsigned int *double_trig,
   volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
 # 14 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 
 
 void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus,
-  uint8_t N_BG, uint32_t LOW_THRESH,
+  uint8_t N_BG, uint32_t LOW_THRESH, volatile unsigned int *double_trig,
   volatile unsigned int *trig_data, volatile unsigned int *trig_pixel){
 
  //Define the interfaces
 _ssdm_op_SpecInterface(&in_stream, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(trig_data, "ap_ovld", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(trig_pixel, "ap_ovld", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
+_ssdm_op_SpecInterface(double_trig, "ap_ovld", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(&out_stream, "axis", 0, 0, 0, 0, "", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(n_pixels_in_bus, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
 _ssdm_op_SpecInterface(N_BG, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 0, "");
@@ -52550,6 +52551,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
  //Initialisation
  *trig_data = 0;
  *trig_pixel = 0;
+ *double_trig = 0;
  for(i = 0; i < n_pixels_in_bus/2; i++) {
   sum_pix1[i] = 0;
   sum_pix2[i] = 0;
@@ -52608,21 +52610,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
     sum_overP2[i] += data_shift2[0][i];
 
     //Trigger decision
-    if(sum_overP1[i] > thresh1[i]) {
-
-     if(itrig == 0) {
-      //Pulse trigger wire for 1 clock
-      *trig_data = 0x00000001;
-      *trig_data = 0x00000000;
-
-      //store the triggered pixel
-      *trig_pixel = i*2;
-
-      //Block for 128 GTU
-      itrig = 1;
-     }
-    }
-    else if (sum_overP2[i] > thresh2[i] ) {
+    if (sum_overP2[i] > thresh2[i]) {
 
      if (itrig == 0) {
       //Pulse trigger wire for 1 clock
@@ -52635,7 +52623,27 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, 0, 0, "CTRL_BUS", "", "", 0, 0, 0, 
       //Block for 128 GTU
       itrig = 1;
      }
+    }
+    else if(sum_overP1[i] > thresh1[i]) {
+
+     if(itrig == 0) {
+      //Pulse trigger wire for 1 clock
+      *trig_data = 0x00000001;
+      *trig_data = 0x00000000;
+
+      //store the triggered pixel
+      *trig_pixel = i*2;
+
+      //Block for 128 GTU
+      itrig = 1;
+     }
     } // Trigger decision
+
+    //Report double trigger
+    if (sum_overP1[i] > thresh1[i] && sum_overP2[i] > thresh2[i]) {
+
+     *double_trig = 1;
+    }
 
    }
   }

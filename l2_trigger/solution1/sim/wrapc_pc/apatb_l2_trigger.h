@@ -10,5 +10,6 @@ hls::stream<struct ap_axis<64, 2, 5, 6 > >& out_stream,
 unsigned short n_pixels_in_bus,
 unsigned char N_BG,
 unsigned int LOW_THRESH,
+volatile unsigned int* double_trig,
 volatile unsigned int* trig_data,
 volatile unsigned int* trig_pixel);

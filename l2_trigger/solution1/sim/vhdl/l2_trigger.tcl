@@ -28,6 +28,9 @@ add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/trig_pixel -into $trig_pixel
 set trig_data_group [add_wave_group trig_data(wire) -into $coutputgroup]
 add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/trig_data_ap_vld -into $trig_data_group -color #ffff00 -radix hex
 add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/trig_data -into $trig_data_group -radix hex
+set double_trig_group [add_wave_group double_trig(wire) -into $coutputgroup]
+add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/double_trig_ap_vld -into $double_trig_group -color #ffff00 -radix hex
+add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/double_trig -into $double_trig_group -radix hex
 set out_stream_group [add_wave_group out_stream(axis) -into $coutputgroup]
 add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/out_stream_TDEST -into $out_stream_group -radix hex
 add_wave /apatb_l2_trigger_top/AESL_inst_l2_trigger/out_stream_TID -into $out_stream_group -radix hex

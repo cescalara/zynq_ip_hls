@@ -1,23 +1,23 @@
 set C_TypeInfoList {{ 
-"l2_trigger" : [[], { "return": [[], "void"]} , [{"ExternC" : 0}], [ {"in_stream": [[], {"reference": "0"}] }, {"out_stream": [[], {"reference": "1"}] }, {"n_pixels_in_bus": [[],"2"] }, {"N_BG": [[],"3"] }, {"LOW_THRESH": [[],"4"] }, {"trig_data": [[],{ "pointer":  {"scalar": "unsigned int"}}] }, {"trig_pixel": [[],{ "pointer":  {"scalar": "unsigned int"}}] }],[],""], 
-"2": [ "uint16_t", {"typedef": [[[], {"scalar": "unsigned short"}],""]}], 
-"3": [ "uint8_t", {"typedef": [[[], {"scalar": "unsigned char"}],""]}], 
-"4": [ "uint32_t", {"typedef": [[[], {"scalar": "unsigned int"}],""]}], 
+"l2_trigger" : [[], { "return": [[], "void"]} , [{"ExternC" : 0}], [ {"in_stream": [[], {"reference": "0"}] }, {"out_stream": [[], {"reference": "1"}] }, {"n_pixels_in_bus": [[],"2"] }, {"N_BG": [[],"3"] }, {"LOW_THRESH": [[],"4"] }, {"double_trig": [[],{ "pointer":  {"scalar": "unsigned int"}}] }, {"trig_data": [[],{ "pointer":  {"scalar": "unsigned int"}}] }, {"trig_pixel": [[],{ "pointer":  {"scalar": "unsigned int"}}] }],[],""], 
 "1": [ "STREAM_64", {"typedef": [[[],"5"],""]}], 
-"5": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"6"]],"7"]}}], 
-"0": [ "STREAM_32", {"typedef": [[[],"8"],""]}], 
-"8": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"9"]],"7"]}}], 
-"9": [ "ap_axis<32, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 32}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "10"]},{ "keep": [[], "11"]},{ "strb": [[], "11"]},{ "user": [[], "12"]},{ "last": [[], "13"]},{ "id": [[], "14"]},{ "dest": [[], "15"]}],""]}], 
-"15": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}], 
-"11": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
-"10": [ "ap_int<32>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 32}}]],""]}}], 
-"12": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}], 
-"13": [ "ap_uint<1>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 1}}]],""]}}], 
-"14": [ "ap_uint<5>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 5}}]],""]}}], 
-"6": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "16"]},{ "keep": [[], "17"]},{ "strb": [[], "17"]},{ "user": [[], "12"]},{ "last": [[], "13"]},{ "id": [[], "14"]},{ "dest": [[], "15"]}],""]}], 
-"17": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}], 
-"16": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}],
-"7": ["hls", ""]
+"0": [ "STREAM_32", {"typedef": [[[],"6"],""]}], 
+"2": [ "uint16_t", {"typedef": [[[], {"scalar": "unsigned short"}],""]}], 
+"4": [ "uint32_t", {"typedef": [[[], {"scalar": "unsigned int"}],""]}], 
+"3": [ "uint8_t", {"typedef": [[[], {"scalar": "unsigned char"}],""]}], 
+"5": [ "stream<ap_axis<64, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"7"]],"8"]}}], 
+"7": [ "ap_axis<64, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 64}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "9"]},{ "keep": [[], "10"]},{ "strb": [[], "10"]},{ "user": [[], "11"]},{ "last": [[], "12"]},{ "id": [[], "13"]},{ "dest": [[], "14"]}],""]}], 
+"14": [ "ap_uint<6>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 6}}]],""]}}], 
+"13": [ "ap_uint<5>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 5}}]],""]}}], 
+"9": [ "ap_int<64>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 64}}]],""]}}], 
+"10": [ "ap_uint<8>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 8}}]],""]}}], 
+"12": [ "ap_uint<1>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 1}}]],""]}}], 
+"6": [ "stream<ap_axis<32, 2, 5, 6> >", {"hls_type": {"stream": [[[[],"15"]],"8"]}}], 
+"15": [ "ap_axis<32, 2, 5, 6>", {"struct": [[],[{"D":[[], {"scalar": { "int": 32}}]},{"U":[[], {"scalar": { "int": 2}}]},{"TI":[[], {"scalar": { "int": 5}}]},{"TD":[[], {"scalar": { "int": 6}}]}],[{ "data": [[], "16"]},{ "keep": [[], "17"]},{ "strb": [[], "17"]},{ "user": [[], "11"]},{ "last": [[], "12"]},{ "id": [[], "13"]},{ "dest": [[], "14"]}],""]}], 
+"16": [ "ap_int<32>", {"hls_type": {"ap_int": [[[[], {"scalar": { "int": 32}}]],""]}}], 
+"17": [ "ap_uint<4>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 4}}]],""]}}], 
+"11": [ "ap_uint<2>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 2}}]],""]}}],
+"8": ["hls", ""]
 }}
 set moduleName l2_trigger
 set isCombinational 0
@@ -46,6 +46,7 @@ set C_modelArgList {
 	{ n_pixels_in_bus uint 16 regular {axi_slave 0}  }
 	{ N_BG uint 8 regular {axi_slave 0}  }
 	{ LOW_THRESH int 32 regular {axi_slave 0}  }
+	{ double_trig int 32 regular {pointer 1 volatile }  }
 	{ trig_data int 32 regular {pointer 1 volatile }  }
 	{ trig_pixel int 32 regular {pointer 1 volatile }  }
 }
@@ -67,10 +68,11 @@ set C_modelArgMapList {[
  	{ "Name" : "n_pixels_in_bus", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 16, "direction" : "READONLY", "bitSlice":[{"low":0,"up":15,"cElement": [{"cName": "n_pixels_in_bus","cData": "unsigned short","bit_use": { "low": 0,"up": 15},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":16}, "offset_end" : {"in":23}} , 
  	{ "Name" : "N_BG", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 8, "direction" : "READONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "N_BG","cData": "unsigned char","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":24}, "offset_end" : {"in":31}} , 
  	{ "Name" : "LOW_THRESH", "interface" : "axi_slave", "bundle":"CTRL_BUS","type":"ap_none","bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "LOW_THRESH","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}], "offset" : {"in":32}, "offset_end" : {"in":39}} , 
+ 	{ "Name" : "double_trig", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "double_trig","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "trig_data", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "trig_data","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} , 
  	{ "Name" : "trig_pixel", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "trig_pixel","cData": "unsigned int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
-set portNum 42
+set portNum 44
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst_n sc_in sc_logic 1 reset -1 active_low_sync } 
@@ -92,10 +94,12 @@ set portList {
 	{ out_stream_TLAST sc_out sc_lv 1 signal 11 } 
 	{ out_stream_TID sc_out sc_lv 5 signal 12 } 
 	{ out_stream_TDEST sc_out sc_lv 6 signal 13 } 
-	{ trig_data sc_out sc_lv 32 signal 17 } 
-	{ trig_data_ap_vld sc_out sc_logic 1 outvld 17 } 
-	{ trig_pixel sc_out sc_lv 32 signal 18 } 
-	{ trig_pixel_ap_vld sc_out sc_logic 1 outvld 18 } 
+	{ double_trig sc_out sc_lv 32 signal 17 } 
+	{ double_trig_ap_vld sc_out sc_logic 1 outvld 17 } 
+	{ trig_data sc_out sc_lv 32 signal 18 } 
+	{ trig_data_ap_vld sc_out sc_logic 1 outvld 18 } 
+	{ trig_pixel sc_out sc_lv 32 signal 19 } 
+	{ trig_pixel_ap_vld sc_out sc_logic 1 outvld 19 } 
 	{ s_axi_CTRL_BUS_AWVALID sc_in sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_AWREADY sc_out sc_logic 1 signal -1 } 
 	{ s_axi_CTRL_BUS_AWADDR sc_in sc_lv 6 signal -1 } 
@@ -154,6 +158,8 @@ set NewPortList {[
  	{ "name": "out_stream_TLAST", "direction": "out", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "out_stream_V_last_V", "role": "default" }} , 
  	{ "name": "out_stream_TID", "direction": "out", "datatype": "sc_lv", "bitwidth":5, "type": "signal", "bundle":{"name": "out_stream_V_id_V", "role": "default" }} , 
  	{ "name": "out_stream_TDEST", "direction": "out", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "out_stream_V_dest_V", "role": "default" }} , 
+ 	{ "name": "double_trig", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "double_trig", "role": "default" }} , 
+ 	{ "name": "double_trig_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "double_trig", "role": "ap_vld" }} , 
  	{ "name": "trig_data", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "trig_data", "role": "default" }} , 
  	{ "name": "trig_data_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "trig_data", "role": "ap_vld" }} , 
  	{ "name": "trig_pixel", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "trig_pixel", "role": "default" }} , 
@@ -181,6 +187,7 @@ set RtlHierarchyInfo {[
 		{"Name" : "n_pixels_in_bus", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "N_BG", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "LOW_THRESH", "Type" : "None", "Direction" : "I", "BlockSignal" : [], "SubConnect" : []}, 
+		{"Name" : "double_trig", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "trig_data", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}, 
 		{"Name" : "trig_pixel", "Type" : "OVld", "Direction" : "O", "BlockSignal" : [], "SubConnect" : []}],
 		"WaitState" : [],
@@ -215,6 +222,7 @@ set Spec2ImplPortList {
 	out_stream_V_last_V { axis {  { out_stream_TLAST out_data 1 1 } } }
 	out_stream_V_id_V { axis {  { out_stream_TID out_data 1 5 } } }
 	out_stream_V_dest_V { axis {  { out_stream_TVALID out_vld 1 1 }  { out_stream_TREADY out_acc 0 1 }  { out_stream_TDEST out_data 1 6 } } }
+	double_trig { ap_ovld {  { double_trig out_data 1 32 }  { double_trig_ap_vld out_vld 1 1 } } }
 	trig_data { ap_ovld {  { trig_data out_data 1 32 }  { trig_data_ap_vld out_vld 1 1 } } }
 	trig_pixel { ap_ovld {  { trig_pixel out_data 1 32 }  { trig_pixel_ap_vld out_vld 1 1 } } }
 }

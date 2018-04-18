@@ -41,11 +41,14 @@ int main() {
 
 	volatile unsigned int *trig_data_HW;
 	volatile unsigned int *trig_pixel_HW;
-	volatile unsigned int val_data, val_pixel;
+	volatile unsigned int *double_trig;
+	volatile unsigned int val_data, val_pixel, val_double_trig;
 	trig_data_HW = &val_data;
 	trig_pixel_HW = &val_pixel;
+	double_trig = &val_double_trig;
 	val_data = 0;
 	val_pixel = 0;
+	val_double_trig = 0;
 
 	printf("trig_data_HW: %u\n", *trig_data_HW);
 
@@ -155,7 +158,7 @@ int main() {
 	/* HARDWARE IMPLEMENTATION */
 #ifdef HW_COSIM
 	//Run the Vivado HLS trigger
-	l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, trig_data_HW, trig_pixel_HW);
+	l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, double_trig, trig_data_HW, trig_pixel_HW);
 #endif
 
 

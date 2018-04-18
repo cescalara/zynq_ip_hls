@@ -492,6 +492,21 @@ puts "@W \[IMPL-110\] Cannot find bus interface model in the library. Ignored ge
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
     id 18 \
+    name double_trig \
+    type other \
+    dir O \
+    reset_level 0 \
+    sync_rst true \
+    corename dc_double_trig \
+    op interface \
+    ports { double_trig { O 32 vector } double_trig_ap_vld { O 1 bit } } \
+} "
+}
+
+# Direct connection:
+if {${::AESL::PGuard_autoexp_gen}} {
+eval "cg_default_interface_gen_dc { \
+    id 19 \
     name trig_data \
     type other \
     dir O \
@@ -506,7 +521,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 19 \
+    id 20 \
     name trig_pixel \
     type other \
     dir O \

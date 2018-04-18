@@ -107,6 +107,7 @@ proc check_tvin_file {} {
          "c.l2_trigger.autotvout_out_stream_V_last_V.dat"
          "c.l2_trigger.autotvout_out_stream_V_id_V.dat"
          "c.l2_trigger.autotvout_out_stream_V_dest_V.dat"
+         "c.l2_trigger.autotvout_double_trig.dat"
          "c.l2_trigger.autotvout_trig_data.dat"
          "c.l2_trigger.autotvout_trig_pixel.dat"
     }
@@ -140,6 +141,7 @@ proc check_tvout_file {} {
          "rtl.l2_trigger.autotvout_out_stream_V_last_V.dat"
          "rtl.l2_trigger.autotvout_out_stream_V_id_V.dat"
          "rtl.l2_trigger.autotvout_out_stream_V_dest_V.dat"
+         "rtl.l2_trigger.autotvout_double_trig.dat"
          "rtl.l2_trigger.autotvout_trig_data.dat"
          "rtl.l2_trigger.autotvout_trig_pixel.dat"
     }

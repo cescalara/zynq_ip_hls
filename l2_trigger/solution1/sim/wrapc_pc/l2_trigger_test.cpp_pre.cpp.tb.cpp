@@ -58113,7 +58113,7 @@ typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
 void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
-  uint8_t N_BG, uint32_t LOW_THRESH,
+  uint8_t N_BG, uint32_t LOW_THRESH, volatile unsigned int *double_trig,
   volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
 #12 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp" 2
 
@@ -58151,11 +58151,14 @@ int main() {
 
  volatile unsigned int *trig_data_HW;
  volatile unsigned int *trig_pixel_HW;
- volatile unsigned int val_data, val_pixel;
+ volatile unsigned int *double_trig;
+ volatile unsigned int val_data, val_pixel, val_double_trig;
  trig_data_HW = &val_data;
  trig_pixel_HW = &val_pixel;
+ double_trig = &val_double_trig;
  val_data = 0;
  val_pixel = 0;
+ val_double_trig = 0;
 
  printf("trig_data_HW: %u\n", *trig_data_HW);
 
@@ -58265,7 +58268,7 @@ int main() {
 
 
 
- l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, trig_data_HW, trig_pixel_HW);
+ l2_trigger(in_stream_HW, out_stream_HW, n_pixels_in_bus, N_BG, LOW_THRESH, double_trig, trig_data_HW, trig_pixel_HW);
 
 
 
@@ -58300,4 +58303,4 @@ int main() {
  return error_count;
 }
 #endif
-#191 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp"
+#194 "/home/francesca/xil_proj/zynq_ip_hls/l2_trigger/cpp_code/v10/l2_trigger_test.cpp"

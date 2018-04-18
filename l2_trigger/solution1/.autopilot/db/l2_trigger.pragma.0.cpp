@@ -52469,19 +52469,20 @@ typedef hls::stream<AXI_DATA_32> STREAM_32;
 typedef hls::stream<AXI_DATA_64> STREAM_64;
 
 void l2_trigger(STREAM_32 &in_data, STREAM_64 &out_data, uint16_t n_pixels_in_bus,
-  uint8_t N_BG, uint32_t LOW_THRESH,
+  uint8_t N_BG, uint32_t LOW_THRESH, volatile unsigned int *double_trig,
   volatile unsigned int *trig_data, volatile unsigned int *trig_pixel);
 #14 "l2_trigger/cpp_code/v10/l2_trigger.cpp" 2
 
 
 void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_in_bus,
-  uint8_t N_BG, uint32_t LOW_THRESH,
+  uint8_t N_BG, uint32_t LOW_THRESH, volatile unsigned int *double_trig,
   volatile unsigned int *trig_data, volatile unsigned int *trig_pixel){
 
  //Define the interfaces
 #pragma HLS INTERFACE axis port=&in_stream
 #pragma HLS INTERFACE ap_ovld port = trig_data
 #pragma HLS INTERFACE ap_ovld port = trig_pixel
+#pragma HLS INTERFACE ap_ovld port = double_trig
 #pragma HLS INTERFACE axis port=&out_stream
 #pragma HLS INTERFACE s_axilite port=n_pixels_in_bus bundle=CTRL_BUS
 #pragma HLS INTERFACE s_axilite port=N_BG bundle=CTRL_BUS
@@ -52503,6 +52504,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
  //Initialisation
  *trig_data = 0;
  *trig_pixel = 0;
+ *double_trig = 0;
  for(i = 0; i < n_pixels_in_bus/2; i++) {
   sum_pix1[i] = 0;
   sum_pix2[i] = 0;
@@ -52561,21 +52563,7 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
     sum_overP2[i] += data_shift2[0][i];
 
     //Trigger decision
-    if(sum_overP1[i] > thresh1[i]) {
-
-     if(itrig == 0) {
-      //Pulse trigger wire for 1 clock
-      *trig_data = 0x00000001;
-      *trig_data = 0x00000000;
-
-      //store the triggered pixel
-      *trig_pixel = i*2;
-
-      //Block for 128 GTU
-      itrig = 1;
-     }
-    }
-    else if (sum_overP2[i] > thresh2[i] ) {
+    if (sum_overP2[i] > thresh2[i]) {
 
      if (itrig == 0) {
       //Pulse trigger wire for 1 clock
@@ -52588,7 +52576,27 @@ void l2_trigger(STREAM_32 &in_stream, STREAM_64 &out_stream, uint16_t n_pixels_i
       //Block for 128 GTU
       itrig = 1;
      }
+    }
+    else if(sum_overP1[i] > thresh1[i]) {
+
+     if(itrig == 0) {
+      //Pulse trigger wire for 1 clock
+      *trig_data = 0x00000001;
+      *trig_data = 0x00000000;
+
+      //store the triggered pixel
+      *trig_pixel = i*2;
+
+      //Block for 128 GTU
+      itrig = 1;
+     }
     } // Trigger decision
+
+    //Report double trigger
+    if (sum_overP1[i] > thresh1[i] && sum_overP2[i] > thresh2[i]) {
+
+     *double_trig = 1;
+    }
 
    }
   }
